@@ -1,0 +1,423 @@
+# Copyright (C) 2024 Widgets for Google Business Reviews and Ratings
+# This file is distributed under the same license as the Widgets for Google Business Reviews and Ratings package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Widgets for Google Business Reviews and Ratings 1.0.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/widgets-for-"
+"google-reviews-and-ratings\n"
+"POT-Creation-Date: 2025-05-23T10:45:51+00:00\n"
+"PO-Revision-Date: 2025-05-23 16:52+0530\n"
+"Last-Translator: \n"
+"Language-Team: ქართული <ka_GE@li.org>\n"
+"Language: ka_GE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#. Plugin Name of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "Widgets for Google Business Reviews and Ratings"
+msgstr "Google ბიზნესის შეფასებების და შეფასების ვიჯეტები"
+
+#. Plugin URI of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "https://repocean.com/"
+msgstr "https://repocean.com/"
+
+#. Description of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid ""
+"Quickly and easily embed Google reviews into your WordPress site. Boost SEO, "
+"build trust, and increase sales with Google reviews."
+msgstr ""
+"შეუძლიათ სწრაფად და ადვილად გააერთიანოთ Google-ის შეფასებები თქვენს "
+"WordPress ვებსაიტზე. გააუმჯობესეთ SEO, შექმენით ნდობა და გაზარდეთ გაყიდვები "
+"Google-ის შეფასებებით."
+
+#. Author of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "repocean"
+msgstr "repocean"
+
+#. Author URI of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "https://profiles.wordpress.org/repocean/"
+msgstr "https://profiles.wordpress.org/repocean/"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:37
+msgid "Google Reviews Settings"
+msgstr "Google-ის შეფასებების პარამეტრები"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:38
+#: admin/class-widgets-for-google-reviews-and-ratings-widget.php:23
+msgid "Google Reviews"
+msgstr "Google-ის შეფასებები"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:58
+msgid "Widget Customizer"
+msgstr "ვიჯეტის მორგება"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:60
+msgid "Connect Google"
+msgstr "Google-ის დაკავშირება"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:61
+msgid "Select Layout"
+msgstr "საწყისის არჩევა"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:62
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:640
+msgid "Settings"
+msgstr "პარამეტრები"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:65
+msgid "Get Reviews"
+msgstr "შეფასებების მიღება"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:155
+msgid "Nonce verification failed"
+msgstr "Nonce-ის ვერსიის ვერ დაგვირგვინდა"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:163
+msgid "Error decoding JSON."
+msgstr "შეცდომა JSON-ის დეკოდირებისას."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:166
+msgid "Error: Place data not received."
+msgstr "შეცდომა: ადგილმდებარეობის მონაცემები არ მიიღება."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:169
+msgid "An error occurred: "
+msgstr "შეცდომა მოხდა: "
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:211
+msgid "Place Image"
+msgstr "ადგილმდებარეობის სურათი"
+
+#. Translators: %d represents the total number of user reviews.
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:216
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:205
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:296
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:744
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:899
+msgid "reviews"
+msgstr "შეფასებები"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:222
+msgid "Disconnect"
+msgstr "წყვეტა"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:237
+msgid "Place disconnected successfully. Connect a new place."
+msgstr "ადგილმდებარეობა წარმატებით გაწვდილი. დააკავშირეთ ახალი ადგილი."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:263
+msgid "Slider"
+msgstr "ცოცია"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:265
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:283
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:301
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:319
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:337
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:355
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:373
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:391
+msgid "Shortcode:"
+msgstr "მოკლე კოდი:"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:268
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:286
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:304
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:322
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:340
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:358
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:376
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:394
+msgid "Copy to Clipboard"
+msgstr "კოპირება პClipboard-ზე"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:269
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:287
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:305
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:323
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:341
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:359
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:377
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:395
+msgid "Copied!"
+msgstr "კოპირებული!"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:281
+msgid "Slider I."
+msgstr "სლაიდერი I."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:299
+msgid "Slider II."
+msgstr "სლაიდერი II."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:317
+msgid "Slider III."
+msgstr "სლაიდერი III."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:335
+msgid "Slider IIII."
+msgstr "სლაიდერი IIII."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:353
+msgid "Grid"
+msgstr "ბადე"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:371
+msgid "List"
+msgstr "სია"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:389
+msgid "Sidebar"
+msgstr "გვერდითი ზოლი"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:461
+msgid "Security check failed. Nonce verification failed."
+msgstr ""
+"უსაფრთხოების შემოწმება ვერ მოხერხდა. Nonce-ის დადასტურება ვერ მოხერხდა."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:479
+msgid "Settings saved successfully!"
+msgstr "პარამეტრები წარმატებით შენახულია!"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:494
+msgid "Google Review Widget Settings"
+msgstr "Google შეფასებების ვიჯეტის პარამეტრები"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:502
+msgid "Hide Review Date"
+msgstr "დამალეთ შეფასების თარიღი"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:508
+msgid "Hide Reviewer Profile Picture"
+msgstr "დამალეთ მიმომხილველის პროფილის სურათი"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:514
+msgid "Hide Google Logo"
+msgstr "დამალეთ Google-ის ლოგო"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:520
+msgid "Hide Widget Rating Text (e.g. EXCELLENT XXX reviews)"
+msgstr "ვიჯეტის რეიტინგის ტექსტის დამალვა (მაგ. EXCELLENT XXX მიმოხილვა)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:527
+msgid "Hide \"Previous\" and \"Next\" Buttons"
+msgstr "დამალეთ \"წინა\" და \"შემდეგი\" ღილაკები"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:535
+msgid "Show Verified By RepOcean"
+msgstr "RepOcean-ის მიერ დამოწმებული ჩვენება"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:543
+msgid "Show Verified Symbol for Reviews"
+msgstr "გადამოწმებული სიმბოლოს ჩვენება მიმოხილვებისთვის"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:545
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:184
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:346
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:450
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:556
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:636
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:794
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:948
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1066
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1463
+msgid "RepOcean verifies that the original source of the review is Google."
+msgstr "RepOcean ადასტურებს, რომ მიმოხილვის ორიგინალური წყარო არის Google."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:552
+msgid "Shorten Reviewer Names (e.g., John Smith → John S.)"
+msgstr "შეამოკლეთ რეცენზენტების სახელები (მაგ., ჯონ სმიტი → ჯონ ს.)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:560
+msgid "Enable Dark Mode (Dark background with light text)"
+msgstr "ჩართეთ მუქი რეჟიმი (მუქი ფონი ღია ტექსტით)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:568
+msgid "Change Star Color"
+msgstr "შეცვალეთ ვარსკვლავის ფერი"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:627
+msgid "Save Changes"
+msgstr "შეცვლილებების შენახვა"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:633
+msgid "An error occurred while saving the settings. Please try again."
+msgstr "შეცდომა მოხდა პარამეტრების შენახვის დროს. გთხოვთ, სცადოთ კიდევ ერთხელ."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:649
+msgid "Community support"
+msgstr "კომუნიტეტის მხარდაჭერა"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:650
+msgid "Rate our plugin"
+msgstr "შეაფასეთ ჩვენი ვიჯეტი"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-widget.php:9
+msgid "A Widget to display Google Reviews"
+msgstr "ვიჯეტი Google შეფასებების სანახავად"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-widget.php:26
+msgid "Title:"
+msgstr "სათაური:"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:98
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:228
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:381
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:487
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:593
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:675
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:831
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:986
+msgid "Hide"
+msgstr "დამალეთ"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:99
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:192
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:229
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:354
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:382
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:457
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:488
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:563
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:594
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:645
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:676
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:803
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:832
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:957
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:987
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1090
+msgid "Read more"
+msgstr "კითხვა გაგრძელება"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:139
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:283
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:388
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:494
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:600
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:729
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:885
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1041
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1444
+msgid "No reviews found."
+msgstr "არ მოიძებნა შეფასებები."
+
+#. Translators: %s represents the human-readable time difference.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:145
+#, php-format
+msgid " %s ago"
+msgstr " %s წინ"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:202
+msgid "Google"
+msgstr "Google"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:202
+msgid "Rating Score:"
+msgstr "შეფასების ქულა:"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:203
+msgid "out of 5,"
+msgstr "5-დან,"
+
+#. Translators: %d represents the total number of user reviews.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:205
+msgid "based on"
+msgstr "დააავად"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:290
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:397
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:503
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:737
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:893
+msgid "EXCELLENT"
+msgstr "შეთანხმებული"
+
+#. Translators: %s represents the human-readable time difference.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:307
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:423
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:529
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:616
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:755
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:910
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1074
+#, php-format
+msgid "%s ago"
+msgstr "%s წინ"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:366
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:472
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:578
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:661
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:817
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:971
+msgid "Your Google Place not connected"
+msgstr "თქვენი Google ადგილი არ არის დაკავშირებული"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:369
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:475
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:581
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:664
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:820
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:974
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1127
+msgid "An error occurred."
+msgstr "შეცდომა მოხდა."
+
+#. Translators: %d represents the total number of user reviews.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:400
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:506
+#, php-format
+msgid "Based on <a href=\"#\" class=\"review-link\">%d reviews</a>"
+msgstr "<a href=\"#\" class=\"review-link\">%d მიმოხილვის</a> საფუძველზე"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:404
+msgid "Review us on Google"
+msgstr "გადახედეთ ჩვენს Google-ში"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:810
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:964
+msgid "Load More"
+msgstr "მოამატეთ მეტი"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1051
+msgid "Excellent rating"
+msgstr "შეთანხმებული შეფასება"
+
+#. Translators: %d represents the total number of user reviews.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1053
+#, php-format
+msgid "Based on %s reviews"
+msgstr "შეფასების საფუძველზე %s"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1124
+msgid "Your Google Place is not connected."
+msgstr "თქვენი Google ადგილი არ არის დაკავშირებული."
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1435
+msgid "Unable to retrieve reviews at this time."
+msgstr "ამ მომენტში ვერ ვიღებთ შეფასებებს."
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1462
+msgid "Verified"
+msgstr "დამოწმებულია"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1464
+msgid "Verified by RepOcean"
+msgstr "დამოწმებულია RepOcean-ის მიერ"
+
+#~ msgid "Layout: Slider"
+#~ msgstr "მონტაჟი: სლაიდერი"
+
+#~ msgid "Layout: Grid"
+#~ msgstr "მონტაჟი: გრიდი"
+
+#~ msgid "Layout: List"
+#~ msgstr "მონტაჟი: სია"

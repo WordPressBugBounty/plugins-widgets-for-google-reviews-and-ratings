@@ -1,0 +1,424 @@
+# Copyright (C) 2024 Widgets for Google Business Reviews and Ratings
+# This file is distributed under the same license as the Widgets for Google Business Reviews and Ratings package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Widgets for Google Business Reviews and Ratings 1.0.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/widgets-for-"
+"google-reviews-and-ratings\n"
+"POT-Creation-Date: 2025-05-23T10:45:51+00:00\n"
+"PO-Revision-Date: 2025-05-23 17:10+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: af\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#. Plugin Name of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "Widgets for Google Business Reviews and Ratings"
+msgstr "Widgets vir Google Besigheidsresensies en -waardes"
+
+#. Plugin URI of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "https://repocean.com/"
+msgstr "https://repocean.com/"
+
+#. Description of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid ""
+"Quickly and easily embed Google reviews into your WordPress site. Boost SEO, "
+"build trust, and increase sales with Google reviews."
+msgstr ""
+"Plaas Google resensies vinnig en maklik in u WordPress-webwerf. Verbeter "
+"SEO, bou vertroue en verhoog verkope met Google resensies."
+
+#. Author of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "repocean"
+msgstr "repocean"
+
+#. Author URI of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "https://profiles.wordpress.org/repocean/"
+msgstr "https://profiles.wordpress.org/repocean/"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:37
+msgid "Google Reviews Settings"
+msgstr "Google Resensies Instellings"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:38
+#: admin/class-widgets-for-google-reviews-and-ratings-widget.php:23
+msgid "Google Reviews"
+msgstr "Google Resensies"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:58
+msgid "Widget Customizer"
+msgstr "Widget Pasgemaak"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:60
+msgid "Connect Google"
+msgstr "Verbind Google"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:61
+msgid "Select Layout"
+msgstr "Kies Uiterlik"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:62
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:640
+msgid "Settings"
+msgstr "Instellings"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:65
+msgid "Get Reviews"
+msgstr "Kry Resensies"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:155
+msgid "Nonce verification failed"
+msgstr "Nonce-verifikasie het misluk"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:163
+msgid "Error decoding JSON."
+msgstr "Fout om JSON te dekodeer."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:166
+msgid "Error: Place data not received."
+msgstr "Fout: Plaasdata nie ontvang nie."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:169
+msgid "An error occurred: "
+msgstr "Daar was 'n fout: "
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:211
+msgid "Place Image"
+msgstr "Plekbeeld"
+
+#. Translators: %d represents the total number of user reviews.
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:216
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:205
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:296
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:744
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:899
+msgid "reviews"
+msgstr "resensies"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:222
+msgid "Disconnect"
+msgstr "Ontkoppel"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:237
+msgid "Place disconnected successfully. Connect a new place."
+msgstr "Plek suksesvol ontkoppel. Verbind 'n nuwe plek."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:263
+msgid "Slider"
+msgstr "Glyer I."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:265
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:283
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:301
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:319
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:337
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:355
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:373
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:391
+msgid "Shortcode:"
+msgstr "Kortkode:"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:268
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:286
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:304
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:322
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:340
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:358
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:376
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:394
+msgid "Copy to Clipboard"
+msgstr "Kopieer na Knipbord"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:269
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:287
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:305
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:323
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:341
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:359
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:377
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:395
+msgid "Copied!"
+msgstr "Gekopieer!"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:281
+msgid "Slider I."
+msgstr "Glyer I."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:299
+msgid "Slider II."
+msgstr "Glyer II"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:317
+msgid "Slider III."
+msgstr "Glyer III."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:335
+msgid "Slider IIII."
+msgstr "Glyer IV."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:353
+msgid "Grid"
+msgstr "Rooster"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:371
+msgid "List"
+msgstr "Lys"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:389
+msgid "Sidebar"
+msgstr "Uiterlik: Sydbalk"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:461
+msgid "Security check failed. Nonce verification failed."
+msgstr "Sekuriteitkontrole het misluk. Nie-verifikasie het misluk."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:479
+msgid "Settings saved successfully!"
+msgstr "Instellings suksesvol gestoor!"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:494
+msgid "Google Review Widget Settings"
+msgstr "Google Resensie Widget Instellings"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:502
+msgid "Hide Review Date"
+msgstr "Versteek Resensiedatum"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:508
+msgid "Hide Reviewer Profile Picture"
+msgstr "Versteek Resensent se Profielbeeld"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:514
+msgid "Hide Google Logo"
+msgstr "Versteek Google-logo"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:520
+msgid "Hide Widget Rating Text (e.g. EXCELLENT XXX reviews)"
+msgstr "Versteek Widget Graderingsteks (bv. UITSTEKEND XXX resensies)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:527
+msgid "Hide \"Previous\" and \"Next\" Buttons"
+msgstr "Versteek \"Vorige\" en \"Volgende\" Knoppies"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:535
+msgid "Show Verified By RepOcean"
+msgstr "Wys geverifieer deur RepOcean"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:543
+msgid "Show Verified Symbol for Reviews"
+msgstr "Wys geverifieerde simbool vir resensies"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:545
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:184
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:346
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:450
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:556
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:636
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:794
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:948
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1066
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1463
+msgid "RepOcean verifies that the original source of the review is Google."
+msgstr ""
+"RepOcean verifieer dat die oorspronklike bron van die resensie Google is."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:552
+msgid "Shorten Reviewer Names (e.g., John Smith → John S.)"
+msgstr "Verkort Resensentname (bv. John Smith → John S.)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:560
+msgid "Enable Dark Mode (Dark background with light text)"
+msgstr "Aktiveer Donker Modus (Donker agtergrond met ligte teks)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:568
+msgid "Change Star Color"
+msgstr "Verander Sterkleur"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:627
+msgid "Save Changes"
+msgstr "Stoor Veranderings"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:633
+msgid "An error occurred while saving the settings. Please try again."
+msgstr ""
+"Daar was 'n fout tydens die stoor van die instellings. Probeer asseblief "
+"weer."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:649
+msgid "Community support"
+msgstr "Gemeenskap ondersteuning"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:650
+msgid "Rate our plugin"
+msgstr "Gee 'n beoordeling aan ons plugin"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-widget.php:9
+msgid "A Widget to display Google Reviews"
+msgstr "‘n Widget om Google Resensies te vertoon"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-widget.php:26
+msgid "Title:"
+msgstr "Titel:"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:98
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:228
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:381
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:487
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:593
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:675
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:831
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:986
+msgid "Hide"
+msgstr "Versteek"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:99
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:192
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:229
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:354
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:382
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:457
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:488
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:563
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:594
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:645
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:676
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:803
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:832
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:957
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:987
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1090
+msgid "Read more"
+msgstr "Lees meer"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:139
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:283
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:388
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:494
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:600
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:729
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:885
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1041
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1444
+msgid "No reviews found."
+msgstr "Geen resensies gevind."
+
+#. Translators: %s represents the human-readable time difference.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:145
+#, php-format
+msgid " %s ago"
+msgstr " %s gelede"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:202
+msgid "Google"
+msgstr "Google"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:202
+msgid "Rating Score:"
+msgstr "Beoordelingspunte:"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:203
+msgid "out of 5,"
+msgstr "uit 5,"
+
+#. Translators: %d represents the total number of user reviews.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:205
+msgid "based on"
+msgstr "gebaseer op"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:290
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:397
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:503
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:737
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:893
+msgid "EXCELLENT"
+msgstr "UITSTEKEND"
+
+#. Translators: %s represents the human-readable time difference.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:307
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:423
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:529
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:616
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:755
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:910
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1074
+#, php-format
+msgid "%s ago"
+msgstr "%s gelede"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:366
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:472
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:578
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:661
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:817
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:971
+msgid "Your Google Place not connected"
+msgstr "U Google plek is nie verbind nie"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:369
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:475
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:581
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:664
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:820
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:974
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1127
+msgid "An error occurred."
+msgstr "Daar het 'n fout voorgekom."
+
+#. Translators: %d represents the total number of user reviews.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:400
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:506
+#, php-format
+msgid "Based on <a href=\"#\" class=\"review-link\">%d reviews</a>"
+msgstr "Gebaseer op <a href=\"#\" class=\"review-link\">%d resensies</a>"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:404
+msgid "Review us on Google"
+msgstr "Hersien ons op Google"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:810
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:964
+msgid "Load More"
+msgstr "Laai Meer"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1051
+msgid "Excellent rating"
+msgstr "Uitstekende beoordeling"
+
+#. Translators: %d represents the total number of user reviews.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1053
+#, php-format
+msgid "Based on %s reviews"
+msgstr "Gegrond op %s resensies"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1124
+msgid "Your Google Place is not connected."
+msgstr "U Google plek is nie verbind nie."
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1435
+msgid "Unable to retrieve reviews at this time."
+msgstr "Kan nie resensies op hierdie oomblik verkry nie."
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1462
+msgid "Verified"
+msgstr "Geverifiëer"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1464
+msgid "Verified by RepOcean"
+msgstr "Geverifieer deur RepOcean"
+
+#~ msgid "Layout: Slider"
+#~ msgstr "Uiterlik: Skyf"
+
+#~ msgid "Layout: Grid"
+#~ msgstr "Uiterlik: Ruit"
+
+#~ msgid "Layout: List"
+#~ msgstr "Uiterlik: Lys"

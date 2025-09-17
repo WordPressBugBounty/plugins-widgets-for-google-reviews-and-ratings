@@ -1,0 +1,421 @@
+# Copyright (C) 2024 Widgets for Google Business Reviews and Ratings
+# This file is distributed under the same license as the Widgets for Google Business Reviews and Ratings package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Widgets for Google Business Reviews and Ratings 1.0.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/widgets-for-google-reviews-"
+"and-ratings\n"
+"POT-Creation-Date: 2025-05-23T10:45:51+00:00\n"
+"PO-Revision-Date: 2025-05-23 16:47+0530\n"
+"Last-Translator: \n"
+"Language-Team: ગુજરાતી <gu_IN@li.org>\n"
+"Language: gu_IN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#. Plugin Name of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "Widgets for Google Business Reviews and Ratings"
+msgstr "ગૂગલ બિઝનેસ સમીક્ષાઓ અને રેટિંગ્સ માટે વિજેટ્સ"
+
+#. Plugin URI of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "https://repocean.com/"
+msgstr "https://repocean.com/"
+
+#. Description of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid ""
+"Quickly and easily embed Google reviews into your WordPress site. Boost SEO, build "
+"trust, and increase sales with Google reviews."
+msgstr ""
+"ઝડપી અને સરળતાથી તમારી વર્ડપ્રેસ સાઇટમાં ગૂગલની સમીક્ષાઓ ને અમલમાં લાવો. SEOને વધારવા, વિશ્વાસ "
+"બનાવવા અને ગૂગલની સમીક્ષાઓ સાથે વેચાણ વધારવા માટે કામ કરો."
+
+#. Author of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "repocean"
+msgstr "repocean"
+
+#. Author URI of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "https://profiles.wordpress.org/repocean/"
+msgstr "https://profiles.wordpress.org/repocean/"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:37
+msgid "Google Reviews Settings"
+msgstr "ગૂગલ સમીક્ષા સંસ્થાઓ"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:38
+#: admin/class-widgets-for-google-reviews-and-ratings-widget.php:23
+msgid "Google Reviews"
+msgstr "ગૂગલ સમીક્ષાઓ"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:58
+msgid "Widget Customizer"
+msgstr "વિજેટ કસ્ટમાઇઝર"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:60
+msgid "Connect Google"
+msgstr "ગૂગલ સાથે જોડાઓ"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:61
+msgid "Select Layout"
+msgstr "વ્યૂહ પસંદ કરો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:62
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:640
+msgid "Settings"
+msgstr "ગોઠવણો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:65
+msgid "Get Reviews"
+msgstr "સમાચાર મેળવો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:155
+msgid "Nonce verification failed"
+msgstr "નૉન્સ ચકાસણી નિષ્ફળ"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:163
+msgid "Error decoding JSON."
+msgstr "JSON ડીકોડ કરતી વખતે ભૂલ."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:166
+msgid "Error: Place data not received."
+msgstr "ભૂલ: સ્થાન ડેટા પ્રાપ્ત થયો નથી."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:169
+msgid "An error occurred: "
+msgstr "એક ભૂલ થઈ ગઈ: "
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:211
+msgid "Place Image"
+msgstr "સ્થાન છબી"
+
+#. Translators: %d represents the total number of user reviews.
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:216
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:205
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:296
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:744
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:899
+msgid "reviews"
+msgstr "સમીક્ષાઓ"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:222
+msgid "Disconnect"
+msgstr "જોડાણ ટાળો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:237
+msgid "Place disconnected successfully. Connect a new place."
+msgstr "સ્થાન સફળતાપૂર્વક ડિસ્કનેક્ટ થયું. નવું સ્થાન જોડો."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:263
+msgid "Slider"
+msgstr "સ્લાઇડર"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:265
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:283
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:301
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:319
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:337
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:355
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:373
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:391
+msgid "Shortcode:"
+msgstr "શોર્ટકોડ:"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:268
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:286
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:304
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:322
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:340
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:358
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:376
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:394
+msgid "Copy to Clipboard"
+msgstr "ક્લિપબોર્ડ પર નકલ કરો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:269
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:287
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:305
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:323
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:341
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:359
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:377
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:395
+msgid "Copied!"
+msgstr "નકલ કરી લીધી!"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:281
+msgid "Slider I."
+msgstr "સ્લાઇડર આઇ."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:299
+msgid "Slider II."
+msgstr "સ્લાઇડર II."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:317
+msgid "Slider III."
+msgstr "સ્લાઇડર III."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:335
+msgid "Slider IIII."
+msgstr "સ્લાઇડર IIII."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:353
+msgid "Grid"
+msgstr "ગ્રીડ"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:371
+msgid "List"
+msgstr "યાદી"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:389
+msgid "Sidebar"
+msgstr "સાઇડબાર"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:461
+msgid "Security check failed. Nonce verification failed."
+msgstr "સુરક્ષા તપાસ નિષ્ફળ ગઈ. નોન્સ ચકાસણી નિષ્ફળ ગઈ."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:479
+msgid "Settings saved successfully!"
+msgstr "ગોઠવણો સફળતાપૂર્વક સેવ કરવામાં આવી!"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:494
+msgid "Google Review Widget Settings"
+msgstr "ગૂગલ સમીક્ષા વિજેટ ગોઠવણો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:502
+msgid "Hide Review Date"
+msgstr "સમિક્ષા તારીખ છુપાવો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:508
+msgid "Hide Reviewer Profile Picture"
+msgstr "સમીક્ષકની પ્રોફાઇલ પિક્ચર છુપાવો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:514
+msgid "Hide Google Logo"
+msgstr "ગૂગલ લોગો છુપાવો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:520
+msgid "Hide Widget Rating Text (e.g. EXCELLENT XXX reviews)"
+msgstr "વિજેટ રેટિંગ ટેક્સ્ટ છુપાવો (દા.ત. EXCELLENT XXX સમીક્ષાઓ)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:527
+msgid "Hide \"Previous\" and \"Next\" Buttons"
+msgstr "\"અગાઉ\" અને \"આગલું\" બટનો છુપાવો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:535
+msgid "Show Verified By RepOcean"
+msgstr "RepOcean દ્વારા ચકાસાયેલ બતાવો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:543
+msgid "Show Verified Symbol for Reviews"
+msgstr "સમીક્ષાઓ માટે ચકાસાયેલ પ્રતીક બતાવો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:545
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:184
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:346
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:450
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:556
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:636
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:794
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:948
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1066
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1463
+msgid "RepOcean verifies that the original source of the review is Google."
+msgstr "RepOcean ચકાસે છે કે સમીક્ષાનો મૂળ સ્ત્રોત Google છે."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:552
+msgid "Shorten Reviewer Names (e.g., John Smith → John S.)"
+msgstr "સમીક્ષકોના નામ ટૂંકા કરો (દા.ત., જોન સ્મિથ → જ્હોન એસ.)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:560
+msgid "Enable Dark Mode (Dark background with light text)"
+msgstr "ડાર્ક મોડને સક્ષમ કરો (લાઇટ ટેક્સ્ટ સાથે ડાર્ક બેકગ્રાઉન્ડ)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:568
+msgid "Change Star Color"
+msgstr "સ્ટારનો રંગ બદલો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:627
+msgid "Save Changes"
+msgstr "પરિવર્તન સેવ કરો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:633
+msgid "An error occurred while saving the settings. Please try again."
+msgstr "ગોઠવણો સાચવતી વખતે ભૂલ થઈ. કૃપા કરી ફરીથી પ્રયાસ કરો."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:649
+msgid "Community support"
+msgstr "સામુહિક સપોર્ટ"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:650
+msgid "Rate our plugin"
+msgstr "અમારા પ્લગિનને રેટ કરો"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-widget.php:9
+msgid "A Widget to display Google Reviews"
+msgstr "ગૂગલ સમીક્ષાઓ બતાવવા માટેનું વિજેટ"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-widget.php:26
+msgid "Title:"
+msgstr "શીર્ષક:"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:98
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:228
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:381
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:487
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:593
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:675
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:831
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:986
+msgid "Hide"
+msgstr "છુપાવો"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:99
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:192
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:229
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:354
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:382
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:457
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:488
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:563
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:594
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:645
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:676
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:803
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:832
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:957
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:987
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1090
+msgid "Read more"
+msgstr "વધુ વાંચો"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:139
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:283
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:388
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:494
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:600
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:729
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:885
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1041
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1444
+msgid "No reviews found."
+msgstr "કોઈ સમીક્ષાઓ મળતી નથી."
+
+#. Translators: %s represents the human-readable time difference.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:145
+#, php-format
+msgid " %s ago"
+msgstr "%s પહેલાં"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:202
+msgid "Google"
+msgstr "ગૂગલ"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:202
+msgid "Rating Score:"
+msgstr "રેટિંગ સ્કોર:"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:203
+msgid "out of 5,"
+msgstr "5માંથી,"
+
+#. Translators: %d represents the total number of user reviews.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:205
+msgid "based on"
+msgstr "આધારિત"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:290
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:397
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:503
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:737
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:893
+msgid "EXCELLENT"
+msgstr "ઉત્કૃષ્ટ"
+
+#. Translators: %s represents the human-readable time difference.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:307
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:423
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:529
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:616
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:755
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:910
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1074
+#, php-format
+msgid "%s ago"
+msgstr "%s પહેલાં"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:366
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:472
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:578
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:661
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:817
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:971
+msgid "Your Google Place not connected"
+msgstr "તમારો ગૂગલ સ્થાન જોડાયેલ નથી"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:369
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:475
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:581
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:664
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:820
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:974
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1127
+msgid "An error occurred."
+msgstr "એક ભૂલ થઈ."
+
+#. Translators: %d represents the total number of user reviews.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:400
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:506
+#, php-format
+msgid "Based on <a href=\"#\" class=\"review-link\">%d reviews</a>"
+msgstr "<a href=\"#\" class=\"review-link\">%d સમીક્ષાઓ</a> પર આધારિત"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:404
+msgid "Review us on Google"
+msgstr "Google પર અમારી સમીક્ષા કરો"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:810
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:964
+msgid "Load More"
+msgstr "વધુ લોડ કરો"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1051
+msgid "Excellent rating"
+msgstr "ઉત્કૃષ્ટ રેટિંગ"
+
+#. Translators: %d represents the total number of user reviews.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1053
+#, php-format
+msgid "Based on %s reviews"
+msgstr "%s સમીક્ષાઓ પર આધારિત"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1124
+msgid "Your Google Place is not connected."
+msgstr "તમારો ગૂગલ સ્થાન જોડાયેલ નથી."
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1435
+msgid "Unable to retrieve reviews at this time."
+msgstr "આ સમય દરમ્યાન સમીક્ષાઓ મેળવવામાં અસમર્થ."
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1462
+msgid "Verified"
+msgstr "ચકાસેલ છે"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1464
+msgid "Verified by RepOcean"
+msgstr "RepOcean દ્વારા ચકાસાયેલ"
+
+#~ msgid "Layout: Slider"
+#~ msgstr "લેઆઉટ: સ્લાઇડર"
+
+#~ msgid "Layout: Grid"
+#~ msgstr "લેઆઉટ: ગ્રિડ"
+
+#~ msgid "Layout: List"
+#~ msgstr "લેઆઉટ: યાદી"

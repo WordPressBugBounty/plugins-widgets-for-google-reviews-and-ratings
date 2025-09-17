@@ -1,0 +1,421 @@
+# Copyright (C) 2024 Widgets for Google Business Reviews and Ratings
+# This file is distributed under the same license as the Widgets for Google Business Reviews and Ratings package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Widgets for Google Business Reviews and Ratings 1.0.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/widgets-for-"
+"google-reviews-and-ratings\n"
+"POT-Creation-Date: 2025-05-23T10:45:51+00:00\n"
+"PO-Revision-Date: 2025-05-23 16:43+0530\n"
+"Last-Translator: \n"
+"Language-Team: Eesti <et@li.org>\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#. Plugin Name of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "Widgets for Google Business Reviews and Ratings"
+msgstr "Vidinad Google’i äriliste arvustuste ja hinnangute jaoks"
+
+#. Plugin URI of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "https://repocean.com/"
+msgstr "https://repocean.com/"
+
+#. Description of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid ""
+"Quickly and easily embed Google reviews into your WordPress site. Boost SEO, "
+"build trust, and increase sales with Google reviews."
+msgstr ""
+"Sisestage Google’i arvustused kiiresti ja lihtsalt oma WordPressi saidile. "
+"Suurendage SEO-d, looge usaldust ja suurendage müüki Google’i arvustustega."
+
+#. Author of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "repocean"
+msgstr "repocean"
+
+#. Author URI of the plugin
+#: widgets-for-google-reviews-and-ratings.php
+msgid "https://profiles.wordpress.org/repocean/"
+msgstr "https://profiles.wordpress.org/repocean/"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:37
+msgid "Google Reviews Settings"
+msgstr "Google’i arvustuste sätted"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:38
+#: admin/class-widgets-for-google-reviews-and-ratings-widget.php:23
+msgid "Google Reviews"
+msgstr "Google’i arvustused"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:58
+msgid "Widget Customizer"
+msgstr "Vidina kohandaja"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:60
+msgid "Connect Google"
+msgstr "Ühenda Google’iga"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:61
+msgid "Select Layout"
+msgstr "Vali paigutus"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:62
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:640
+msgid "Settings"
+msgstr "Seaded"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:65
+msgid "Get Reviews"
+msgstr "Hangi arvustused"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:155
+msgid "Nonce verification failed"
+msgstr "Nonce’i kontroll nurjus"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:163
+msgid "Error decoding JSON."
+msgstr "JSON-i dekodeerimise viga."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:166
+msgid "Error: Place data not received."
+msgstr "Viga: Koha andmeid ei laekunud."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:169
+msgid "An error occurred: "
+msgstr "Tekkis viga: "
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:211
+msgid "Place Image"
+msgstr "Koha pilt"
+
+#. Translators: %d represents the total number of user reviews.
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:216
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:205
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:296
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:744
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:899
+msgid "reviews"
+msgstr "arvustused"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:222
+msgid "Disconnect"
+msgstr "Ühenda lahti"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:237
+msgid "Place disconnected successfully. Connect a new place."
+msgstr "Koht ühendati edukalt lahti. Ühenda uus koht."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:263
+msgid "Slider"
+msgstr "Kerija"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:265
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:283
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:301
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:319
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:337
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:355
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:373
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:391
+msgid "Shortcode:"
+msgstr "Lühikood:"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:268
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:286
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:304
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:322
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:340
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:358
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:376
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:394
+msgid "Copy to Clipboard"
+msgstr "Kopeeri lõikelauale"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:269
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:287
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:305
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:323
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:341
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:359
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:377
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:395
+msgid "Copied!"
+msgstr "Kopeeritud!"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:281
+msgid "Slider I."
+msgstr "Liugur I."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:299
+msgid "Slider II."
+msgstr "Liugur II."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:317
+msgid "Slider III."
+msgstr "Liugur III."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:335
+msgid "Slider IIII."
+msgstr "Liugur IIII."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:353
+msgid "Grid"
+msgstr "Ruudustik"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:371
+msgid "List"
+msgstr "Loend"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:389
+msgid "Sidebar"
+msgstr "Külgriba"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:461
+msgid "Security check failed. Nonce verification failed."
+msgstr "Turvakontroll ebaõnnestus. Nonce kontrollimine ebaõnnestus."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:479
+msgid "Settings saved successfully!"
+msgstr "Seaded salvestati edukalt!"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:494
+msgid "Google Review Widget Settings"
+msgstr "Google’i arvustuse vidina sätted"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:502
+msgid "Hide Review Date"
+msgstr "Peida arvustuse kuupäev"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:508
+msgid "Hide Reviewer Profile Picture"
+msgstr "Peida arvustaja profiilipilt"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:514
+msgid "Hide Google Logo"
+msgstr "Peida Google’i logo"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:520
+msgid "Hide Widget Rating Text (e.g. EXCELLENT XXX reviews)"
+msgstr "Hide Widget Rating Text (nt EXCELLENT XXX reviews)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:527
+msgid "Hide \"Previous\" and \"Next\" Buttons"
+msgstr "Peida \"Eelmine\" ja \"Järgmine\" nupud"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:535
+msgid "Show Verified By RepOcean"
+msgstr "Näita Kinnitanud RepOcean"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:543
+msgid "Show Verified Symbol for Reviews"
+msgstr "Näita ülevaadete kontrollitud sümbolit"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:545
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:184
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:346
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:450
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:556
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:636
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:794
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:948
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1066
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1463
+msgid "RepOcean verifies that the original source of the review is Google."
+msgstr "RepOcean kontrollib, et ülevaate algne allikas on Google."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:552
+msgid "Shorten Reviewer Names (e.g., John Smith → John S.)"
+msgstr "Lühendada ülevaataja nimesid (nt John Smith → John S.)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:560
+msgid "Enable Dark Mode (Dark background with light text)"
+msgstr "Tume režiimi lubamine (tume taust koos heleda tekstiga)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:568
+msgid "Change Star Color"
+msgstr "Tähe värvi muutmine"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:627
+msgid "Save Changes"
+msgstr "Salvesta muudatused"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:633
+msgid "An error occurred while saving the settings. Please try again."
+msgstr "Sätete salvestamisel ilmnes viga. Palun proovige uuesti."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:649
+msgid "Community support"
+msgstr "Kogukonna tugi"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:650
+msgid "Rate our plugin"
+msgstr "Hinnake meie pistikprogrammi"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-widget.php:9
+msgid "A Widget to display Google Reviews"
+msgstr "Vidin Google’i arvustuste kuvamiseks"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-widget.php:26
+msgid "Title:"
+msgstr "Pealkiri:"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:98
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:228
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:381
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:487
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:593
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:675
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:831
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:986
+msgid "Hide"
+msgstr "Peida"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:99
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:192
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:229
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:354
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:382
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:457
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:488
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:563
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:594
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:645
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:676
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:803
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:832
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:957
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:987
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1090
+msgid "Read more"
+msgstr "Loe edasi"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:139
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:283
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:388
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:494
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:600
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:729
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:885
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1041
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1444
+msgid "No reviews found."
+msgstr "Arvustusi ei leitud."
+
+#. Translators: %s represents the human-readable time difference.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:145
+#, php-format
+msgid " %s ago"
+msgstr " %s tagasi"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:202
+msgid "Google"
+msgstr "Google"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:202
+msgid "Rating Score:"
+msgstr "Hinnang:"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:203
+msgid "out of 5,"
+msgstr "viie palli süsteemis,"
+
+#. Translators: %d represents the total number of user reviews.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:205
+msgid "based on"
+msgstr "põhineb"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:290
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:397
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:503
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:737
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:893
+msgid "EXCELLENT"
+msgstr "SUUREPÄRANE"
+
+#. Translators: %s represents the human-readable time difference.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:307
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:423
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:529
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:616
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:755
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:910
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1074
+#, php-format
+msgid "%s ago"
+msgstr "%s tagasi"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:366
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:472
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:578
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:661
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:817
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:971
+msgid "Your Google Place not connected"
+msgstr "Teie Google’i koht ei ole ühendatud"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:369
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:475
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:581
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:664
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:820
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:974
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1127
+msgid "An error occurred."
+msgstr "Tekkis viga."
+
+#. Translators: %d represents the total number of user reviews.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:400
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:506
+#, php-format
+msgid "Based on <a href=\"#\" class=\"review-link\">%d reviews</a>"
+msgstr "Tuginedes <a href=\"#\" class=\"review-link\">%d arvustustele</a>"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:404
+msgid "Review us on Google"
+msgstr "Hinda meid Google'is"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:810
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:964
+msgid "Load More"
+msgstr "Laadi rohkem"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1051
+msgid "Excellent rating"
+msgstr "Suurepärane hinnang"
+
+#. Translators: %d represents the total number of user reviews.
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1053
+#, php-format
+msgid "Based on %s reviews"
+msgstr "Põhineb %s arvustusel"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1124
+msgid "Your Google Place is not connected."
+msgstr "Teie Google’i koht ei ole ühendatud."
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1435
+msgid "Unable to retrieve reviews at this time."
+msgstr "Arvustusi ei ole hetkel võimalik laadida."
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1462
+msgid "Verified"
+msgstr "Verifitseeritud"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1464
+msgid "Verified by RepOcean"
+msgstr "Kinnitatud RepOcean poolt"
+
+#~ msgid "Layout: Slider"
+#~ msgstr "Paigutus: Liugur"
+
+#~ msgid "Layout: Grid"
+#~ msgstr "Paigutus: Võrk"
+
+#~ msgid "Layout: List"
+#~ msgstr "Paigutus: Nimekiri"
