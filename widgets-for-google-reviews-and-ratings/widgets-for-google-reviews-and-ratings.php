@@ -5,7 +5,7 @@
  * Plugin Name:       Widgets for Google Business Reviews and Ratings
  * Plugin URI:        https://repocean.com/
  * Description:       Quickly and easily embed Google reviews into your WordPress site. Boost SEO, build trust, and increase sales with Google reviews.
- * Version:           1.0.15
+ * Version:           1.0.19
  * Author:            repocean
  * Author URI:        https://profiles.wordpress.org/repocean/
  * License:           GPL-2.0+
@@ -18,7 +18,9 @@ if (!defined('WPINC')) {
     die;
 }
 
-define('WGRR_VERSION', '1.0.15');
+if (!defined('WGRR_VERSION')) {
+    define('WGRR_VERSION', '1.0.19');
+}
 
 if (!defined('WGRR_PLUGIN_DIR')) {
     define('WGRR_PLUGIN_DIR', dirname(__FILE__));
@@ -53,5 +55,8 @@ register_activation_hook(__FILE__, 'wrrr_plugin_activate');
 
 function wrrr_plugin_activate() {
     // Set a transient to trigger the redirect
+    if (false === get_option('wgrr_activation_ts', false)) {
+        add_option('wgrr_activation_ts', (int) current_time('timestamp'), '', false);
+    }
     set_transient('wrrr_plugin_activation_redirect', true, 30);
 }

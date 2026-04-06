@@ -10,7 +10,7 @@ class Widgets_For_Google_Reviews_And_Ratings {
         if (defined('WGRR_VERSION')) {
             $this->version = WGRR_VERSION;
         } else {
-            $this->version = '1.0.15';
+            $this->version = '1.0.19';
         }
         $this->plugin_name = 'widgets-for-google-reviews-and-ratings';
         $this->load_dependencies();
@@ -41,6 +41,7 @@ class Widgets_For_Google_Reviews_And_Ratings {
         $this->loader->add_action('wgrr_widget_customizer_connect_google_setting', $plugin_admin, 'wgrr_widget_customizer_connect_google_setting');
         $this->loader->add_action('wgrr_widget_customizer_get_settings_setting', $plugin_admin, 'wgrr_widget_customizer_get_settings_setting');
         $this->loader->add_action('wgrr_widget_customizer_get_settings_setting_save_field', $plugin_admin, 'wgrr_widget_customizer_get_settings_setting_save_field');
+        $this->loader->add_action('wgrr_widget_customizer_get_pro_setting', $plugin_admin, 'wgrr_widget_customizer_get_pro_setting');
         $this->loader->add_action('wgrr_widget_customizer_setting', $plugin_admin, 'wgrr_widget_customizer_setting', 10, 1);
         $this->loader->add_action('wp_ajax_wgrr_save_place_details', $plugin_admin, 'wgrr_save_place_details');
         $this->loader->add_action('wp_ajax_delete_place_details', $plugin_admin, 'wgrr_delete_place_details');
@@ -52,8 +53,6 @@ class Widgets_For_Google_Reviews_And_Ratings {
         $this->loader->add_filter("{$prefix}plugin_action_links_$basename", $plugin_admin, 'plugin_action_links', 10, 1);
         $this->loader->add_filter('plugin_row_meta', $plugin_admin, 'add_plugin_meta_links', 10, 2);
         $this->loader->add_action('admin_init', $plugin_admin, 'wrrr_plugin_redirect_after_activation');
-        $this->loader->add_action('admin_notices', $plugin_admin, 'leaverev');
-        $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'wgrr_enqueue_scripts');
     }
 
     private function define_public_hooks() {

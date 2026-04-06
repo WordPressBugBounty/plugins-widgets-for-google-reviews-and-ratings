@@ -1,132 +1,155 @@
-# Copyright (C) 2024 Widgets for Google Business Reviews and Ratings
-# This file is distributed under the same license as the Widgets for Google Business Reviews and Ratings package.
+# Copyright (C) 2025 repocean
+# This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Widgets for Google Business Reviews and Ratings 1.0.6\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/widgets-for-"
-"google-reviews-and-ratings\n"
-"POT-Creation-Date: 2025-05-23T10:45:51+00:00\n"
-"PO-Revision-Date: 2025-05-23 17:01+0530\n"
-"Last-Translator: \n"
-"Language-Team: Монгол <mn@li.org>\n"
+"Project-Id-Version: Widgets for Google Business Reviews and Ratings 1.0.16\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/widgets-for-google-reviews-and-ratings\n"
+"POT-Creation-Date: 2025-12-22T12:02:03+00:00\n"
+"PO-Revision-Date: 2025-11-05T11:26:55+00:00\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
 "Language: mn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: widgets-for-google-reviews-and-ratings\n"
+"X-Generator: WP-CLI 2.11.0\n"
 
 #. Plugin Name of the plugin
 #: widgets-for-google-reviews-and-ratings.php
 msgid "Widgets for Google Business Reviews and Ratings"
-msgstr "Гүүгл Бизнесийн тойм ба үнэлгээг үзүүлэх виджет"
+msgstr "Google бизнесийн тойм ба үнэлгээний виджетүүд"
 
 #. Plugin URI of the plugin
 #: widgets-for-google-reviews-and-ratings.php
 msgid "https://repocean.com/"
-msgstr "https://repocean.com/"
+msgstr ""
 
 #. Description of the plugin
 #: widgets-for-google-reviews-and-ratings.php
 msgid ""
-"Quickly and easily embed Google reviews into your WordPress site. Boost SEO, "
-"build trust, and increase sales with Google reviews."
+"Quickly and easily embed Google reviews into your WordPress site. Boost SEO,"
+" build trust, and increase sales with Google reviews."
 msgstr ""
-"Гүүгл авлагаа хурдан, амархан таны WordPress вэбсайт руу оруулна. SEO-ийг "
-"нэмэгдүүлж, итгэлцлийг бий болгож, Гүүгл үзэсгэлэнд борлуулалтыг нэмэгдүүлнэ."
+"Таны WordPress сайтад Google-ийн тоймыг хурдан бөгөөд хялбархан оруулах. "
+"SEO-г сайжруулж, итгэлцлийг бий болгож, Google-ийн тоймоор борлуулалтыг "
+"нэмэгдүүлнэ."
 
 #. Author of the plugin
 #: widgets-for-google-reviews-and-ratings.php
 msgid "repocean"
-msgstr "repocean"
+msgstr "репоцеан"
 
 #. Author URI of the plugin
 #: widgets-for-google-reviews-and-ratings.php
 msgid "https://profiles.wordpress.org/repocean/"
-msgstr "https://profiles.wordpress.org/repocean/"
-
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:37
-msgid "Google Reviews Settings"
-msgstr "Гүүгл Параметрүүд"
+msgstr ""
 
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:38
+msgid "Google Reviews Settings"
+msgstr "Google Тоймын Тохиргоо"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:39
 #: admin/class-widgets-for-google-reviews-and-ratings-widget.php:23
 msgid "Google Reviews"
-msgstr "Гүүгл Параметрүүд"
+msgstr "Google Тоймууд"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:58
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:59
 msgid "Widget Customizer"
 msgstr "Виджетийн тохируулагч"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:60
-msgid "Connect Google"
-msgstr "Гүүгл-тай холбох"
-
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:61
-msgid "Select Layout"
-msgstr "Зураглал сонгох"
+msgid "Connect Google"
+msgstr "Google-тай холбох"
 
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:62
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:640
+msgid "Select Layout"
+msgstr "Загварыг сонгох"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:63
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:763
 msgid "Settings"
 msgstr "Тохиргоо"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:65
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:66
 msgid "Get Reviews"
-msgstr "Ажлын тойм авах"
+msgstr "Тоймуудыг авах"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:155
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:156
 msgid "Nonce verification failed"
-msgstr "Nonce баталгаажуулалт амжилтгүй"
+msgstr "Nonce баталгаажуулалт амжилтгүй боллоо"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:163
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:164
 msgid "Error decoding JSON."
-msgstr "JSON задлахад алдаа гарлаа."
+msgstr "JSON-ийг тайлахад алдаа гарлаа."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:166
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:167
 msgid "Error: Place data not received."
-msgstr "Алдаа: Байршлын мэдээлэл ирсэнгүй."
+msgstr "Алдаа: Газрын мэдээлэл хүлээн аваагүй."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:169
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:170
 msgid "An error occurred: "
 msgstr "Алдаа гарлаа: "
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:211
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:212
 msgid "Place Image"
-msgstr "Байршлын зураг"
+msgstr "Газрын зураг"
 
 #. Translators: %d represents the total number of user reviews.
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:216
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:205
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:296
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:744
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:899
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:217
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:210
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:301
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:749
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:904
 msgid "reviews"
 msgstr "тойм"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:222
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:223
 msgid "Disconnect"
-msgstr "Салгах"
+msgstr "Холболтыг салгах"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:237
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:238
 msgid "Place disconnected successfully. Connect a new place."
-msgstr "Байршлыг амжилттай салгалаа. Шинэ байршил холбох."
+msgstr "Газрыг амжилттай салгалаа. Шинэ газрыг холбох."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:263
+#. translators: combined notice for support and review
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:264
+msgid ""
+"Hi there, If you have any questions or need assistance, feel free to "
+"%1$sreach out%2$s anytime. If you have a moment, I would love it if you "
+"could %3$sleave a review%4$s."
+msgstr ""
+"Сайн уу, Хэрэв танд асуулт байвал эсвэл тусламж хэрэгтэй бол %1$sхолбоо "
+"барих%2$s цаг алдалгүйгээр надад хандаарай. Хэрэв танд минут байна, би таныг"
+" %3$sсэтгэгдэл үлдээх%4$sийг хүсч байна."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:280
 msgid "Slider"
 msgstr "Слайдер"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:265
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:283
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:301
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:319
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:337
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:355
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:373
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:391
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:282
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:300
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:318
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:336
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:354
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:372
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:390
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:408
 msgid "Shortcode:"
-msgstr "Богино код:"
+msgstr "Товчлуур:"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:268
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:285
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:303
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:321
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:339
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:357
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:375
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:393
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:411
+msgid "Copy to Clipboard"
+msgstr "Хуулах самбар руу"
+
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:286
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:304
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:322
@@ -134,289 +157,362 @@ msgstr "Богино код:"
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:358
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:376
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:394
-msgid "Copy to Clipboard"
-msgstr "Хуулах"
-
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:269
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:287
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:305
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:323
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:341
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:359
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:377
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:395
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:412
 msgid "Copied!"
 msgstr "Хуулсан!"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:281
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:298
 msgid "Slider I."
 msgstr "Слайдер I."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:299
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:316
 msgid "Slider II."
 msgstr "Слайдер II."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:317
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:334
 msgid "Slider III."
 msgstr "Слайдер III."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:335
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:352
 msgid "Slider IIII."
-msgstr "Slider III."
+msgstr "Слайдер IIII."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:353
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:370
 msgid "Grid"
-msgstr "Хүснэгт"
+msgstr "Групп"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:371
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:388
 msgid "List"
-msgstr "Жагсаах"
+msgstr "Жагсаалт"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:389
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:406
 msgid "Sidebar"
-msgstr "Хажуугийн цэс"
+msgstr "Хажуугийн самбар"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:461
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:488
 msgid "Security check failed. Nonce verification failed."
-msgstr ""
-"Аюулгүй байдлын шалгалт амжилтгүй боллоо. Баталгаажуулалт амжилтгүй болсон."
+msgstr "Аюулгүй байдлын шалгалт амжилтгүй. Nonce баталгаажуулалт амжилтгүй."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:479
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:508
 msgid "Settings saved successfully!"
 msgstr "Тохиргоо амжилттай хадгалагдлаа!"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:494
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:525
 msgid "Google Review Widget Settings"
-msgstr "Гүүгл тойм виджетийн тохиргоо"
+msgstr "Google Тойм Вижетийн Тохиргоо"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:502
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:533
 msgid "Hide Review Date"
-msgstr "Тоймын огноог нуух"
+msgstr "Тойм огноог нуу"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:508
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:539
 msgid "Hide Reviewer Profile Picture"
-msgstr "Тойм бичигчийн профайл зургийг нуух"
-
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:514
-msgid "Hide Google Logo"
-msgstr "Гүүгл логог нуух"
-
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:520
-msgid "Hide Widget Rating Text (e.g. EXCELLENT XXX reviews)"
-msgstr "Виджетийн үнэлгээний текстийг нуух (жишээ нь: EXCELLENT XXX шүүмж)"
-
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:527
-msgid "Hide \"Previous\" and \"Next\" Buttons"
-msgstr "\"Өмнөх\" болон \"Дараах\" товчийг нуу"
-
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:535
-msgid "Show Verified By RepOcean"
-msgstr "RepOcean-аар баталгаажуулсан харуулах"
-
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:543
-msgid "Show Verified Symbol for Reviews"
-msgstr "Шүүмжийн баталгаажуулсан тэмдгийг харуул"
+msgstr "Тоймлагчийн профайл зургийг нуу"
 
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:545
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:184
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:346
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:450
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:556
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:636
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:794
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:948
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1066
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1463
+msgid "Hide Google Logo"
+msgstr "Google логог нуу"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:551
+msgid "Hide Widget Rating Text (e.g. EXCELLENT XXX reviews)"
+msgstr "Вижетийн үнэлгээний текстийг (жишээлбэл, САЙН XXX тойм) нуу)"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:558
+msgid "Hide \"Previous\" and \"Next\" Buttons"
+msgstr "\"Өмнөх\" болон \"Дараах\" товчлууруудыг нуу"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:566
+msgid "Show Verified By RepOcean"
+msgstr "RepOcean-аар баталгаажуулсан гэж харуулах"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:574
+msgid "Show Verified Symbol for Reviews"
+msgstr "Тоймд баталгаажуулсан тэмдэг тэмдэгтийг харуулах"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:576
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:189
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:351
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:455
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:561
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:641
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:799
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:953
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1071
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1468
 msgid "RepOcean verifies that the original source of the review is Google."
-msgstr "RepOcean үнэлгээний эх сурвалж нь Google гэдгийг баталгаажуулдаг."
+msgstr ""
+"RepOcean нь тоймыг гаргасан анхны эх сурвалж нь Google гэдгийг "
+"баталгаажуулдаг."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:552
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:583
 msgid "Shorten Reviewer Names (e.g., John Smith → John S.)"
-msgstr "Шүүмжлэгчийн нэрийг богиносгох (жишээ нь, Жон Смит → Жон С.)"
+msgstr "Тойм бичигчдийн нэрсийг богиносгох (жишээ нь, John Smith → John S.)"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:560
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:591
 msgid "Enable Dark Mode (Dark background with light text)"
-msgstr "Харанхуй горимыг идэвхжүүлэх (цайвар тексттэй бараан дэвсгэр)"
+msgstr "Харанхуй горимыг включлэх (Харанхуй фон, гэрэлтэй текст)"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:568
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:599
 msgid "Change Star Color"
-msgstr "Оддын өнгийг өөрчлөх"
+msgstr "Одны өнгийг өөрчлөх"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:627
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:656
+msgid "Review Card Background Color"
+msgstr "Картын арын өнгийг шалгах"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:702
+msgid "Review Card Border Color"
+msgstr "Картын хязгаарын өнгийг шалгах"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:750
 msgid "Save Changes"
 msgstr "Өөрчлөлтийг хадгалах"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:633
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:756
 msgid "An error occurred while saving the settings. Please try again."
-msgstr "Тохиргоог хадгалах үед алдаа гарлаа. Давтан оролдоно уу."
+msgstr "Тохиргоог хадгалах үед алдаа гарлаа. Дахин оролдоно уу."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:649
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:772
 msgid "Community support"
 msgstr "Нийгмийн дэмжлэг"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:650
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:773
 msgid "Rate our plugin"
-msgstr "Манай нэмэлт программд үнэлгээ өгнө үү"
+msgstr "Манай плагиныг үнэлнэ үү"
 
 #: admin/class-widgets-for-google-reviews-and-ratings-widget.php:9
 msgid "A Widget to display Google Reviews"
-msgstr "Гүүгл тойм харуулах виджет"
+msgstr "Google-ийн тоймыг харуулах виджет"
 
 #: admin/class-widgets-for-google-reviews-and-ratings-widget.php:26
 msgid "Title:"
 msgstr "Гарчиг:"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:98
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:228
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:381
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:487
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:593
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:675
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:831
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:986
+#: admin/feedback/deactivation-feedback-form.php:8
+msgid "Return"
+msgstr "Буцах"
+
+#: admin/feedback/deactivation-feedback-form.php:9
+msgid "We’re sorry to see you go! 💔"
+msgstr "Бид таныг явж байгааг хараад харамсаж байна! 💔"
+
+#: admin/feedback/deactivation-feedback-form.php:11
+msgid "Close"
+msgstr "Хаах"
+
+#: admin/feedback/deactivation-feedback-form.php:15
+msgid ""
+"Can you please tell us why you’re deactivating the plugin? Your feedback "
+"helps us make it better."
+msgstr ""
+"Та плагинаа идэвхгүй болгож буй шалтгаанаа хэлж өгч болох уу? Таны санал "
+"бидэнд илүү сайн болгоход тусална."
+
+#: admin/feedback/deactivation-feedback-form.php:19
+msgid "Temporary deactivation (troubleshooting)"
+msgstr "Түр идэвхгүй болгох (алдаа засах)"
+
+#: admin/feedback/deactivation-feedback-form.php:23
+msgid "Compatibility issue"
+msgstr "Зохицох асуудал"
+
+#: admin/feedback/deactivation-feedback-form.php:25
+msgid "Please describe what part of the layout or functionality was affected."
+msgstr ""
+"Ямар хэсэг нь загвар эсвэл функционалд нөлөөлсөн талаар тодорхойлно уу."
+
+#: admin/feedback/deactivation-feedback-form.php:30
+msgid "Difficult to set up"
+msgstr "Тохируулахад хэцүү"
+
+#: admin/feedback/deactivation-feedback-form.php:32
+msgid "What part of the setup was confusing or unclear?"
+msgstr "Тохируулах ямар хэсэг нь ойлгомжгүй байсан бэ?"
+
+#: admin/feedback/deactivation-feedback-form.php:37
+msgid "Missing features"
+msgstr "Дутуу функцүүд"
+
+#: admin/feedback/deactivation-feedback-form.php:39
+msgid "Which features were you looking for?"
+msgstr "Та ямар функцүүдийг хайж байсан бэ?"
+
+#: admin/feedback/deactivation-feedback-form.php:44
+msgid "Other"
+msgstr "Бусад"
+
+#: admin/feedback/deactivation-feedback-form.php:46
+msgid ""
+"Please share why you’re deactivating the Google Business Reviews plugin so "
+"we can make improvements."
+msgstr ""
+"Google Business Reviews плагинаа яагаад идэвхгүй болгохыг хүсэж байгаагаа "
+"хуваалцаарай, бид сайжруулалт хийх боломжтой."
+
+#: admin/feedback/deactivation-feedback-form.php:58
+msgid ""
+"Your privacy is important to us. No personal data is collected with this "
+"form—just your valuable feedback and basic system information (such as "
+"WordPress and plugin versions) to help us improve our plugin."
+msgstr ""
+"Таны нууцлал бидэнд чухал. Энэ формоор ямар ч хувийн мэдээлэл цуглуулахгүй -"
+" зөвхөн таны үнэт санал болон үндсэн системийн мэдээлэл (жишээлбэл, "
+"WordPress болон плагин хувилбарууд) цуглуулна."
+
+#: admin/feedback/deactivation-feedback-form.php:63
+msgid "Visit our support page for assistance"
+msgstr "Тусламжийн хуудас руу зочилно уу"
+
+#: admin/feedback/deactivation-feedback-form.php:63
+msgid "Get Support"
+msgstr "Тусламж авах"
+
+#: admin/feedback/deactivation-feedback-form.php:65
+msgid "Send & Deactivate"
+msgstr "Илгээх & Идэвхгүй болгох"
+
+#: admin/feedback/deactivation-feedback-form.php:67
+msgid "I rather wouldn't say"
+msgstr "Би хэлэхийг хүсэхгүй байна"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:103
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:233
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:386
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:492
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:598
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:680
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:836
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:991
 msgid "Hide"
 msgstr "Нуух"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:99
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:192
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:229
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:354
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:382
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:457
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:488
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:563
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:594
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:645
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:676
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:803
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:832
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:957
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:987
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1090
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:104
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:197
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:234
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:359
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:387
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:462
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:493
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:568
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:599
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:650
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:681
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:808
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:837
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:962
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:992
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1095
 msgid "Read more"
-msgstr "Дэлгэрэнгүй"
+msgstr "Дэлгэрэнгүй унших"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:139
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:283
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:388
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:494
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:600
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:729
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:885
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1041
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1444
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:144
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:288
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:393
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:499
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:605
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:734
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:890
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1046
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1449
 msgid "No reviews found."
-msgstr "Тойм олдсонгүй."
+msgstr "Сэтгэгдэл олдсонгүй."
 
 #. Translators: %s represents the human-readable time difference.
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:145
-#, php-format
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:150
 msgid " %s ago"
 msgstr " %s өмнө"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:202
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:207
 msgid "Google"
-msgstr "Гүүгл"
+msgstr "Гугл"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:202
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:207
 msgid "Rating Score:"
-msgstr "Онооны үнэлгээ:"
+msgstr "Үнэлгээний оноо:"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:203
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:208
 msgid "out of 5,"
-msgstr "5-с,"
+msgstr "5-аас,"
 
 #. Translators: %d represents the total number of user reviews.
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:205
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:210
 msgid "based on"
-msgstr "үндсэн дээр"
+msgstr "нэгтгэн дүгнэсэн"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:290
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:397
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:503
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:737
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:893
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:295
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:402
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:508
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:742
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:898
 msgid "EXCELLENT"
-msgstr "ТУСГАЙ"
+msgstr "САЙН"
 
 #. Translators: %s represents the human-readable time difference.
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:307
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:423
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:529
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:616
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:755
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:910
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1074
-#, php-format
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:312
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:428
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:534
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:621
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:760
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:915
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1079
 msgid "%s ago"
 msgstr "%s өмнө"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:366
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:472
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:578
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:661
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:817
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:971
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:371
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:477
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:583
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:666
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:822
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:976
 msgid "Your Google Place not connected"
-msgstr "Таны Гүүгл байрлал холбогдсонгүй"
+msgstr "Таны Google Байршил холбогдоогүй байна"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:369
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:475
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:581
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:664
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:820
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:974
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1127
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:374
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:480
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:586
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:669
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:825
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:979
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1132
 msgid "An error occurred."
 msgstr "Алдаа гарлаа."
 
 #. Translators: %d represents the total number of user reviews.
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:400
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:506
-#, php-format
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:405
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:511
 msgid "Based on <a href=\"#\" class=\"review-link\">%d reviews</a>"
-msgstr "<a href=\"#\" class=\"review-link\">%d шүүмж</a> дээр үндэслэсэн"
+msgstr "Нийт <a href=\"#\" class=\"review-link\">%d сэтгэгдэл</a>-д үндэслэн>"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:404
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:409
 msgid "Review us on Google"
-msgstr "Google дээр биднийг шалгаарай"
+msgstr "Биднийг Google дээр үнэлнэ үү"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:810
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:964
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:815
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:969
 msgid "Load More"
-msgstr "Илүү их ачаалах"
+msgstr "Илүү ихийг ачаалах"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1051
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1056
 msgid "Excellent rating"
-msgstr "Тусгай үнэлгээ"
+msgstr "Сайн үнэлгээ"
 
 #. Translators: %d represents the total number of user reviews.
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1053
-#, php-format
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1058
 msgid "Based on %s reviews"
-msgstr "%s тоймын үндсэн дээр"
+msgstr "Нийт %s сэтгэгдэлд үндэслэн"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1124
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1129
 msgid "Your Google Place is not connected."
-msgstr "Таны Гүүгл байрлал холбогдсонгүй."
+msgstr "Таны Google газар холбогдоогүй байна."
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1435
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1440
 msgid "Unable to retrieve reviews at this time."
-msgstr "Энэ цагт тойм авах боломжгүй байна."
+msgstr "Энэ үед сэтгэгдлийг авах боломжгүй."
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1462
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1467
 msgid "Verified"
 msgstr "Баталгаажсан"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1464
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1469
 msgid "Verified by RepOcean"
-msgstr "RepOcean баталгаажуулсан"
-
-#~ msgid "Layout: Slider"
-#~ msgstr "Зураглал: Слайдер"
-
-#~ msgid "Layout: Grid"
-#~ msgstr "Зураглал: Сүлжээ"
-
-#~ msgid "Layout: List"
-#~ msgstr "Зураглал: Жагсаалт"
+msgstr "RepOcean-оор баталгаажсан"

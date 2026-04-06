@@ -19,6 +19,8 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
     public $enable_dark_mode;
     public $enable_dark_mode_class;
     public $review_url;
+    public $bg_color;
+    public $border_color;
 
     public function __construct($plugin_name, $version) {
         $this->plugin_name = $plugin_name;
@@ -38,6 +40,8 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
         $this->show_verified_symbol = 'yes' === get_option('repocean_show_verified_symbol', $repocean_show_verified_symbol_default_option); // New Option
         $this->shorten_reviewer_names = 'yes' === get_option('repocean_shorten_reviewer_names', 'no');
         $this->enable_dark_mode = 'yes' === get_option('repocean_enable_dark_mode', 'no');
+        $this->bg_color     = get_option('repocean_bg_color', '#f6f6f6');
+        $this->border_color = get_option('repocean_border_color', '#f6f6f6');
         if ($this->enable_dark_mode) {
             $this->enable_dark_mode_class = 'dark';
         }
@@ -115,7 +119,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 $postalCode = $address_components[9]['long_name'] ?? '';
                 $addressCountry = $address_components[8]['long_name'] ?? '';
                 $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
-                $html = '<div class="repocean-slider-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness">';
+                $html = '<div class="repocean-slider-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
                 $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
                 $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
                 $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
@@ -193,6 +197,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $html .= '<a href="#">' . __('Read more', 'widgets-for-google-reviews-and-ratings') . '</a>';
                     $html .= '</div>';
                     $html .= '</div>';
+                    $html .= $this->repocean_render_review_photos($review);
                     $html .= '</div>';
                     $html .= '</div>';
                 }
@@ -259,7 +264,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     }
                 }
                 $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
-                $html = '<div class="repocean-slider-main-v1 ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness">';
+                $html = '<div class="repocean-slider-main-v1 ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
                 $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
                 $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
                 $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
@@ -355,6 +360,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $html .= '<a href="#">' . __('Read more', 'widgets-for-google-reviews-and-ratings') . '</a>';
                     $html .= '</div>';
                     $html .= '</div>';
+                    $html .= $this->repocean_render_review_photos($review);
                     $html .= '</div>';
                     $html .= '</div>';
                 }
@@ -388,7 +394,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 if (empty($reviews)) {
                     return '<div class="repocean-slider-main-v2">' . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
-                $html = '<div class="repocean-slider-main-v2 ' . esc_attr($this->enable_dark_mode_class) . '">';
+                $html = '<div class="repocean-slider-main-v2 ' . esc_attr($this->enable_dark_mode_class) . '" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
                 $html .= '<div class="repocean-content-wrapper">';
                 $html .= '<div class="slider-outer">';
                 $html .= '<div class="SliderContentParent">';
@@ -456,6 +462,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $html .= '</div>';
                     $html .= '<div class="button-content ' . $read_more_hide_show . '">';
                     $html .= '<div class="rep-button"><a href="#">' . __('Read more', 'widgets-for-google-reviews-and-ratings') . '</a></div></div>';
+                    $html .= $this->repocean_render_review_photos($review);
                     $html .= '</div>'; // slider-box-inner
                     $html .= '</div>'; // slider-box
                 }
@@ -494,7 +501,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 if (empty($reviews)) {
                     return '<div class="repocean-slider-main-v3">' . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
-                $html = '<div class="repocean-slider-main-v3 ' . esc_attr($this->enable_dark_mode_class) . '">';
+                $html = '<div class="repocean-slider-main-v3 ' . esc_attr($this->enable_dark_mode_class) . '" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
                 $html .= '<div class="repocean-content-wrapper">';
                 $html .= '<div class="slider-outer">';
                 $html .= '<div class="SliderContentParent">';
@@ -562,6 +569,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $html .= '</div>';
                     $html .= '<div class="button-content ' . $read_more_hide_show . '">';
                     $html .= '<div class="rep-button"><a href="#">' . __('Read more', 'widgets-for-google-reviews-and-ratings') . '</a></div></div>';
+                    $html .= $this->repocean_render_review_photos($review);
                     $html .= '</div>'; // slider-box-inner
                     $html .= '</div>'; // slider-box
                 }
@@ -600,7 +608,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 if (empty($reviews)) {
                     return '<div class="slider-main repocean-slider-main-v4">' . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
-                $html = '<div class="slider-main repocean-slider-main-v4 ' . esc_attr($this->enable_dark_mode_class) . '">';
+                $html = '<div class="slider-main repocean-slider-main-v4 ' . esc_attr($this->enable_dark_mode_class) . '" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
                 $html .= '<div class="repocean-content-wrapper">';
                 $html .= '<div class="slider-outer">';
                 $html .= '<div class="SliderContentParent">';
@@ -645,6 +653,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
 
                     $html .= '<div class="rep-button"><a href="#">' . __('Read more', 'widgets-for-google-reviews-and-ratings') . '</a></div>';
                     $html .= '</div>'; // button-content
+                    $html .= $this->repocean_render_review_photos($review);
 
                     $html .= '</div>'; // slider-box-inner
                     $html .= '</div>'; // slider-box
@@ -705,7 +714,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     }
                 }
                 $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
-                $html = '<div class="repocean-grid-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness">';
+                $html = '<div class="repocean-grid-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
                 $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
                 $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
                 $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
@@ -804,6 +813,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $html .= '<a href="#">' . __('Read more', 'widgets-for-google-reviews-and-ratings') . '</a>';
                     $html .= '</div>';
                     $html .= '</div>';
+                    $html .= $this->repocean_render_review_photos($review);
                     $html .= '</div>';
                     $html .= '</div>';
                 }
@@ -861,7 +871,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     }
                 }
                 $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
-                $html = '<div class="repocean-list-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness">';
+                $html = '<div class="repocean-list-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
                 $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
                 $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
                 $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
@@ -958,6 +968,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $html .= '<a href="#">' . __('Read more', 'widgets-for-google-reviews-and-ratings') . '</a>';
                     $html .= '</div>';
                     $html .= '</div>';
+                    $html .= $this->repocean_render_review_photos($review);
                     $html .= '</div>';
                     $html .= '</div>';
                 }
@@ -1017,7 +1028,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     }
                 }
                 $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
-                $html = '<div class="repocean-sidebar-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness">';
+                $html = '<div class="repocean-sidebar-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
                 $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
                 $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
                 $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
@@ -1091,6 +1102,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $html .= '<a href="#">' . __('Read more', 'widgets-for-google-reviews-and-ratings') . '</a>';
                     $html .= '</div>';
                     $html .= '</div>';
+                    $html .= $this->repocean_render_review_photos($review);
                     $html .= '<div class="img-text-content">';
                     $html .= '<div class="profile-img-info">';
                     if ($this->hide_profile_picture === false) {
@@ -1127,6 +1139,43 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
         } catch (Exception $ex) {
             return __('An error occurred.', 'widgets-for-google-reviews-and-ratings');
         }
+    }
+
+    private function repocean_get_review_photos($review) {
+        $review_photos = $review['review_photos'] ?? array();
+
+        if (is_string($review_photos)) {
+            $decoded_review_photos = json_decode($review_photos, true);
+            $review_photos = is_array($decoded_review_photos) ? $decoded_review_photos : array();
+        }
+
+        if (!is_array($review_photos)) {
+            return array();
+        }
+
+        $review_photos = array_map('esc_url', array_filter($review_photos));
+
+        return array_slice($review_photos, 0, 4);
+    }
+
+    private function repocean_render_review_photos($review) {
+        $review_photos = $this->repocean_get_review_photos($review);
+
+        if (empty($review_photos)) {
+            return '';
+        }
+
+        $html = '<div class="repocean-review-photos">';
+
+        foreach ($review_photos as $review_photo) {
+           
+            $html .= '<img src="' . $review_photo . '" alt="Review photo">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+            
+        }
+
+        $html .= '</div>';
+
+        return $html;
     }
 
     public function update_google_place_review_count() {

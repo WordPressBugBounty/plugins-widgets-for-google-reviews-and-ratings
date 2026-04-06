@@ -71,8 +71,9 @@
 }
 .repocean-list-main .list-box-inner {
     padding: 20px;
-    background-color: #f6f6f6;
-    border-radius: 4px;
+    background: var(--repocean-bg, #f6f6f6);
+    border: 1px solid var(--repocean-border, #f6f6f6);
+    border-radius: 12px;
     transition: 400ms all;
     transform: translate(0);
 }
@@ -380,4 +381,17 @@
     -webkit-line-clamp: unset;
     display: block;
     overflow: hidden;
+}
+.repocean-review-photos {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.repocean-review-photos img {
+  width: 64px;
+  height: 64px !important;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
 }

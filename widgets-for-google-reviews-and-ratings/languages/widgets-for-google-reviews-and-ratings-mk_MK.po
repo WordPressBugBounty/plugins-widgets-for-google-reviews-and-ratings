@@ -1,132 +1,132 @@
-# Copyright (C) 2024 Widgets for Google Business Reviews and Ratings
-# This file is distributed under the same license as the Widgets for Google Business Reviews and Ratings package.
+# Copyright (C) 2025 repocean
+# This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Widgets for Google Business Reviews and Ratings 1.0.6\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/widgets-for-"
-"google-reviews-and-ratings\n"
-"POT-Creation-Date: 2025-03-20T03:51:56+00:00\n"
-"PO-Revision-Date: 2025-05-23 17:00+0530\n"
-"Last-Translator: \n"
-"Language-Team: Македонски јазик <mk_MK@li.org>\n"
-"Language: mk_MK\n"
+"Project-Id-Version: Widgets for Google Business Reviews and Ratings 1.0.16\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/widgets-for-google-reviews-and-ratings\n"
+"POT-Creation-Date: 2025-12-22T12:02:03+00:00\n"
+"PO-Revision-Date: 2025-11-05T11:26:55+00:00\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: mk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"Plural-Forms: nplurals=2; plural=(n%10==1 && n%100!=11);\n"
+"X-Domain: widgets-for-google-reviews-and-ratings\n"
+"X-Generator: WP-CLI 2.11.0\n"
 
 #. Plugin Name of the plugin
 #: widgets-for-google-reviews-and-ratings.php
 msgid "Widgets for Google Business Reviews and Ratings"
-msgstr "Видгети за Google бизнис прегледи и оценки"
+msgstr "Виджети за Google Бизнис Рецензии и Оценки"
 
 #. Plugin URI of the plugin
 #: widgets-for-google-reviews-and-ratings.php
 msgid "https://repocean.com/"
-msgstr "https://repocean.com/"
+msgstr ""
 
 #. Description of the plugin
 #: widgets-for-google-reviews-and-ratings.php
 msgid ""
-"Quickly and easily embed Google reviews into your WordPress site. Boost SEO, "
-"build trust, and increase sales with Google reviews."
+"Quickly and easily embed Google reviews into your WordPress site. Boost SEO,"
+" build trust, and increase sales with Google reviews."
 msgstr ""
-"Брзо и лесно вметнете Google прегледи во вашата WordPress страница. "
-"Зголемете SEO, изградете доверба и зголемете продажба со Google прегледи."
+"Брзо и лесно вметнете Google рецензии во вашата WordPress страница. "
+"Зголемете SEO, изградете доверба и зголемете продажби со Google рецензии."
 
 #. Author of the plugin
 #: widgets-for-google-reviews-and-ratings.php
 msgid "repocean"
-msgstr "repocean"
+msgstr "репоцеан"
 
 #. Author URI of the plugin
 #: widgets-for-google-reviews-and-ratings.php
 msgid "https://profiles.wordpress.org/repocean/"
-msgstr "https://profiles.wordpress.org/repocean/"
-
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:37
-msgid "Google Reviews Settings"
-msgstr "Параметри за Google прегледи"
+msgstr ""
 
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:38
+msgid "Google Reviews Settings"
+msgstr "Поставки за Google Рецензии"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:39
 #: admin/class-widgets-for-google-reviews-and-ratings-widget.php:23
 msgid "Google Reviews"
-msgstr "Google прегледи"
+msgstr "Google Рецензии"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:58
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:59
 msgid "Widget Customizer"
-msgstr "Прилагодувач на виджет"
-
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:60
-msgid "Connect Google"
-msgstr "Поврзи со Google"
+msgstr "Прилагодувач на Виджетот"
 
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:61
-msgid "Select Layout"
-msgstr "Избери распоред"
+msgid "Connect Google"
+msgstr "Поврзи Google"
 
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:62
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:637
+msgid "Select Layout"
+msgstr "Избери Распоред"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:63
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:763
 msgid "Settings"
-msgstr "Параметри"
+msgstr "Поставки"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:65
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:66
 msgid "Get Reviews"
-msgstr "Добиј прегледи"
+msgstr "Добиј Рецензии"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:151
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:156
 msgid "Nonce verification failed"
-msgstr "Проверка на nonce не успеа"
+msgstr "Неуспешна проверка на nonce"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:159
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:164
 msgid "Error decoding JSON."
 msgstr "Грешка при декодирање на JSON."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:162
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:167
 msgid "Error: Place data not received."
 msgstr "Грешка: Податоците за местото не се примени."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:165
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:170
 msgid "An error occurred: "
 msgstr "Настана грешка: "
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:207
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:212
 msgid "Place Image"
-msgstr "Слика на местото"
+msgstr "Слика на Местото"
 
 #. Translators: %d represents the total number of user reviews.
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:212
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:205
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:296
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:744
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:899
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:217
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:210
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:301
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:749
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:904
 msgid "reviews"
-msgstr "прегледи"
+msgstr "рецензии"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:218
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:223
 msgid "Disconnect"
 msgstr "Исклучи"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:233
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:238
 msgid "Place disconnected successfully. Connect a new place."
 msgstr "Местото успешно е исклучено. Поврзете ново место."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:259
-msgid "Slider"
-msgstr "Лизгач"
-
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:261
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:279
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:297
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:315
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:333
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:351
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:369
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:387
-msgid "Shortcode:"
-msgstr "Краток код:"
-
+#. translators: combined notice for support and review
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:264
+msgid ""
+"Hi there, If you have any questions or need assistance, feel free to "
+"%1$sreach out%2$s anytime. If you have a moment, I would love it if you "
+"could %3$sleave a review%4$s."
+msgstr ""
+"Здраво, ако имате било какви прашања или ви е потребна помош, слободно "
+"%1$sконтактирајте%2$s ме во секое време. Ако имате момент, би ми било драго "
+"ако можете %3$sда оставите рецензија%4$s."
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:280
+msgid "Slider"
+msgstr "Слајдер"
+
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:282
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:300
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:318
@@ -134,128 +134,150 @@ msgstr "Краток код:"
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:354
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:372
 #: admin/class-widgets-for-google-reviews-and-ratings-admin.php:390
-msgid "Copy to Clipboard"
-msgstr "Копирај во меѓуспремник"
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:408
+msgid "Shortcode:"
+msgstr "Шорткод:"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:265
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:283
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:301
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:319
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:337
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:355
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:373
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:391
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:285
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:303
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:321
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:339
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:357
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:375
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:393
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:411
+msgid "Copy to Clipboard"
+msgstr "Копирај во клипборд"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:286
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:304
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:322
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:340
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:358
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:376
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:394
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:412
 msgid "Copied!"
 msgstr "Копирано!"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:277
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:298
 msgid "Slider I."
-msgstr "Лизгач I."
+msgstr "Слајдер I."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:295
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:316
 msgid "Slider II."
-msgstr "Лизгач II."
+msgstr "Слајдер II."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:313
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:334
 msgid "Slider III."
-msgstr "Лизгач III."
+msgstr "Слајдер III."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:331
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:352
 msgid "Slider IIII."
-msgstr "Лизгач IIII."
+msgstr "Слајдер IIII."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:349
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:370
 msgid "Grid"
 msgstr "Мрежа"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:367
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:388
 msgid "List"
 msgstr "Листа"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:385
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:406
 msgid "Sidebar"
-msgstr "Десен страничен панел"
+msgstr "Страна"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:458
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:488
 msgid "Security check failed. Nonce verification failed."
-msgstr "Безбедносната проверка не успеа. Неуспешна потврда."
+msgstr "Безбедносната проверка не успеа. Проверка на nonce не успеа."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:476
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:508
 msgid "Settings saved successfully!"
-msgstr "Параметрите успешно се зачуваа!"
+msgstr "Поставките се успешно зачувани!"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:491
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:525
 msgid "Google Review Widget Settings"
-msgstr "Параметри за Google преглед виджет"
+msgstr "Поставки за Google Review Widget"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:499
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:533
 msgid "Hide Review Date"
-msgstr "Скриј датум на преглед"
+msgstr "Скриј датум на прегледот"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:505
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:539
 msgid "Hide Reviewer Profile Picture"
-msgstr "Скриј слика на профилот на рецензентот"
+msgstr "Скриј профилна слика на рецензентот"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:511
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:545
 msgid "Hide Google Logo"
 msgstr "Скриј Google лого"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:517
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:551
 msgid "Hide Widget Rating Text (e.g. EXCELLENT XXX reviews)"
-msgstr "Сокриј текст за оцена на виџети (на пр. ОДЛИЧНИ ХХХ рецензии)"
+msgstr "Скриј текст за оценка на widget (нпр. ОДЛИЧНО XXX рецензии)"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:524
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:558
 msgid "Hide \"Previous\" and \"Next\" Buttons"
-msgstr "Сокриј ги копчињата „Претходно“ и „Следно“."
+msgstr "Скриј копчиња \"Претходно\" и \"Следно\""
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:532
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:566
 msgid "Show Verified By RepOcean"
 msgstr "Прикажи потврдено од RepOcean"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:540
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:574
 msgid "Show Verified Symbol for Reviews"
-msgstr "Прикажи потврден симбол за прегледи"
+msgstr "Прикажи симбол за потврда за рецензии"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:542
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:184
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:346
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:450
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:556
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:636
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:794
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:948
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1066
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:576
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:189
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:351
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:455
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:561
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:641
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:799
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:953
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1071
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1468
 msgid "RepOcean verifies that the original source of the review is Google."
 msgstr "RepOcean потврдува дека оригиналниот извор на прегледот е Google."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:549
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:583
 msgid "Shorten Reviewer Names (e.g., John Smith → John S.)"
-msgstr "Скратете ги имињата на рецензентите (на пр. Џон Смит → Џон С.)"
+msgstr "Скратете ги имената на рецензентите (нпр., John Smith → John S.)"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:557
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:591
 msgid "Enable Dark Mode (Dark background with light text)"
-msgstr "Овозможи темен режим (темна позадина со светол текст)"
+msgstr "Вклучете го темниот режим (темна позадина со светол текст)"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:565
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:599
 msgid "Change Star Color"
-msgstr "Променете ја бојата на ѕвездата"
+msgstr "Променете ја бојата на ѕвездите"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:624
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:656
+msgid "Review Card Background Color"
+msgstr "Прегледај ја бојата на позадината на картичката"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:702
+msgid "Review Card Border Color"
+msgstr "Прегледај ја бојата на границата на картичката"
+
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:750
 msgid "Save Changes"
-msgstr "Зачувај промени"
+msgstr "Зачувајте ги промените"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:630
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:756
 msgid "An error occurred while saving the settings. Please try again."
 msgstr ""
-"Настана грешка при чувањето на параметрите. Ве молиме обидете се повторно."
+"Настана грешка при зачувувањето на поставките. Ве молиме обидете се "
+"повторно."
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:646
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:772
 msgid "Community support"
 msgstr "Поддршка од заедницата"
 
-#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:647
+#: admin/class-widgets-for-google-reviews-and-ratings-admin.php:773
 msgid "Rate our plugin"
-msgstr "Оценете нашиот додаток"
+msgstr "Оценете го нашиот додаток"
 
 #: admin/class-widgets-for-google-reviews-and-ratings-widget.php:9
 msgid "A Widget to display Google Reviews"
@@ -265,145 +287,232 @@ msgstr "Виджет за прикажување на Google прегледи"
 msgid "Title:"
 msgstr "Наслов:"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:98
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:228
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:381
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:487
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:593
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:675
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:831
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:986
+#: admin/feedback/deactivation-feedback-form.php:8
+msgid "Return"
+msgstr "Врати"
+
+#: admin/feedback/deactivation-feedback-form.php:9
+msgid "We’re sorry to see you go! 💔"
+msgstr "Жалиме што те гледаме да одиш! 💔"
+
+#: admin/feedback/deactivation-feedback-form.php:11
+msgid "Close"
+msgstr "Затвори"
+
+#: admin/feedback/deactivation-feedback-form.php:15
+msgid ""
+"Can you please tell us why you’re deactivating the plugin? Your feedback "
+"helps us make it better."
+msgstr ""
+"Можеш ли да ни кажеш зошто го деактивираш додатокот? Твоето мислење ни "
+"помага да го направиме подобар."
+
+#: admin/feedback/deactivation-feedback-form.php:19
+msgid "Temporary deactivation (troubleshooting)"
+msgstr "Временска деактивација (решавање на проблеми)"
+
+#: admin/feedback/deactivation-feedback-form.php:23
+msgid "Compatibility issue"
+msgstr "Проблем со компатибилност"
+
+#: admin/feedback/deactivation-feedback-form.php:25
+msgid "Please describe what part of the layout or functionality was affected."
+msgstr ""
+"Ве молиме опишете кој дел од распоредот или функционалноста беше погоден."
+
+#: admin/feedback/deactivation-feedback-form.php:30
+msgid "Difficult to set up"
+msgstr "Тешко за поставување"
+
+#: admin/feedback/deactivation-feedback-form.php:32
+msgid "What part of the setup was confusing or unclear?"
+msgstr "Кој дел од поставувањето беше збунувачки или нејасен?"
+
+#: admin/feedback/deactivation-feedback-form.php:37
+msgid "Missing features"
+msgstr "Недостиг на функции"
+
+#: admin/feedback/deactivation-feedback-form.php:39
+msgid "Which features were you looking for?"
+msgstr "Кои функции ги бараше?"
+
+#: admin/feedback/deactivation-feedback-form.php:44
+msgid "Other"
+msgstr "Друго"
+
+#: admin/feedback/deactivation-feedback-form.php:46
+msgid ""
+"Please share why you’re deactivating the Google Business Reviews plugin so "
+"we can make improvements."
+msgstr ""
+"Ве молиме споделете зошто го деактивирате додатокот за Google Business "
+"Reviews за да можеме да направиме подобрувања."
+
+#: admin/feedback/deactivation-feedback-form.php:58
+msgid ""
+"Your privacy is important to us. No personal data is collected with this "
+"form—just your valuable feedback and basic system information (such as "
+"WordPress and plugin versions) to help us improve our plugin."
+msgstr ""
+"Вашата приватност е важна за нас. Нема да се собираат лични податоци со овој"
+" формулар—само вашето вредно мислење и основни системски информации (како "
+"што се верзиите на WordPress и додатокот) за да ни помогнете да го подобриме"
+" нашиот додаток."
+
+#: admin/feedback/deactivation-feedback-form.php:63
+msgid "Visit our support page for assistance"
+msgstr "Посетете ја нашата страница за поддршка за помош"
+
+#: admin/feedback/deactivation-feedback-form.php:63
+msgid "Get Support"
+msgstr "Добијте поддршка"
+
+#: admin/feedback/deactivation-feedback-form.php:65
+msgid "Send & Deactivate"
+msgstr "Испрати и деактивирај"
+
+#: admin/feedback/deactivation-feedback-form.php:67
+msgid "I rather wouldn't say"
+msgstr "Побарав не би рекол"
+
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:103
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:233
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:386
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:492
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:598
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:680
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:836
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:991
 msgid "Hide"
 msgstr "Скриј"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:99
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:192
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:229
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:354
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:382
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:457
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:488
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:563
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:594
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:645
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:676
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:803
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:832
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:957
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:987
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1090
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:104
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:197
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:234
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:359
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:387
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:462
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:493
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:568
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:599
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:650
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:681
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:808
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:837
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:962
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:992
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1095
 msgid "Read more"
-msgstr "Прочитајте повеќе"
+msgstr "Прочитај повеќе"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:139
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:283
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:388
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:494
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:600
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:729
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:885
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1041
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1447
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:144
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:288
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:393
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:499
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:605
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:734
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:890
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1046
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1449
 msgid "No reviews found."
-msgstr "Не се најдени прегледи."
+msgstr "Нема пронајдено рецензии."
 
 #. Translators: %s represents the human-readable time difference.
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:145
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:150
 msgid " %s ago"
-msgstr " пред %s"
+msgstr " %s пред"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:202
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:207
 msgid "Google"
-msgstr "Google"
+msgstr "Гугл"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:202
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:207
 msgid "Rating Score:"
 msgstr "Оценка:"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:203
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:208
 msgid "out of 5,"
 msgstr "од 5,"
 
 #. Translators: %d represents the total number of user reviews.
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:205
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:210
 msgid "based on"
-msgstr "врз основа на"
+msgstr "базирано на"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:290
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:397
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:503
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:737
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:893
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:295
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:402
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:508
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:742
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:898
 msgid "EXCELLENT"
 msgstr "ОДЛИЧНО"
 
 #. Translators: %s represents the human-readable time difference.
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:307
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:423
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:529
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:616
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:755
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:910
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1074
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:312
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:428
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:534
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:621
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:760
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:915
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1079
 msgid "%s ago"
-msgstr "пред %s"
+msgstr "%s пред"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:366
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:472
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:578
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:661
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:817
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:971
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:371
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:477
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:583
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:666
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:822
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:976
 msgid "Your Google Place not connected"
-msgstr "Вашето Google место не е поврзано"
+msgstr "Вашето Google Место не е поврзано"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:369
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:475
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:581
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:664
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:820
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:974
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1127
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:374
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:480
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:586
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:669
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:825
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:979
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1132
 msgid "An error occurred."
-msgstr "Настана грешка."
+msgstr "Се појави грешка."
 
 #. Translators: %d represents the total number of user reviews.
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:400
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:506
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:405
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:511
 msgid "Based on <a href=\"#\" class=\"review-link\">%d reviews</a>"
 msgstr "Врз основа на <a href=\"#\" class=\"review-link\">%d рецензии</a>"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:404
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:409
 msgid "Review us on Google"
-msgstr "Прегледајте нè на Google"
+msgstr "Оценете не на Google"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:810
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:964
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:815
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:969
 msgid "Load More"
-msgstr "Учитај повеќе"
+msgstr "Вчитај повеќе"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1051
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1056
 msgid "Excellent rating"
 msgstr "Одлична оценка"
 
 #. Translators: %d represents the total number of user reviews.
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1053
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1058
 msgid "Based on %s reviews"
-msgstr "Врз основа на %s прегледи"
+msgstr "Врз основа на %s рецензии"
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1124
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1129
 msgid "Your Google Place is not connected."
 msgstr "Вашето Google место не е поврзано."
 
-#: public/class-widgets-for-google-reviews-and-ratings-public.php:1438
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1440
 msgid "Unable to retrieve reviews at this time."
-msgstr "Во моментов не можам да добијам прегледи."
+msgstr "Не може да се добијат рецензиите во овој момент."
 
-#~ msgid "Layout: Slider"
-#~ msgstr "Распоред: Слајдер"
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1467
+msgid "Verified"
+msgstr "Потврдено"
 
-#~ msgid "Layout: Grid"
-#~ msgstr "Распоред: Мрежа"
-
-#~ msgid "Layout: List"
-#~ msgstr "Распоред: Листа"
+#: public/class-widgets-for-google-reviews-and-ratings-public.php:1469
+msgid "Verified by RepOcean"
+msgstr "Потврдено од RepOcean"

@@ -2,9 +2,9 @@
 Contributors: repocean  
 Tags: google business, google business reviews, google places reviews, reviews, google testimonials  
 Requires at least: 4.6  
-Tested up to: 6.8.2
+Tested up to: 6.9.1
 Requires PHP: 7.2  
-Stable tag: 1.0.15  
+Stable tag: 1.0.19  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -117,6 +117,19 @@ This plugin relies on the external service **RepOcean** to fetch and display **G
 
 
 == Changelog ==
+
+= 1.0.19 - 17.02.2026 =
+- Added Google review photos.
+
+= 1.0.18 - 23.12.2025 =
+- Added Review Card Background Color option.
+- Added Review Card Border Color option.
+
+= 1.0.17 - 01.12.2025 =
+- Added Compatibility with WordPress 6.9.
+
+= 1.0.16 - 04.11.2025 =
+- Update widget design.
 
 = 1.0.15 - 09.09.2025 =
 - Fixed an issue affecting the new settings field.

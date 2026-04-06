@@ -15,8 +15,9 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
         $this->place_details = get_option('wgrr_g_place_details', '');
         $this->is_min = !(defined('SCRIPT_DEBUG') && SCRIPT_DEBUG);
         $this->star_color = get_option('repocean_star_color', '#F6BB06');
-        add_action('wp_ajax_repocean_handle_review_action', array($this, 'handle_review_action'));
-        add_action('wp_ajax_nopriv_repocean_handle_review_action', array($this, 'handle_review_action'));
+        add_action('admin_footer', array($this, 'repocean_add_deactivation_feedback_form'));
+        add_action('admin_enqueue_scripts', array($this, 'repocean_add_deactivation_feedback_form_scripts'));
+        add_action('wp_ajax_repocean_send_deactivation', array($this, 'repocean_handle_plugin_deactivation_request'));
     }
 
     public function enqueue_styles() {
@@ -53,47 +54,73 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
             'linearGradient' => ['id' => []],
             'stop' => ['offset' => [], 'stop-color' => []],
         ];
+
+        $opt_key = 'wgrr_activation_ts';
+        $activation_ts = get_option($opt_key, null);
+
+        $cutoff_ts = (int) strtotime('2026-02-18 00:00:00');
+
+        if (null === $activation_ts) {
+            $activation_ts = $cutoff_ts - DAY_IN_SECONDS;
+            add_option($opt_key, (int) $activation_ts, '', false);
+        } else {
+            $activation_ts = (int) $activation_ts;
+            if ($activation_ts <= 0) {
+                $activation_ts = $cutoff_ts - DAY_IN_SECONDS;
+                update_option($opt_key, (int) $activation_ts, false);
+            }
+        }
+        $show_get_pro = ($activation_ts >= $cutoff_ts);
+
+        $sub_items = [
+            'connect_google' => wp_kses(sprintf('<span>1</span> %s', __('Connect Google', 'widgets-for-google-reviews-and-ratings')), $allowed_html),
+            'select_layout' => wp_kses(sprintf('<span>2</span> %s', __('Select Layout', 'widgets-for-google-reviews-and-ratings')), $allowed_html),
+            'get_settings' => wp_kses(sprintf('<span class="dashicons dashicons-admin-generic"></span> %s', __('Settings', 'widgets-for-google-reviews-and-ratings')), $allowed_html),
+        ];
+
+        if ($show_get_pro) {
+            $sub_items['get_pro'] = wp_kses(
+                    sprintf('<span class="dashicons dashicons-star-filled"></span> %s', __('Get Pro', 'widgets-for-google-reviews-and-ratings')),
+                    $allowed_html
+            );
+        }
+
         $setting_tabs = apply_filters('wgrr_setting_tab', [
             'widget_customizer' => [
                 'label' => esc_html__('Widget Customizer', 'widgets-for-google-reviews-and-ratings'),
-                'sub_items' => [
-                    'connect_google' => wp_kses(sprintf('<span>1</span> %s', __('Connect Google', 'widgets-for-google-reviews-and-ratings')), $allowed_html),
-                    'select_layout' => wp_kses(sprintf('<span>2</span> %s', __('Select Layout', 'widgets-for-google-reviews-and-ratings')), $allowed_html),
-                    'get_settings' => wp_kses(sprintf('<span class="dashicons dashicons-admin-generic"></span> %s', __('Settings', 'widgets-for-google-reviews-and-ratings')), $allowed_html),
-                ],
+                'sub_items' => $sub_items,
             ],
             'get_reviews' => ['label' => esc_html__('Get Reviews', 'widgets-for-google-reviews-and-ratings')],
         ]);
 
-        $sub_tab = empty($this->place_details) ? 'connect_google' : 'select_layout';
+        $default_subtab = empty($this->place_details) ? 'connect_google' : 'select_layout';
+
         $current_tab = isset($_GET['tab']) ? sanitize_text_field(wp_unslash($_GET['tab'])) : 'widget_customizer'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        $current_subtab = isset($_GET['subtab']) ? sanitize_text_field(wp_unslash($_GET['subtab'])) : $sub_tab; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $current_subtab = isset($_GET['subtab']) ? sanitize_text_field(wp_unslash($_GET['subtab'])) : $default_subtab; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        if (!$show_get_pro && 'get_pro' === $current_subtab) {
+            $current_subtab = $default_subtab;
+        }
         ?>
         <div id="wgrr-plugin-settings-page">
             <h2 class="nav-tab-wrapper" style="display: none;">
-                <?php
-                foreach ($setting_tabs as $name => $tab) {
-                    echo '<a href="' . esc_url(admin_url('admin.php?page=google-reviews-settings&tab=' . $name)) . '" class="nav-tab ' . ($current_tab == $name ? 'nav-tab-active' : '') . '">' . esc_html($tab['label']) . '</a>';
-                }
-                ?>
+                <?php foreach ($setting_tabs as $name => $tab) : ?>
+                    <a href="<?php echo esc_url(admin_url('admin.php?page=google-reviews-settings&tab=' . $name)); ?>"
+                       class="nav-tab <?php echo ($current_tab === $name) ? 'nav-tab-active' : ''; ?>">
+                           <?php echo esc_html($tab['label']); ?>
+                    </a>
+                <?php endforeach; ?>
             </h2>
 
             <?php
-            foreach ($setting_tabs as $setting_tab_key => $setting_tab_value) {
-                if ($current_tab === $setting_tab_key) {
-                    if (isset($setting_tab_value['sub_items'])) {
-                        do_action('wgrr_' . esc_attr($setting_tab_key) . '_setting_save_field');
-                        do_action('wgrr_' . esc_attr($setting_tab_key) . '_setting', $setting_tabs);
-                        foreach ($setting_tab_value['sub_items'] as $key => $value) {
-                            if ($current_subtab === $key) {
-                                do_action('wgrr_' . esc_attr($setting_tab_key) . '_' . esc_attr($key) . '_setting_save_field');
-                                do_action('wgrr_' . esc_attr($setting_tab_key) . '_' . esc_attr($key) . '_setting');
-                            }
-                        }
-                    } else {
-                        do_action('wgrr_' . esc_attr($setting_tab_key) . '_setting_save_field');
-                        do_action('wgrr_' . esc_attr($setting_tab_key) . '_setting', $setting_tabs);
-                    }
+            if (!empty($setting_tabs[$current_tab])) {
+                $tab_data = $setting_tabs[$current_tab];
+
+                do_action('wgrr_' . esc_attr($current_tab) . '_setting_save_field');
+                do_action('wgrr_' . esc_attr($current_tab) . '_setting', $setting_tabs);
+
+                if (!empty($tab_data['sub_items']) && isset($tab_data['sub_items'][$current_subtab])) {
+                    do_action('wgrr_' . esc_attr($current_tab) . '_' . esc_attr($current_subtab) . '_setting_save_field');
+                    do_action('wgrr_' . esc_attr($current_tab) . '_' . esc_attr($current_subtab) . '_setting');
                 }
             }
             ?>
@@ -107,17 +134,17 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
             $current_subtab = isset($_GET['subtab']) ? sanitize_text_field(wp_unslash($_GET['subtab'])) : $sub_tab; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
             ?>
             <h2 class="nav-tab-wrapper">
-                <?php
-                foreach ($setting_tabs['widget_customizer']['sub_items'] as $name => $tab) {
-                    $class = 'done';
-                    if ($name === 'connect_google' && empty($this->place_details)) {
-                        $class = '';
-                    } elseif (($name === 'select_layout' || $name === 'get_settings') && empty($this->place_details)) {
-                        $class = 'disabled';
-                    }
-                    echo '<a href="' . esc_url(admin_url('admin.php?page=google-reviews-settings&tab=widget_customizer&subtab=' . $name)) . '" class="nav-tab ' . ($current_subtab == $name ? 'nav-tab-active ' . esc_attr($class) : esc_attr($class)) . '">' . wp_kses_post($tab) . '</a>';
+            <?php
+            foreach ($setting_tabs['widget_customizer']['sub_items'] as $name => $tab) {
+                $class = 'done';
+                if ($name === 'connect_google' && empty($this->place_details)) {
+                    $class = '';
+                } elseif (($name === 'select_layout' || $name === 'get_settings') && empty($this->place_details)) {
+                    $class = 'disabled';
                 }
-                ?>
+                echo '<a href="' . esc_url(admin_url('admin.php?page=google-reviews-settings&tab=widget_customizer&subtab=' . $name)) . '" class="nav-tab ' . ($current_subtab == $name ? 'nav-tab-active ' . esc_attr($class) : esc_attr($class)) . '">' . wp_kses_post($tab) . '</a>';
+            }
+            ?>
                 <div id="link-support" style="margin-left: auto;">
                     <a href="https://wordpress.org/support/plugin/widgets-for-google-reviews-and-ratings/">Support</a>
                 </div>
@@ -255,15 +282,6 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
     public function wgrr_widget_customizer_select_layout_setting() {
         try {
             ?>
-            <div class="repocean-notice-box">
-                Hi there,
-                If you have any questions or need assistance, feel free to 
-                <a href="https://wordpress.org/support/plugin/widgets-for-google-reviews-and-ratings/#new-topic-0" target="_blank" rel="noopener">reach out</a> anytime. 
-                If you have a moment, I would love it if you could 
-                <a href="https://wordpress.org/support/plugin/widgets-for-google-reviews-and-ratings/reviews/#new-post" target="_blank" rel="noopener">leave a review</a>.
-            </div>
-
-
             <div id="wgrr_accordion">
                 <h2 class="select-layout-title"></h2>
                 <div class="layout-section">
@@ -274,14 +292,14 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <span><?php esc_html_e('Shortcode:', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 <code class="repocean-shortcode" id="repocean-shortcode-id">[repocean_reviews layout="slider"]</code>
                                 <button class="repocean-btn repocean-tooltip">
-                                    <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
                                     <span class="repocean-tooltip-message" style="opacity: 0;"><?php esc_html_e('Copied!', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="accordion-content">
-                        <?php echo esc_html($this->wgrr_display_slider_widget()); ?>
+            <?php echo esc_html($this->wgrr_display_slider_widget()); ?>
                     </div>
                 </div>
                 <div class="layout-section">
@@ -292,14 +310,14 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <span><?php esc_html_e('Shortcode:', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 <code class="repocean-shortcode" id="repocean-shortcode-id">[repocean_reviews layout="slider_v1"]</code>
                                 <button class="repocean-btn repocean-tooltip">
-                                    <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
                                     <span class="repocean-tooltip-message" style="opacity: 0;"><?php esc_html_e('Copied!', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="accordion-content">
-                        <?php echo esc_html($this->wgrr_display_slider_v1_widget()); ?>
+            <?php echo esc_html($this->wgrr_display_slider_v1_widget()); ?>
                     </div>
                 </div>
                 <div class="layout-section">
@@ -310,14 +328,14 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <span><?php esc_html_e('Shortcode:', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 <code class="repocean-shortcode" id="repocean-shortcode-id">[repocean_reviews layout="slider_v2"]</code>
                                 <button class="repocean-btn repocean-tooltip">
-                                    <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
                                     <span class="repocean-tooltip-message" style="opacity: 0;"><?php esc_html_e('Copied!', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="accordion-content">
-                        <?php echo esc_html($this->wgrr_display_slider_v2_widget()); ?>
+            <?php echo esc_html($this->wgrr_display_slider_v2_widget()); ?>
                     </div>
                 </div>
                 <div class="layout-section">
@@ -328,14 +346,14 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <span><?php esc_html_e('Shortcode:', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 <code class="repocean-shortcode" id="repocean-shortcode-id">[repocean_reviews layout="slider_v3"]</code>
                                 <button class="repocean-btn repocean-tooltip">
-                                    <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
                                     <span class="repocean-tooltip-message" style="opacity: 0;"><?php esc_html_e('Copied!', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="accordion-content">
-                        <?php echo esc_html($this->wgrr_display_slider_v3_widget()); ?>
+            <?php echo esc_html($this->wgrr_display_slider_v3_widget()); ?>
                     </div>
                 </div>
                 <div class="layout-section">
@@ -346,14 +364,14 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <span><?php esc_html_e('Shortcode:', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 <code class="repocean-shortcode" id="repocean-shortcode-id">[repocean_reviews layout="slider_v4"]</code>
                                 <button class="repocean-btn repocean-tooltip">
-                                    <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
                                     <span class="repocean-tooltip-message" style="opacity: 0;"><?php esc_html_e('Copied!', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="accordion-content">
-                        <?php echo esc_html($this->wgrr_display_slider_v4_widget()); ?>
+            <?php echo esc_html($this->wgrr_display_slider_v4_widget()); ?>
                     </div>
                 </div>
                 <div class="layout-section">
@@ -364,14 +382,14 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <span><?php esc_html_e('Shortcode:', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 <code class="repocean-shortcode" id="repocean-shortcode-id">[repocean_reviews layout="grid"]</code>
                                 <button class="repocean-btn repocean-tooltip">
-                                    <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
                                     <span class="repocean-tooltip-message" style="opacity: 0;"><?php esc_html_e('Copied!', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="accordion-content">
-                        <?php echo esc_html($this->wgrr_display_grid_widget()); ?>
+            <?php echo esc_html($this->wgrr_display_grid_widget()); ?>
                     </div>
                 </div>
                 <div class="layout-section">
@@ -382,14 +400,14 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <span><?php esc_html_e('Shortcode:', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 <code class="repocean-shortcode" id="repocean-shortcode-id">[repocean_reviews layout="list"]</code>
                                 <button class="repocean-btn repocean-tooltip">
-                                    <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
                                     <span class="repocean-tooltip-message" style="opacity: 0;"><?php esc_html_e('Copied!', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="accordion-content">
-                        <?php echo esc_html($this->wgrr_display_list_widget()); ?>
+            <?php echo esc_html($this->wgrr_display_list_widget()); ?>
                     </div>
                 </div>
                 <div class="layout-section">
@@ -400,14 +418,14 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <span><?php esc_html_e('Shortcode:', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 <code class="repocean-shortcode" id="repocean-shortcode-id">[repocean_reviews layout="sidebar"]</code>
                                 <button class="repocean-btn repocean-tooltip">
-                                    <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Copy to Clipboard', 'widgets-for-google-reviews-and-ratings'); ?>
                                     <span class="repocean-tooltip-message" style="opacity: 0;"><?php esc_html_e('Copied!', 'widgets-for-google-reviews-and-ratings'); ?></span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="accordion-content">
-                        <?php echo esc_html($this->wgrr_display_sidebar_widget()); ?>
+            <?php echo esc_html($this->wgrr_display_sidebar_widget()); ?>
                     </div>
                 </div>
             </div>
@@ -473,8 +491,8 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
 
     public function wgrr_widget_customizer_get_settings_setting() {
         try {
-            $repocean_show_verified_symbol_default_option = ( $this->repocean_get_user_status_4_july() === 'existing') ? 'no' : 'yes';
-            $repocean_show_verified_by_default_option = ( $this->repocean_get_user_status() === 'existing') ? 'no' : 'yes';
+            $repocean_show_verified_symbol_default_option = ($this->repocean_get_user_status_4_july() === 'existing') ? 'no' : 'yes';
+            $repocean_show_verified_by_default_option = ($this->repocean_get_user_status() === 'existing') ? 'no' : 'yes';
             if (isset($_POST['repocean_submit'])) {
                 if (!isset($_POST['google_reviews_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['google_reviews_nonce'])), 'google_reviews_settings_nonce')) {
                     wp_die(esc_html__('Security check failed. Nonce verification failed.', 'widgets-for-google-reviews-and-ratings'));
@@ -489,7 +507,9 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                     'repocean_star_color' => '251,183,1',
                     'repocean_shorten_reviewer_names' => 'no',
                     'repocean_enable_dark_mode' => 'no',
-                    'repocean_show_verified_by' => $repocean_show_verified_by_default_option
+                    'repocean_show_verified_by' => $repocean_show_verified_by_default_option,
+                    'repocean_bg_color' => '#f6f6f6',
+                    'repocean_border_color' => '#f6f6f6',
                 ];
                 foreach ($options as $key => $default) {
                     $value = isset($_POST[$key]) ? sanitize_text_field(wp_unslash($_POST[$key])) : 'no';
@@ -507,6 +527,8 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
             $star_color = get_option('repocean_star_color', '#FBB701'); // New Option
             $shorten_reviewer_names = get_option('repocean_shorten_reviewer_names', 'no');
             $enable_dark_mode = get_option('repocean_enable_dark_mode', 'no');
+            $bg_color = get_option('repocean_bg_color', '#f6f6f6');
+            $border_color = get_option('repocean_border_color', '#f6f6f6');
             ?>
             <div class="repocean-settings-wrapper">
                 <div class="repocean-settings-header">
@@ -543,7 +565,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <td>
                                     <input type="checkbox" id="repocean_hide_prev_next_buttons" name="repocean_hide_prev_next_buttons" value="yes" <?php checked($hide_prev_next_buttons, 'yes'); ?>>
                                     <label for="repocean_hide_prev_next_buttons">
-                                        <?php esc_html_e('Hide "Previous" and "Next" Buttons', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Hide "Previous" and "Next" Buttons', 'widgets-for-google-reviews-and-ratings'); ?>
                                     </label>
                                 </td>
                             </tr>
@@ -551,7 +573,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <td>
                                     <input type="checkbox" id="repocean_show_verified_by" name="repocean_show_verified_by" value="yes" <?php checked($repocean_show_verified_by, 'yes'); ?>>
                                     <label for="repocean_show_verified_by">
-                                        <?php esc_html_e('Show Verified By RepOcean', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Show Verified By RepOcean', 'widgets-for-google-reviews-and-ratings'); ?>
                                     </label>
                                 </td>
                             </tr>
@@ -559,7 +581,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <td>
                                     <input type="checkbox" id="repocean_show_verified_symbol" name="repocean_show_verified_symbol" value="yes" <?php checked($show_verified_symbol, 'yes'); ?>>
                                     <label for="repocean_show_verified_symbol">
-                                        <?php esc_html_e('Show Verified Symbol for Reviews', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Show Verified Symbol for Reviews', 'widgets-for-google-reviews-and-ratings'); ?>
                                     </label>
                                     <span class="verified-icon-box"><span class="repocean-verified-tooltip" style="width: 101px;"><?php esc_html_e('RepOcean verifies that the original source of the review is Google.', 'widgets-for-google-reviews-and-ratings'); ?></span></span>
                                 </td>
@@ -568,7 +590,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <td>
                                     <input type="checkbox" id="repocean_shorten_reviewer_names" name="repocean_shorten_reviewer_names" value="yes" <?php checked($shorten_reviewer_names, 'yes'); ?>>
                                     <label for="repocean_shorten_reviewer_names">
-                                        <?php esc_html_e('Shorten Reviewer Names (e.g., John Smith → John S.)', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Shorten Reviewer Names (e.g., John Smith → John S.)', 'widgets-for-google-reviews-and-ratings'); ?>
                                     </label>
                                 </td>
                             </tr>
@@ -576,7 +598,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                 <td>
                                     <input type="checkbox" id="repocean_enable_dark_mode" name="repocean_enable_dark_mode" value="yes" <?php checked($enable_dark_mode, 'yes'); ?>>
                                     <label for="repocean_enable_dark_mode">
-                                        <?php esc_html_e('Enable Dark Mode (Dark background with light text)', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Enable Dark Mode (Dark background with light text)', 'widgets-for-google-reviews-and-ratings'); ?>
                                     </label>
                                 </td>
                             </tr>
@@ -584,7 +606,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                             <tr>
                                 <td style="display: flex; align-items: center; gap: 10px;">
                                     <label for="repocean_star_color">
-                                        <?php esc_html_e('Change Star Color', 'widgets-for-google-reviews-and-ratings'); ?>
+            <?php esc_html_e('Change Star Color', 'widgets-for-google-reviews-and-ratings'); ?>
                                     </label>
                                     <div style="display: flex; align-items: center; gap: 10px;">
                                         <!-- Star Icon -->
@@ -638,11 +660,103 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td style="display:flex; align-items:center; gap:10px;">
+                                    <label for="repocean_bg_color">
+            <?php esc_html_e('Review Card Background Color', 'widgets-for-google-reviews-and-ratings'); ?>
+                                    </label>
 
+                                    <div style="display:flex; align-items:center; gap:10px;">
+                                        <!-- Color Picker -->
+                                        <input
+                                            type="color"
+                                            id="repocean_bg_color"
+                                            name="repocean_bg_color"
+                                            value="<?php echo esc_attr(strtoupper($bg_color) ?: '#f6f6f6'); ?>"
+                                            style="width:36px;height:36px;border:none;cursor:pointer;"
+                                            oninput="
+                                            const c = this.value.toUpperCase();
+                                            document.getElementById('repocean_bg_color_text').value = c;
+                                            "
+                                            />
+
+                                        <!-- Text Input -->
+                                        <input
+                                            type="text"
+                                            id="repocean_bg_color_text"
+                                            value="<?php echo esc_attr(strtoupper($bg_color) ?: '#f6f6f6'); ?>"
+                                            placeholder="#F6F6F6"
+                                            style="padding:5px;width:100px;border:1px solid #ccc;text-align:center;"
+                                            oninput="
+                                            let c = this.value.toUpperCase();
+                                            if (!c.startsWith('#')) c = '#' + c;
+                                            if (c.length === 7) {
+                                            document.getElementById('repocean_bg_color').value = c;
+                                            }
+                                            "
+                                            onchange="
+                                                                if (!this.value.trim()) {
+                                                                    const d = '#f6f6f6';
+                                                                    this.value = d;
+                                                                    document.getElementById('repocean_bg_color').value = d;
+                                                                }
+                                            "
+                                            />
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="display:flex; align-items:center; gap:10px;">
+                                    <label for="repocean_border_color">
+            <?php esc_html_e('Review Card Border Color', 'widgets-for-google-reviews-and-ratings'); ?>
+                                    </label>
+
+                                    <div style="display:flex; align-items:center; gap:10px;">
+                                        <!-- Color Picker -->
+                                        <input
+                                            type="color"
+                                            id="repocean_border_color"
+                                            name="repocean_border_color"
+                                            value="<?php echo esc_attr(strtoupper($border_color) ?: '#f6f6f6'); ?>"
+                                            style="width:36px;height:36px;border:none;cursor:pointer;"
+                                            oninput="
+                                            const c = this.value.toUpperCase();
+                                            document.getElementById('repocean_border_color_text').value = c;
+                                            "
+                                            />
+
+                                        <!-- Text Input -->
+                                        <input
+                                            type="text"
+                                            id="repocean_border_color_text"
+                                            value="<?php echo esc_attr(strtoupper($border_color) ?: '#f6f6f6'); ?>"
+                                            placeholder="#F6F6F6"
+                                            style="padding:5px;width:100px;border:1px solid #ccc;text-align:center;"
+                                            oninput="
+                                            let c = this.value.toUpperCase();
+                                            if (!c.startsWith('#')) c = '#' + c;
+                                            if (c.length === 7) {
+                                            document.getElementById('repocean_border_color').value = c;
+                                            }
+                                            "
+                                            onchange="
+                                                                if (!this.value.trim()) {
+                                                                    const d = '#F6F6F6';
+                                                                    this.value = d;
+                                                                    document.getElementById('repocean_border_color').value = d;
+                                                                }
+                                            "
+                                            />
+                                    </div>
+                                </td>
+
+
+                            </tr>
                         </table>
                     </div>
                     <div class="repocean-submit-container">
-                        <?php wp_nonce_field('google_reviews_settings_nonce', 'google_reviews_nonce'); ?>
+            <?php wp_nonce_field('google_reviews_settings_nonce', 'google_reviews_nonce'); ?>
                         <button type="submit" name="repocean_submit" class="repocean-btn"><?php esc_html_e('Save Changes', 'widgets-for-google-reviews-and-ratings'); ?></button>
                     </div>
                 </form>
@@ -682,70 +796,74 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
         }
     }
 
-    public function leaverev() {
-        $activation_time = get_option('repocean_activation_time');
-        if ($activation_time == '') {
-            $activation_time = time();
-            update_option('repocean_activation_time', $activation_time);
+    public function repocean_add_deactivation_feedback_form() {
+        global $pagenow;
+        if ('plugins.php' != $pagenow) {
+            return;
         }
-        $rev_notice_hide = get_option('repocean_review_notice_hide_v1');
-        $next_show_time = get_option('repocean_next_show_time', time());
-        $days_since_activation = (time() - $activation_time) / 86400;
-        if ($rev_notice_hide != 'never' && $days_since_activation >= 10 && time() >= $next_show_time) {
-            $class = 'repocean-review-notice-parent notice notice-info';
-            $notice = '<div class="repocean-review-notice">' .
-                    '<p style="font-weight:normal;font-size:15px;">' .
-                    '<strong>Hi there,</strong><br>' .
-                    'We’re glad to see you’ve been using <b>Google Reviews Plugin</b>!<br>' .
-                    'Could you share your experience by leaving a review on WordPress?<br> Your feedback means a lot to us.<br>' .
-                    '<br>Thank you!<br>Team RepOcean' .
-                    '</p>' .
-                    '<p style="margin-bottom:10px;">' .
-                    '<a>' .
-                    '<button class="button button-primary repocean-action-button" data-action="reviewed" style="margin-right:5px;" type="button">OK, you deserve it</button>' .
-                    '</a>' .
-                    '<button class="button button-secondary repocean-action-button" data-action="later" style="margin-right:5px;">Not now, maybe later</button>' .
-                    '<button class="button button-secondary repocean-action-button" data-action="never" style="float:right;">Don’t remind me again</button>' .
-                    '</p>' .
-                    '</div>';
-
-            printf('<div class="%1$s" style="position:fixed;bottom:50px;right:20px;padding-right:30px;z-index:2;margin-left:20px">%2$s</div>', esc_attr($class), wp_kses_post($notice));
-        }
+        include_once(WGRR_PLUGIN_DIR . '/admin/feedback/deactivation-feedback-form.php');
     }
 
-    public function handle_review_action() {
-        if (!isset($_POST['nonce'])) {
-            wp_send_json_error('Nonce is missing');
+    public function repocean_add_deactivation_feedback_form_scripts() {
+        global $pagenow;
+        if ('plugins.php' != $pagenow) {
+            return;
         }
-        if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'repocean_review_nonce')) {
-            wp_send_json_error('Nonce verification failed');
-        }
-        $action = isset($_POST['review_action']) ? sanitize_text_field(wp_unslash($_POST['review_action'])) : '';
-        if ($action === 'later') {
-            update_option('repocean_next_show_time', time() + (86400 * 7));
-            update_option('repocean_review_notice_hide_v1', 'later');
-        } elseif ($action === 'never') {
-            update_option('repocean_review_notice_hide_v1', 'never');
-        } elseif ($action === 'reviewed') {
-            update_option('repocean_review_notice_hide_v1', 'never');
-        } else {
-            wp_send_json_error('Invalid action');
-        }
-        wp_send_json_success();
+        wp_enqueue_script('jquery-blockui');
+        wp_enqueue_style('deactivation-feedback-modal-repocean', WGRR_ASSET_URL . 'admin/feedback/css/deactivation-feedback-modal.css', null, WGRR_VERSION);
+        wp_enqueue_script('deactivation-feedback-modal-repocean', WGRR_ASSET_URL . 'admin/feedback/js/deactivation-feedback-modal.js', null, WGRR_VERSION, true);
+        wp_localize_script('deactivation-feedback-modal-repocean', 'repocean_feedback_form_ajax_data', array('nonce' => wp_create_nonce('repocean-ajax')));
     }
 
-    public function wgrr_enqueue_scripts() {
-        wp_enqueue_script(
-                'repocean-review-ajax',
-                WGRR_ASSET_URL . '/admin/js/review-ajax.js',
-                array('jquery'),
-                WGRR_VERSION,
-                true
+    public function repocean_handle_plugin_deactivation_request() {
+        $reason = isset($_POST['reason']) ? sanitize_text_field($_POST['reason']) : '';
+        $reason_details = isset($_POST['reason_details']) ? sanitize_text_field($_POST['reason_details']) : '';
+        $url = 'https://api.airtable.com/v0/appxxiU87VQWG6rOO/Sheet1';
+        $api_key = 'patgeqj8DJfPjqZbS.9223810d432db4efccf27354c08513a7725e4a08d11a85fba75de07a539c8aeb';
+        $data = array(
+            'reason' => $reason . ' : ' . $reason_details,
+            'plugin' => 'Google Business Reviews',
+            'php_version' => phpversion(),
+            'wp_version' => get_bloginfo('version'),
+            'wc_version' => (!defined('WC_VERSION')) ? '' : WC_VERSION,
+            'locale' => get_locale(),
+            'theme' => wp_get_theme()->get('Name'),
+            'theme_version' => wp_get_theme()->get('Version'),
+            'multisite' => is_multisite() ? 'Yes' : 'No',
+            'plugin_version' => WGRR_VERSION
         );
-        $nonce = wp_create_nonce('repocean_review_nonce');
-        wp_localize_script('repocean-review-ajax', 'rep_admin_ajax', array(
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce' => $nonce,
-        ));
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $api_key,
+                'Content-Type' => 'application/json',
+            ),
+            'body' => json_encode(array(
+                'records' => array(
+                    array(
+                        'fields' => array(
+                            'reason' => json_encode($data),
+                            'date' => date('M d, Y h:i:s A')
+                        ),
+                    ),
+                ),
+            )),
+            'method' => 'POST'
+        );
+        $response = wp_remote_post($url, $args);
+        if (is_wp_error($response)) {
+            wp_send_json_error(array(
+                'message' => 'Error communicating with Airtable',
+                'error' => $response->get_error_message()
+            ));
+        } else {
+            wp_send_json_success(array(
+                'message' => 'Deactivation feedback submitted successfully',
+                'response' => json_decode(wp_remote_retrieve_body($response), true)
+            ));
+        }
+    }
+
+    public function wgrr_widget_customizer_get_pro_setting() {
+        ?> <iframe src="https://repocean.com/widget/pro.html" title="Embedded Content from repocean.com" width="100%" height="900px" scrolling="yes" frameborder="0" allowfullscreen></iframe><?php
     }
 }

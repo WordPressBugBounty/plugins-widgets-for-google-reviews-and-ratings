@@ -29,8 +29,9 @@
 .repocean-slider-main-v4 .slider-box-inner{
     text-align:center;
     padding:20px;
-    background-color:#f6f6f6;
-    border-radius:4px;
+    background: var(--repocean-bg, #f6f6f6);
+    border: 1px solid var(--repocean-border, #f6f6f6);
+    border-radius: 12px;
     transition:400ms all;
     transform:translate(0);
 }
@@ -133,93 +134,69 @@
     margin:0 8px;
     padding:50px 0 5px 0;
 }
-.repocean-slider-main-v4 .prev-arrow{
-    position:absolute;
-    z-index:5;
-    display:inline-block;
-    display:block;
-    opacity:1;
-    -webkit-transition:all 200ms ease-out;
-    -moz-transition:all 200ms ease-out;
-    -o-transition:all 200ms ease-out;
-    transition:all 200ms ease-out;
+/* Reset */
+.repocean-slider-main-v4 .slick-arrow {
+  all: unset;
 }
-.repocean-slider-main-v4 .slick-arrow{
-    top:57%;
-    transform:translateY(-57%);
-    border:none;
-    padding:14px 10px;
-    z-index:5;
-    background-color:transparent;
-    cursor:pointer;
+
+/* Base circular arrow */
+.repocean-slider-main-v4 .slick-arrow {
+  position: absolute;
+  top: 57%;
+  transform: translateY(-57%);
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s ease;
 }
-.repocean-slider-main-v4 .prev-arrow{
-    background-color:transparent;
-    left:-12px;
+
+/* Positions */
+.repocean-slider-main-v4 .prev-arrow { left: -12px; }
+.repocean-slider-main-v4 .next-arrow { right: -12px; }
+
+/* Chevron icons */
+.repocean-slider-main-v4 .slick-arrow::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid #7b7b7b;
+  border-right: 2px solid #7b7b7b;
+  border-radius: 1px;
+  transition: border-color 0.25s ease;
+ }
+.repocean-slider-main-v4 .prev-arrow::after { transform: rotate(-135deg); }
+.repocean-slider-main-v4 .next-arrow::after { transform: rotate(45deg); }
+
+/* Hover / focus */
+.repocean-slider-main-v4 .slick-arrow:hover {
+  background-color: #4d4d4d !important;
+  outline-color: #424242 !important;
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.05);
 }
-.repocean-slider-main-v4 .prev-arrow::before{
-    top:20px;
-    left:1px;
-    content:"";
-    width:19px;
-    height:3px;
-    background:#cccccc;
-    display:block;
-    -webkit-transform:rotate(45deg);
-    -ms-transform:rotate(45deg);
-    transform:rotate(45deg);
-    border-radius:2px;
-    position:absolute;
+.repocean-slider-main-v4 .slick-arrow:hover::after {
+  border-color: #fff;
 }
-.repocean-slider-main-v4 .prev-arrow::after{
-    content:"";
-    background:#cccccc;
-    width:20px;
-    height:3px;
-    left:0px;
-    display:block;
-    -webkit-transform:rotate(-45deg);
-    -ms-transform:rotate(-45deg);
-    transform:rotate(-45deg);
-    border-radius:2px;
-    position:absolute;
-    top:7px;
+
+/* Disabled state */
+.repocean-slider-main-v4 .slick-arrow.slick-disabled {
+  opacity: 0.45;
+  pointer-events: none;
 }
-.repocean-slider-main-v4 .next-arrow::before{
-    top:20px;
-    left:0px;
-    content:"";
-    width:19px;
-    height:3px;
-    background:#cccccc;
-    display:block;
-    -webkit-transform:rotate(-45deg);
-    -ms-transform:rotate(-45deg);
-    transform:rotate(-45deg);
-    border-radius:2px;
-    position:absolute;
+
+/* Remove legacy bar chevrons */
+.repocean-slider-main-v4 .prev-arrow::before,
+.repocean-slider-main-v4 .next-arrow::before {
+  content: none !important;
 }
-.repocean-slider-main-v4 .next-arrow::after{
-    content:"";
-    background:#cccccc;
-    width:20px;
-    height:3px;
-    left:0px;
-    display:block;
-    -webkit-transform:rotate(45deg);
-    -ms-transform:rotate(45deg);
-    transform:rotate(45deg);
-    border-radius:2px;
-    position:absolute;
-    top:8px;
-}
-.repocean-slider-main-v4 .slick-arrow.next-arrow{
-    right:-12px;
-    position:absolute;
-}
-.repocean-slider-main-v4 .slide-arrow.slick-disabled{
-    display:none!important;
-}
+
 .repocean-slider-main-v4 ul.slick-dots{
     margin:10px auto 0;
     max-width:150px;
@@ -540,4 +517,23 @@
     -webkit-line-clamp: unset;
     display: block;
     overflow: hidden;
+}
+.repocean-slider-main-v4 .prev-arrow::after {
+    margin-left: 3px;
+}
+.repocean-slider-main-v4 .next-arrow::after {
+    margin-right: 3px;
+}
+.repocean-review-photos {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.repocean-review-photos img {
+  width: 64px;
+  height: 64px !important;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
 }
