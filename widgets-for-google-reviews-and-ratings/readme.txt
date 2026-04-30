@@ -2,7 +2,7 @@
 Contributors: repocean  
 Tags: google business, google business reviews, google places reviews, reviews, google testimonials  
 Requires at least: 4.6  
-Tested up to: 6.9.1
+Tested up to: 7.0
 Requires PHP: 7.2  
 Stable tag: 1.0.19  
 License: GPLv2 or later  
