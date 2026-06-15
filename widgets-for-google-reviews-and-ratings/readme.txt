@@ -12,17 +12,15 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-🎯 **Widgets for Google Business Reviews and Ratings** is the best WordPress plugin to easily display **Google Business Reviews** directly on your website. Whether you're a small business, local enterprise, or a large company, **Google Business Reviews** build trust with your audience and improve your **SEO**.
+Widgets for Google Business Reviews and Ratings helps you display Google Business Reviews directly on your WordPress website. Showing real customer reviews can help build trust with visitors and improve your website’s SEO.
 
-This plugin integrates with **Google Rich Snippets** to boost your website’s search engine visibility. Display authentic reviews from **Google My Business** and show potential customers the positive experiences of your clients. 📈
+You can display authentic reviews from Google My Business and show potential customers the experiences shared by your clients.
 
-**Looking for the best plugin to showcase your Google Business Reviews?**  
-Start by [installing the Widgets for Google Business Reviews](https://wordpress.org/plugins/widgets-for-google-reviews-and-ratings/) now!
+This plugin allows you to display up to 10 Google Business reviews. The setup process is simple and takes less than 2 minutes.
 
 == Video Tutorial ==
 
-🎥 **Video Tutorial**  
-For a step-by-step guide on how to set up and use **Widgets for Google Business Reviews and Ratings**, watch this video:
+For a step-by-step guide on how to set up and use Widgets for Google Business Reviews and Ratings, watch this video:
 
 https://www.youtube.com/watch?v=9wdY5igDxgg
 
@@ -33,15 +31,12 @@ https://www.youtube.com/watch?v=9wdY5igDxgg
 ✅ **Customizable Design**: Modify the appearance of your Testimonials widget using CSS to match your site’s branding and design.  
 📱 **Mobile-Friendly and Fast**: Optimized for fast load times on mobile devices, ensuring a seamless experience for users on all devices.  
 🌍 **Translation Ready**: Compatible with **WPML**, **Polylang**, and other translation plugins, ensuring your reviews reach a global audience.  
-🔍 **Rich Snippets for SEO**: **Google Business Reviews** are compatible with **Google Rich Snippets**, improving your site's search engine rankings.  
 👥 **Social Proof**: Trusted by thousands of businesses, build credibility by displaying verified reviews from **Google My Business**.
 
 == Benefits ==
 
 ⭐ **Boost Credibility**: Display real-time reviews from Google, enhancing trust.  
-📈 **Improve SEO with Rich Snippets**: Increase your site’s visibility in search results.  
 👥 **Increase Engagement**: Encourage customer interaction with user-generated content.  
-🔗 **Drive More Traffic**: Positive reviews attract new visitors.  
 📅 **Keep Content Fresh**: Automatically updated reviews keep your content fresh and relevant for search engines.
 
 == How It Works ==
@@ -50,19 +45,6 @@ https://www.youtube.com/watch?v=9wdY5igDxgg
 2. Add the shortcode `[repocean_reviews]` to the post, page, or widget where you'd like to display your reviews.
 3. Customize the appearance using CSS to ensure the reviews match your website’s design.
 4. Your **Google Business Reviews** will automatically appear on your site, boosting your credibility and SEO.
-
-== Installation ==
-
-1. **Upload the Plugin**  
-   - Download the plugin zip file.  
-   - Go to the 'Plugins' menu in WordPress, click 'Add New,' and then 'Upload Plugin.'  
-   - Choose the downloaded zip file and click 'Install Now.'
-
-2. **Activate the Plugin**  
-   - Once installed, click 'Activate Plugin.'
-
-3. **Add Shortcode**  
-   - Use the shortcode `[repocean_reviews]` to display **Google Business Reviews** on any post, page, or widget.
 
 == Frequently Asked Questions ==
 
@@ -80,7 +62,7 @@ No API key is required to start using the plugin. Simply install, activate, and 
 Yes, you can easily customize the appearance of the widget using additional CSS to match the style and design of your website.
 
 = How often are reviews updated? =  
-The plugin automatically fetches new reviews at regular intervals. You can also manually refresh the reviews through the plugin settings if needed.
+The plugin automatically fetches new reviews at regular intervals.
 
 = Does the plugin support multiple languages? =  
 Yes, the plugin supports multiple languages and is fully compatible with popular translation plugins like **WPML** and **Polylang**.
@@ -91,16 +73,6 @@ Currently, the plugin only supports displaying reviews for a single Google Busin
 = How does this plugin improve SEO? =  
 By displaying **Google Business Reviews** and integrating **Rich Snippets**, the plugin helps boost your site's search engine visibility. Fresh reviews also provide search engines with new content to index.
 
-== SEO Benefits of Google Business Reviews ==
-
-**Local SEO Impact**  
-🏠 Positive reviews help your business rank higher in local search results, making it easier for potential customers to find you.
-
-**Rich Snippets**  
-🧩 Your **Google Business Reviews** will appear as **Rich Snippets** in search results, helping you stand out with enhanced listings and increasing click-through rates.
-
-**Fresh Content for Search Engines**  
-📅 Reviews are regularly updated, providing search engines with fresh content, which can boost your rankings.
 
 == External Service Notice ==
 
@@ -162,7 +134,6 @@ This plugin relies on the external service **RepOcean** to fetch and display **G
 
 = 1.0.6 - 15.10.2024 =
 - Enhanced Load more button.
-- Enhanced Display up to 100 recent reviews.
 - Fixed CSS issue.
 
 = 1.0.5 - 04.10.2024 =
@@ -192,10 +163,3 @@ This plugin relies on the external service **RepOcean** to fetch and display **G
 == License ==
 
 This plugin is licensed under the GPLv2 or later. For more details, see [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html).
-
-== Feedback & Support ==
-
-⭐ **Enjoying the plugin?**  
-We’d love to hear your feedback! Please consider leaving an [honest review](https://wordpress.org/support/plugin/widgets-for-google-reviews-and-ratings/reviews/?rate=5#new-post). Your feedback helps us improve and grow!
-
-For any issues, feel free to reach out via the [support forum](https://wordpress.org/support/plugin/widgets-for-google-reviews-and-ratings) or email us at support@repocean.com.
