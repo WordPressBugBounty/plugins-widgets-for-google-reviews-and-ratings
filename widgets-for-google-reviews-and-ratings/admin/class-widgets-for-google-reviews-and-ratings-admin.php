@@ -139,13 +139,13 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                 $class = 'done';
                 if ($name === 'connect_google' && empty($this->place_details)) {
                     $class = '';
-                } elseif (($name === 'select_layout' || $name === 'get_settings') && empty($this->place_details)) {
+                } elseif (($name === 'select_layout' || $name === 'get_settings' || $name === 'get_pro') && empty($this->place_details)) {
                     $class = 'disabled';
                 }
                 echo '<a href="' . esc_url(admin_url('admin.php?page=google-reviews-settings&tab=widget_customizer&subtab=' . $name)) . '" class="nav-tab ' . ($current_subtab == $name ? 'nav-tab-active ' . esc_attr($class) : esc_attr($class)) . '">' . wp_kses_post($tab) . '</a>';
             }
             ?>
-                <div id="link-support" style="margin-left: auto;">
+                <div id="link-support">
                     <a href="https://wordpress.org/support/plugin/widgets-for-google-reviews-and-ratings/">Support</a>
                 </div>
 
@@ -159,7 +159,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
     public function wgrr_widget_customizer_connect_google_setting() {
         try {
             if (empty($this->place_details)) {
-                echo '<br/><br/><iframe id="wrrr_google_connect" src="' . esc_url(REPOCEAN_URL . 'place.html') . '" width="100%" height="900px" scrolling="yes" frameborder="0" allowfullscreen></iframe>';
+                echo '<div class="wgrr-connect-card"><iframe id="wrrr_google_connect" src="' . esc_url(REPOCEAN_URL . 'place-ui-unify.html') . '" width="100%" height="900px" scrolling="yes" frameborder="0" allowfullscreen></iframe></div>';
             } else {
                 $this->wgrr_display_place_details($this->place_details);
             }
@@ -271,7 +271,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
     public function wgrr_display_message() {
         try {
             if ($message = get_transient('wgrr_place_disconnected_message')) {
-                echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($message) . '</p></div>';
+                echo '<div class="notice notice-success is-dismissible wgrr-auto-notice"><p>' . esc_html($message) . '</p></div>';
                 delete_transient('wgrr_place_disconnected_message');
             }
         } catch (Exception $ex) {
@@ -503,6 +503,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                     'repocean_hide_google_logo' => 'no',
                     'repocean_hide_rating_text' => 'no',
                     'repocean_hide_prev_next_buttons' => 'no',
+                    'repocean_hide_review_photos' => 'no',
                     'repocean_show_verified_symbol' => $repocean_show_verified_symbol_default_option,
                     'repocean_star_color' => '251,183,1',
                     'repocean_shorten_reviewer_names' => 'no',
@@ -510,18 +511,24 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                     'repocean_show_verified_by' => $repocean_show_verified_by_default_option,
                     'repocean_bg_color' => '#f6f6f6',
                     'repocean_border_color' => '#f6f6f6',
+                    'repocean_hide_empty_reviews' => 'no',
                 ];
                 foreach ($options as $key => $default) {
                     $value = isset($_POST[$key]) ? sanitize_text_field(wp_unslash($_POST[$key])) : 'no';
                     update_option($key, $value);
                 }
-                echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__('Settings saved successfully!', 'widgets-for-google-reviews-and-ratings') . '</p></div>';
+                $min_star_rating = isset($_POST['repocean_min_star_rating']) ? (int) $_POST['repocean_min_star_rating'] : 5;
+                update_option('repocean_min_star_rating', $min_star_rating);
+                $card_border_radius = isset($_POST['repocean_card_border_radius']) ? max(0, min(40, (int) $_POST['repocean_card_border_radius'])) : 12;
+                update_option('repocean_card_border_radius', $card_border_radius);
+                echo '<div class="notice notice-success is-dismissible wgrr-auto-notice"><p>' . esc_html__('Settings saved successfully!', 'widgets-for-google-reviews-and-ratings') . '</p></div>';
             }
             $hide_date = get_option('repocean_hide_date', 'no');
             $hide_profile_picture = get_option('repocean_hide_profile_picture', 'no');
             $hide_google_logo = get_option('repocean_hide_google_logo', 'no');
             $hide_rating_text = get_option('repocean_hide_rating_text', 'no'); // New Option
             $hide_prev_next_buttons = get_option('repocean_hide_prev_next_buttons', 'no'); // New Option
+            $hide_review_photos = get_option('repocean_hide_review_photos', 'no'); // New Option
             $show_verified_symbol = get_option('repocean_show_verified_symbol', $repocean_show_verified_symbol_default_option); // New Option
             $repocean_show_verified_by = get_option('repocean_show_verified_by', $repocean_show_verified_by_default_option);
             $star_color = get_option('repocean_star_color', '#FBB701'); // New Option
@@ -529,232 +536,167 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
             $enable_dark_mode = get_option('repocean_enable_dark_mode', 'no');
             $bg_color = get_option('repocean_bg_color', '#f6f6f6');
             $border_color = get_option('repocean_border_color', '#f6f6f6');
+            $card_border_radius = (int) get_option('repocean_card_border_radius', 12);
+            $min_star_rating = (int) get_option('repocean_min_star_rating', 5);
+            $hide_empty_reviews = get_option('repocean_hide_empty_reviews', 'no');
             ?>
             <div class="repocean-settings-wrapper">
-                <div class="repocean-settings-header">
-                    <h2><?php esc_html_e('Google Review Widget Settings', 'widgets-for-google-reviews-and-ratings'); ?></h2>
-                </div>
                 <form method="post" action="">
-                    <div class="repocean-settings-container">
-                        <table class="repocean-form-table">
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="repocean_hide_date" name="repocean_hide_date" value="yes" <?php checked($hide_date, 'yes'); ?>>
-                                    <label for="repocean_hide_date"><?php esc_html_e('Hide Review Date', 'widgets-for-google-reviews-and-ratings'); ?></label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="repocean_hide_profile_picture" name="repocean_hide_profile_picture" value="yes" <?php checked($hide_profile_picture, 'yes'); ?>>
-                                    <label for="repocean_hide_profile_picture"><?php esc_html_e('Hide Reviewer Profile Picture', 'widgets-for-google-reviews-and-ratings'); ?></label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="repocean_hide_google_logo" name="repocean_hide_google_logo" value="yes" <?php checked($hide_google_logo, 'yes'); ?>>
-                                    <label for="repocean_hide_google_logo"><?php esc_html_e('Hide Google Logo', 'widgets-for-google-reviews-and-ratings'); ?></label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="repocean_hide_rating_text" name="repocean_hide_rating_text" value="yes" <?php checked($hide_rating_text, 'yes'); ?>>
-                                    <label for="repocean_hide_rating_text"><?php esc_html_e('Hide Widget Rating Text (e.g. EXCELLENT XXX reviews)', 'widgets-for-google-reviews-and-ratings'); ?></label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="repocean_hide_prev_next_buttons" name="repocean_hide_prev_next_buttons" value="yes" <?php checked($hide_prev_next_buttons, 'yes'); ?>>
-                                    <label for="repocean_hide_prev_next_buttons">
-            <?php esc_html_e('Hide "Previous" and "Next" Buttons', 'widgets-for-google-reviews-and-ratings'); ?>
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="repocean_show_verified_by" name="repocean_show_verified_by" value="yes" <?php checked($repocean_show_verified_by, 'yes'); ?>>
-                                    <label for="repocean_show_verified_by">
-            <?php esc_html_e('Show Verified By RepOcean', 'widgets-for-google-reviews-and-ratings'); ?>
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="repocean_show_verified_symbol" name="repocean_show_verified_symbol" value="yes" <?php checked($show_verified_symbol, 'yes'); ?>>
-                                    <label for="repocean_show_verified_symbol">
-            <?php esc_html_e('Show Verified Symbol for Reviews', 'widgets-for-google-reviews-and-ratings'); ?>
-                                    </label>
-                                    <span class="verified-icon-box"><span class="repocean-verified-tooltip" style="width: 101px;"><?php esc_html_e('RepOcean verifies that the original source of the review is Google.', 'widgets-for-google-reviews-and-ratings'); ?></span></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="repocean_shorten_reviewer_names" name="repocean_shorten_reviewer_names" value="yes" <?php checked($shorten_reviewer_names, 'yes'); ?>>
-                                    <label for="repocean_shorten_reviewer_names">
-            <?php esc_html_e('Shorten Reviewer Names (e.g., John Smith → John S.)', 'widgets-for-google-reviews-and-ratings'); ?>
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="repocean_enable_dark_mode" name="repocean_enable_dark_mode" value="yes" <?php checked($enable_dark_mode, 'yes'); ?>>
-                                    <label for="repocean_enable_dark_mode">
-            <?php esc_html_e('Enable Dark Mode (Dark background with light text)', 'widgets-for-google-reviews-and-ratings'); ?>
-                                    </label>
-                                </td>
-                            </tr>
+                    <div class="repocean-settings-panels">
 
-                            <tr>
-                                <td style="display: flex; align-items: center; gap: 10px;">
-                                    <label for="repocean_star_color">
-            <?php esc_html_e('Change Star Color', 'widgets-for-google-reviews-and-ratings'); ?>
-                                    </label>
-                                    <div style="display: flex; align-items: center; gap: 10px;">
-                                        <!-- Star Icon -->
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" id="star-icon" style="fill: <?php echo esc_attr(strtoupper($star_color) ?: '#FBB701'); ?>;">
-                                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                                        </svg>
-                                        <!-- Color Picker -->
-                                        <input 
-                                            type="color" 
-                                            id="repocean_star_color" 
-                                            name="repocean_star_color" 
-                                            value="<?php echo esc_attr(strtoupper($star_color) ?: '#FBB701'); ?>" 
-                                            style="width: 36px; height: 36px; border: none; cursor: pointer;" 
-                                            oninput="
-                                            const color = this.value.toUpperCase();
-                                            document.getElementById('star-icon').style.fill = color;
-                                            document.getElementById('repocean_star_color_text').value = color;
-                                            "
-                                            onchange="
-                                                                const color = this.value.toUpperCase();
-                                                                document.getElementById('star-icon').style.fill = color;
-                                                                document.getElementById('repocean_star_color_text').value = color;
-                                            "
-                                            />
+                        <!-- Panel: Review Filters -->
+                        <div class="repocean-panel">
+                            <div class="repocean-panel-header">
+                                <h3><?php esc_html_e('Review Filters', 'widgets-for-google-reviews-and-ratings'); ?></h3>
+                            </div>
+                            <div class="repocean-panel-body">
+                                <table class="repocean-form-table">
+                                    <tr>
+                                        <td style="display:flex; align-items:center; gap:10px;">
+                                            <label for="repocean_min_star_rating"><?php esc_html_e('Minimum Star Rating', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                            <select id="repocean_min_star_rating" name="repocean_min_star_rating" style="min-width:160px; border:1px solid #ccc; border-radius:4px;">
+                                                <option value="5" <?php selected($min_star_rating, 5); ?>><?php esc_html_e('5 Stars Only', 'widgets-for-google-reviews-and-ratings'); ?></option>
+                                                <option value="4" <?php selected($min_star_rating, 4); ?>><?php esc_html_e('4 Stars and Up', 'widgets-for-google-reviews-and-ratings'); ?></option>
+                                                <option value="3" <?php selected($min_star_rating, 3); ?>><?php esc_html_e('3 Stars and Up', 'widgets-for-google-reviews-and-ratings'); ?></option>
+                                                <option value="2" <?php selected($min_star_rating, 2); ?>><?php esc_html_e('2 Stars and Up', 'widgets-for-google-reviews-and-ratings'); ?></option>
+                                                <option value="1" <?php selected($min_star_rating, 1); ?>><?php esc_html_e('1 Star and Up', 'widgets-for-google-reviews-and-ratings'); ?></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="repocean_hide_empty_reviews" name="repocean_hide_empty_reviews" value="yes" <?php checked($hide_empty_reviews, 'yes'); ?>>
+                                            <label for="repocean_hide_empty_reviews"><?php esc_html_e('Hide Reviews Without Text', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
 
-                                        <!-- Text Input -->
-                                        <input 
-                                            type="text" 
-                                            id="repocean_star_color_text" 
-                                            name="repocean_star_color_text" 
-                                            value="<?php echo esc_attr(strtoupper($star_color) ?: '#FBB701'); ?>" 
-                                            style="padding: 5px; width: 100px; border: 1px solid #ccc; text-align: center;" 
-                                            placeholder="#FBB701" 
-                                            oninput="
-                                            let color = this.value.toUpperCase();
-                                            if (!color.startsWith('#')) color = '#' + color;
-                                            if (color.length === 7) {
-                                            document.getElementById('star-icon').style.fill = color;
-                                            document.getElementById('repocean_star_color').value = color;
-                                            }
-                                            "
-                                            onchange="
-                                                                if (!this.value.trim()) {
-                                                                    this.value = '#FBB701';
-                                                                    document.getElementById('repocean_star_color').value = '#FBB701';
-                                                                    document.getElementById('star-icon').style.fill = '#FBB701';
-                                                                }
-                                            "
-                                            />
+                        <!-- Panel: Display Options -->
+                        <div class="repocean-panel">
+                            <div class="repocean-panel-header">
+                                <h3><?php esc_html_e('Display Options', 'widgets-for-google-reviews-and-ratings'); ?></h3>
+                            </div>
+                            <div class="repocean-panel-body">
+                                <table class="repocean-form-table">
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="repocean_hide_date" name="repocean_hide_date" value="yes" <?php checked($hide_date, 'yes'); ?>>
+                                            <label for="repocean_hide_date"><?php esc_html_e('Hide Review Date', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="repocean_hide_profile_picture" name="repocean_hide_profile_picture" value="yes" <?php checked($hide_profile_picture, 'yes'); ?>>
+                                            <label for="repocean_hide_profile_picture"><?php esc_html_e('Hide Reviewer Profile Picture', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="repocean_hide_google_logo" name="repocean_hide_google_logo" value="yes" <?php checked($hide_google_logo, 'yes'); ?>>
+                                            <label for="repocean_hide_google_logo"><?php esc_html_e('Hide Google Logo', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="repocean_hide_rating_text" name="repocean_hide_rating_text" value="yes" <?php checked($hide_rating_text, 'yes'); ?>>
+                                            <label for="repocean_hide_rating_text"><?php esc_html_e('Hide Widget Rating Text (e.g. EXCELLENT XXX reviews)', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="repocean_hide_prev_next_buttons" name="repocean_hide_prev_next_buttons" value="yes" <?php checked($hide_prev_next_buttons, 'yes'); ?>>
+                                            <label for="repocean_hide_prev_next_buttons"><?php esc_html_e('Hide "Previous" and "Next" Buttons', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="repocean_hide_review_photos" name="repocean_hide_review_photos" value="yes" <?php checked($hide_review_photos, 'yes'); ?>>
+                                            <label for="repocean_hide_review_photos"><?php esc_html_e('Hide Review Photos', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="repocean_shorten_reviewer_names" name="repocean_shorten_reviewer_names" value="yes" <?php checked($shorten_reviewer_names, 'yes'); ?>>
+                                            <label for="repocean_shorten_reviewer_names"><?php esc_html_e('Shorten Reviewer Names (e.g., John Smith → John S.)', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="repocean_show_verified_by" name="repocean_show_verified_by" value="yes" <?php checked($repocean_show_verified_by, 'yes'); ?>>
+                                            <label for="repocean_show_verified_by"><?php esc_html_e('Show Verified By RepOcean', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="repocean_show_verified_symbol" name="repocean_show_verified_symbol" value="yes" <?php checked($show_verified_symbol, 'yes'); ?>>
+                                            <label for="repocean_show_verified_symbol"><?php esc_html_e('Show Verified Symbol for Reviews', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                            <span class="verified-icon-box"><span class="repocean-verified-tooltip" style="width: 101px;"><?php esc_html_e('RepOcean verifies that the original source of the review is Google.', 'widgets-for-google-reviews-and-ratings'); ?></span></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
 
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="display:flex; align-items:center; gap:10px;">
-                                    <label for="repocean_bg_color">
-            <?php esc_html_e('Review Card Background Color', 'widgets-for-google-reviews-and-ratings'); ?>
-                                    </label>
+                        <!-- Panel: Style -->
+                        <div class="repocean-panel">
+                            <div class="repocean-panel-header">
+                                <h3><?php esc_html_e('Style', 'widgets-for-google-reviews-and-ratings'); ?></h3>
+                            </div>
+                            <div class="repocean-panel-body">
+                                <table class="repocean-form-table">
+                                    <tr>
+                                        <td style="display:flex; align-items:center; gap:10px;">
+                                            <label for="repocean_star_color"><?php esc_html_e('Star Color', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                            <div style="display:flex; align-items:center; gap:10px;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" id="star-icon" style="fill: <?php echo esc_attr(strtoupper($star_color) ?: '#FBB701'); ?>;">
+                                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                                                </svg>
+                                                <input type="color" id="repocean_star_color" name="repocean_star_color" value="<?php echo esc_attr(strtoupper($star_color) ?: '#FBB701'); ?>" style="width:36px;height:36px;border:none;cursor:pointer;" oninput="const color=this.value.toUpperCase();document.getElementById('star-icon').style.fill=color;document.getElementById('repocean_star_color_text').value=color;" onchange="const color=this.value.toUpperCase();document.getElementById('star-icon').style.fill=color;document.getElementById('repocean_star_color_text').value=color;"/>
+                                                <input type="text" id="repocean_star_color_text" name="repocean_star_color_text" value="<?php echo esc_attr(strtoupper($star_color) ?: '#FBB701'); ?>" style="padding:5px;width:100px;border:1px solid #ccc;text-align:center;" placeholder="#FBB701" oninput="let color=this.value.toUpperCase();if(!color.startsWith('#'))color='#'+color;if(color.length===7){document.getElementById('star-icon').style.fill=color;document.getElementById('repocean_star_color').value=color;}" onchange="if(!this.value.trim()){this.value='#FBB701';document.getElementById('repocean_star_color').value='#FBB701';document.getElementById('star-icon').style.fill='#FBB701';}"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="display:flex; align-items:center; gap:10px;">
+                                            <label for="repocean_bg_color"><?php esc_html_e('Card Background Color', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                            <div style="display:flex; align-items:center; gap:10px;">
+                                                <input type="color" id="repocean_bg_color" name="repocean_bg_color" value="<?php echo esc_attr(strtoupper($bg_color) ?: '#F6F6F6'); ?>" style="width:36px;height:36px;border:none;cursor:pointer;" oninput="document.getElementById('repocean_bg_color_text').value=this.value.toUpperCase();"/>
+                                                <input type="text" id="repocean_bg_color_text" value="<?php echo esc_attr(strtoupper($bg_color) ?: '#F6F6F6'); ?>" placeholder="#F6F6F6" style="padding:5px;width:100px;border:1px solid #ccc;text-align:center;" oninput="let c=this.value.toUpperCase();if(!c.startsWith('#'))c='#'+c;if(c.length===7)document.getElementById('repocean_bg_color').value=c;" onchange="if(!this.value.trim()){this.value='#F6F6F6';document.getElementById('repocean_bg_color').value='#F6F6F6';}"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="display:flex; align-items:center; gap:10px;">
+                                            <label for="repocean_border_color"><?php esc_html_e('Card Border Color', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                            <div style="display:flex; align-items:center; gap:10px;">
+                                                <input type="color" id="repocean_border_color" name="repocean_border_color" value="<?php echo esc_attr(strtoupper($border_color) ?: '#F6F6F6'); ?>" style="width:36px;height:36px;border:none;cursor:pointer;" oninput="document.getElementById('repocean_border_color_text').value=this.value.toUpperCase();"/>
+                                                <input type="text" id="repocean_border_color_text" value="<?php echo esc_attr(strtoupper($border_color) ?: '#F6F6F6'); ?>" placeholder="#F6F6F6" style="padding:5px;width:100px;border:1px solid #ccc;text-align:center;" oninput="let c=this.value.toUpperCase();if(!c.startsWith('#'))c='#'+c;if(c.length===7)document.getElementById('repocean_border_color').value=c;" onchange="if(!this.value.trim()){this.value='#F6F6F6';document.getElementById('repocean_border_color').value='#F6F6F6';}"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="display:flex; align-items:center; gap:10px;">
+                                            <label for="repocean_card_border_radius"><?php esc_html_e('Card Border Radius', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                            <div style="display:flex; align-items:center; gap:10px;">
+                                                <input type="range" id="repocean_card_border_radius" name="repocean_card_border_radius" min="0" max="40" value="<?php echo esc_attr($card_border_radius); ?>" oninput="document.getElementById('repocean_card_border_radius_val').textContent=this.value+'px';"/>
+                                                <span id="repocean_card_border_radius_val" style="min-width:38px;"><?php echo esc_attr($card_border_radius); ?>px</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="display:block;">
+                                            <input type="checkbox" id="repocean_enable_dark_mode" name="repocean_enable_dark_mode" value="yes" <?php checked($enable_dark_mode, 'yes'); ?>>
+                                            <label for="repocean_enable_dark_mode"><?php esc_html_e('Enable Dark Mode (Dark background with light text)', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                            <p style="margin:6px 0 0 26px; font-size:12px; color:#646970;"><?php esc_html_e('When enabled, the background and border colors will use dark-mode values.', 'widgets-for-google-reviews-and-ratings'); ?></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
 
-                                    <div style="display:flex; align-items:center; gap:10px;">
-                                        <!-- Color Picker -->
-                                        <input
-                                            type="color"
-                                            id="repocean_bg_color"
-                                            name="repocean_bg_color"
-                                            value="<?php echo esc_attr(strtoupper($bg_color) ?: '#f6f6f6'); ?>"
-                                            style="width:36px;height:36px;border:none;cursor:pointer;"
-                                            oninput="
-                                            const c = this.value.toUpperCase();
-                                            document.getElementById('repocean_bg_color_text').value = c;
-                                            "
-                                            />
-
-                                        <!-- Text Input -->
-                                        <input
-                                            type="text"
-                                            id="repocean_bg_color_text"
-                                            value="<?php echo esc_attr(strtoupper($bg_color) ?: '#f6f6f6'); ?>"
-                                            placeholder="#F6F6F6"
-                                            style="padding:5px;width:100px;border:1px solid #ccc;text-align:center;"
-                                            oninput="
-                                            let c = this.value.toUpperCase();
-                                            if (!c.startsWith('#')) c = '#' + c;
-                                            if (c.length === 7) {
-                                            document.getElementById('repocean_bg_color').value = c;
-                                            }
-                                            "
-                                            onchange="
-                                                                if (!this.value.trim()) {
-                                                                    const d = '#f6f6f6';
-                                                                    this.value = d;
-                                                                    document.getElementById('repocean_bg_color').value = d;
-                                                                }
-                                            "
-                                            />
-                                    </div>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td style="display:flex; align-items:center; gap:10px;">
-                                    <label for="repocean_border_color">
-            <?php esc_html_e('Review Card Border Color', 'widgets-for-google-reviews-and-ratings'); ?>
-                                    </label>
-
-                                    <div style="display:flex; align-items:center; gap:10px;">
-                                        <!-- Color Picker -->
-                                        <input
-                                            type="color"
-                                            id="repocean_border_color"
-                                            name="repocean_border_color"
-                                            value="<?php echo esc_attr(strtoupper($border_color) ?: '#f6f6f6'); ?>"
-                                            style="width:36px;height:36px;border:none;cursor:pointer;"
-                                            oninput="
-                                            const c = this.value.toUpperCase();
-                                            document.getElementById('repocean_border_color_text').value = c;
-                                            "
-                                            />
-
-                                        <!-- Text Input -->
-                                        <input
-                                            type="text"
-                                            id="repocean_border_color_text"
-                                            value="<?php echo esc_attr(strtoupper($border_color) ?: '#f6f6f6'); ?>"
-                                            placeholder="#F6F6F6"
-                                            style="padding:5px;width:100px;border:1px solid #ccc;text-align:center;"
-                                            oninput="
-                                            let c = this.value.toUpperCase();
-                                            if (!c.startsWith('#')) c = '#' + c;
-                                            if (c.length === 7) {
-                                            document.getElementById('repocean_border_color').value = c;
-                                            }
-                                            "
-                                            onchange="
-                                                                if (!this.value.trim()) {
-                                                                    const d = '#F6F6F6';
-                                                                    this.value = d;
-                                                                    document.getElementById('repocean_border_color').value = d;
-                                                                }
-                                            "
-                                            />
-                                    </div>
-                                </td>
-
-
-                            </tr>
-                        </table>
-                    </div>
+                    </div><!-- .repocean-settings-panels -->
                     <div class="repocean-submit-container">
             <?php wp_nonce_field('google_reviews_settings_nonce', 'google_reviews_nonce'); ?>
                         <button type="submit" name="repocean_submit" class="repocean-btn"><?php esc_html_e('Save Changes', 'widgets-for-google-reviews-and-ratings'); ?></button>

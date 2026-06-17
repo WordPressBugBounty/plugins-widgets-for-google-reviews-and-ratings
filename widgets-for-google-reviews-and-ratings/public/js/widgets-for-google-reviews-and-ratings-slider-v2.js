@@ -1,7 +1,6 @@
 (function ($) {
     'use strict';
     $(document).ready(function () {
-        console.log(repocean_slider_js_v2);
         const calculateSlidesToShow_V2 = () => Math.max(Math.floor($('.repocean-slider-main-v2 .right').width() / 280), 1);
         const initializeSlider_V2 = () => {
             const slidesToShow_V2 = calculateSlidesToShow_V2();
@@ -19,39 +18,59 @@
                 arrows: repocean_slider_js_v2.arrowVisibility === 'true'
             });
         };
+        const refreshReadMore = () => {
+            $('.repocean-slider-main-v2 .slider-box-inner').each(function () {
+                const $desc = $(this).find('.description');
+                const $btn = $(this).find('.button-content');
+                if (!$desc.length || !$btn.length || $desc.hasClass('expanded')) {
+                    return;
+                }
+                const el = $desc[0];
+                const fits = el.scrollHeight <= el.clientHeight + 2;
+                const hasPhotos = $(this).find('.repocean-review-photos').length > 0;
+                $btn.toggleClass('hide', fits && !hasPhotos);
+                $btn.toggleClass('is-placeholder', fits && hasPhotos);
+            });
+        };
         initializeSlider_V2();
         setTimeout(() => {
             $('.slider-box-inner, .left-inner').show();
+            refreshReadMore();
         }, 1);
         $(window).on('resize', () => {
             $('.repocean-slider-main-v2 .slider-box-parent').slick('unslick');
             initializeSlider_V2();
+            refreshReadMore();
         });
     });
+
     $('.repocean-slider-main-v2').on('click', '.button-content .rep-button a', function (event) {
         event.preventDefault();
+
         const $button = $(this);
         const $description = $button.closest('.slider-box-inner').find('.description');
         const isExpanded = $description.hasClass('expanded');
         const fullHeight = $description[0].scrollHeight;
-         const collapsedHeight = 40;
-        const totalDuration = 10;
+        const collapsedHeight = 40;
         const totalSteps = 15;
-        const delay = totalDuration / totalSteps;
+        const delay = 10 / totalSteps;
         const heightStep = (fullHeight - collapsedHeight) / totalSteps;
-        if ($description.data('animating'))
+
+        if ($description.data('animating')) {
             return;
+        }
         $description.data('animating', true);
+
         function expandLoop(currentHeight, stepCount) {
             if (stepCount >= totalSteps) {
-                $description.addClass('expanded').removeData('animating');
-                $description.css('max-height', fullHeight + 'px');
+                $description.addClass('expanded').removeData('animating').css('max-height', fullHeight + 'px');
                 return;
             }
             currentHeight += heightStep;
             $description.css('max-height', currentHeight + 'px');
             setTimeout(() => expandLoop(currentHeight, stepCount + 1), delay);
         }
+
         function collapseLoop(currentHeight, stepCount) {
             if (stepCount >= totalSteps) {
                 $description.removeClass('expanding expanded').removeData('animating').css('max-height', '');
@@ -61,6 +80,7 @@
             $description.css('max-height', currentHeight + 'px');
             setTimeout(() => collapseLoop(currentHeight, stepCount + 1), delay);
         }
+
         if (isExpanded) {
             $description.removeClass('expanded');
             collapseLoop(fullHeight, 0);
@@ -70,9 +90,5 @@
             expandLoop(collapsedHeight, 0);
             $button.text(repocean_slider_js_v2.hide);
         }
-    });
-    document.addEventListener('DOMContentLoaded', () => {
-        const reviewBox = document.querySelector('.review-box');
-        reviewBox.style.setProperty('--rating', reviewBox.getAttribute('data-rating'));
     });
 })(jQuery);

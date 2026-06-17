@@ -18,39 +18,59 @@
                 arrows: repocean_slider_js_v4.arrowVisibility === 'true'
             });
         };
+        const refreshReadMore = () => {
+            $('.repocean-slider-main-v4 .slider-box-inner').each(function () {
+                const $desc = $(this).find('.description');
+                const $btn = $(this).find('.button-content');
+                if (!$desc.length || !$btn.length || $desc.hasClass('expanded')) {
+                    return;
+                }
+                const el = $desc[0];
+                const fits = el.scrollHeight <= el.clientHeight + 2;
+                const hasPhotos = $(this).find('.repocean-review-photos').length > 0;
+                $btn.toggleClass('hide', fits && !hasPhotos);
+                $btn.toggleClass('is-placeholder', fits && hasPhotos);
+            });
+        };
         setTimeout(() => {
             $('.slider-box-inner').show();
+            refreshReadMore();
         }, 1);
         initializeSlider_V4();
         $(window).on('resize', () => {
             $('.repocean-slider-main-v4 .slider-box-parent').slick('unslick');
             initializeSlider_V4();
+            refreshReadMore();
         });
     });
+
     $('.repocean-slider-main-v4').on('click', '.button-content .rep-button a', function (event) {
         event.preventDefault();
+
         const $button = $(this);
         const $description = $button.closest('.slider-box-inner').find('.description');
         const isExpanded = $description.hasClass('expanded');
         const fullHeight = $description[0].scrollHeight;
         const collapsedHeight = 40;
-        const totalDuration = 10;
         const totalSteps = 15;
-        const delay = totalDuration / totalSteps;
+        const delay = 10 / totalSteps;
         const heightStep = (fullHeight - collapsedHeight) / totalSteps;
-        if ($description.data('animating'))
+
+        if ($description.data('animating')) {
             return;
+        }
         $description.data('animating', true);
+
         function expandLoop(currentHeight, stepCount) {
             if (stepCount >= totalSteps) {
-                $description.addClass('expanded').removeData('animating');
-                $description.css('max-height', fullHeight + 'px');
+                $description.addClass('expanded').removeData('animating').css('max-height', fullHeight + 'px');
                 return;
             }
             currentHeight += heightStep;
             $description.css('max-height', currentHeight + 'px');
             setTimeout(() => expandLoop(currentHeight, stepCount + 1), delay);
         }
+
         function collapseLoop(currentHeight, stepCount) {
             if (stepCount >= totalSteps) {
                 $description.removeClass('expanding expanded').removeData('animating').css('max-height', '');
@@ -60,6 +80,7 @@
             $description.css('max-height', currentHeight + 'px');
             setTimeout(() => collapseLoop(currentHeight, stepCount + 1), delay);
         }
+
         if (isExpanded) {
             $description.removeClass('expanded');
             collapseLoop(fullHeight, 0);
@@ -69,9 +90,5 @@
             expandLoop(collapsedHeight, 0);
             $button.text(repocean_slider_js_v4.hide);
         }
-    });
-    document.addEventListener('DOMContentLoaded', () => {
-        const reviewBox = document.querySelector('.review-box');
-        reviewBox.style.setProperty('--rating', reviewBox.getAttribute('data-rating'));
     });
 })(jQuery);

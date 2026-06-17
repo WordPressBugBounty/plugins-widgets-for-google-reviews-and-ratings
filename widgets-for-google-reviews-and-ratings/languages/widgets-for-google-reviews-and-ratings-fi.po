@@ -514,3 +514,54 @@ msgstr "Vahvistettu"
 #: public/class-widgets-for-google-reviews-and-ratings-public.php:1469
 msgid "Verified by RepOcean"
 msgstr "Vahvistettu RepOceanin toimesta"
+
+msgid "Review Filters"
+msgstr "Arvostelusuodattimet"
+
+msgid "Minimum Star Rating"
+msgstr "Vähimmäistähtiarvio"
+
+msgid "5 Stars Only"
+msgstr "Vain 5 tähteä"
+
+msgid "4 Stars and Up"
+msgstr "4 tähteä ja enemmän"
+
+msgid "3 Stars and Up"
+msgstr "3 tähteä ja enemmän"
+
+msgid "2 Stars and Up"
+msgstr "2 tähteä ja enemmän"
+
+msgid "1 Star and Up"
+msgstr "1 tähti ja enemmän"
+
+msgid "Hide Reviews Without Text"
+msgstr "Piilota arvostelut ilman tekstiä"
+
+msgid "Display Options"
+msgstr "Näyttöasetukset"
+
+msgid "Hide Review Photos"
+msgstr "Piilota arvostelukuvat"
+
+msgid "Style"
+msgstr "Tyyli"
+
+msgid "Star Color"
+msgstr "Tähtien väri"
+
+msgid "Card Background Color"
+msgstr "Kortin taustaväri"
+
+msgid "Card Border Color"
+msgstr "Kortin reunaväri"
+
+msgid "Card Border Radius"
+msgstr "Kortin reunan pyöristys"
+
+msgid "When enabled, the background and border colors will use dark-mode values."
+msgstr "Kun käytössä, tausta- ja reunavärit käyttävät tumman tilan arvoja."
+
+msgid "Get Pro"
+msgstr "Hanki Pro"

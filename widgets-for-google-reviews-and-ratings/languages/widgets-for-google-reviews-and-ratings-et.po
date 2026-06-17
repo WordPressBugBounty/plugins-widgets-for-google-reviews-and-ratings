@@ -515,3 +515,54 @@ msgstr "Kinnitatud"
 #: public/class-widgets-for-google-reviews-and-ratings-public.php:1469
 msgid "Verified by RepOcean"
 msgstr "RepOcean'i poolt kinnitatud"
+
+msgid "Review Filters"
+msgstr "Arvustuste filtrid"
+
+msgid "Minimum Star Rating"
+msgstr "Minimaalne tärnihinnang"
+
+msgid "5 Stars Only"
+msgstr "Ainult 5 tärni"
+
+msgid "4 Stars and Up"
+msgstr "4 tärni ja rohkem"
+
+msgid "3 Stars and Up"
+msgstr "3 tärni ja rohkem"
+
+msgid "2 Stars and Up"
+msgstr "2 tärni ja rohkem"
+
+msgid "1 Star and Up"
+msgstr "1 tärn ja rohkem"
+
+msgid "Hide Reviews Without Text"
+msgstr "Peida tekstita arvustused"
+
+msgid "Display Options"
+msgstr "Kuvamisvalikud"
+
+msgid "Hide Review Photos"
+msgstr "Peida arvustuste fotod"
+
+msgid "Style"
+msgstr "Stiil"
+
+msgid "Star Color"
+msgstr "Tärni värv"
+
+msgid "Card Background Color"
+msgstr "Kaardi taustavärv"
+
+msgid "Card Border Color"
+msgstr "Kaardi äärise värv"
+
+msgid "Card Border Radius"
+msgstr "Kaardi äärise raadius"
+
+msgid "When enabled, the background and border colors will use dark-mode values."
+msgstr "Kui see on lubatud, kasutavad tausta- ja äärisevärvid tumeda režiimi väärtusi."
+
+msgid "Get Pro"
+msgstr "Hangi Pro"

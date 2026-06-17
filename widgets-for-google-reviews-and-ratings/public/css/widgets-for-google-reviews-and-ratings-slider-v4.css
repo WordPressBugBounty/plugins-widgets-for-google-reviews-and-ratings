@@ -31,7 +31,7 @@
     padding:20px;
     background: var(--repocean-bg, #f6f6f6);
     border: 1px solid var(--repocean-border, #f6f6f6);
-    border-radius: 12px;
+    border-radius: var(--repocean-radius, 12px);
     transition:400ms all;
     transform:translate(0);
 }
@@ -69,21 +69,19 @@
     color:#000000;
     margin-bottom:5px;
 }
-.repocean-slider-main-v4 .description p{
+.repocean-slider-main-v4 .slider-box-parent .slider-box .slider-box-inner .description{
     font-size:14px;
     line-height:1.45;
+    overflow-wrap:break-word;
+    word-wrap:break-word;
 }
-.repocean-slider-main-v4 .description .more-content{
-    font-size:14px;
-    line-height:1.45;
+.repocean-slider-main-v4 .slider-box-parent .slider-box .slider-box-inner .description p{
+    font-size:inherit;
+    line-height:inherit;
 }
-.repocean-slider-main-v4 .description{
-    overflow:hidden;
-    max-height:60px;
-    min-height: 60px;
-    transition:max-height 0.5s ease;
-}
-.repocean-slider-main-v4 .description .more-content{
+.repocean-slider-main-v4 .slider-box-parent .slider-box .slider-box-inner .description .more-content{
+    font-size:inherit;
+    line-height:inherit;
     display:inline;
 }
 .repocean-slider-main-v4 .review-box-parent{
@@ -439,16 +437,20 @@
 .repocean-slider-main-v4 .slider-box-parent .button-content.hide {
   display: none;
 }
-.repocean-slider-main-v4 .slider-box-parent .slider-box .slider-box-inner .description.max87 {
-    overflow: visible;
-    max-height: 67px;
-    min-height: 67px;
+/* Read more hidden but space kept, so photos stay aligned across cards */
+.repocean-slider-main-v4 .slider-box-parent .button-content.is-placeholder {
+  visibility: hidden;
+}
+.repocean-slider-main-v4 .slider-box-parent .slider-box .slider-box-inner .description.max4line {
+    overflow: hidden;
+    max-height: 5.8em; /* 4 lines x 1.45 line-height */
+    min-height: 5.8em;
     transition: max-height 0.5s ease;
 }
-.repocean-slider-main-v4 .slider-box-parent .slider-box .slider-box-inner .description.max63 {
+.repocean-slider-main-v4 .slider-box-parent .slider-box .slider-box-inner .description.max1line {
     overflow: hidden;
-    max-height: 43px;
-    min-height: 43px;
+    max-height: 1.45em; /* 1 line x 1.45 line-height */
+    min-height: 1.45em;
     transition: max-height 0.5s ease;
 }
 
@@ -499,21 +501,40 @@
     background-color: #222222 !important;
     color: #ffffff;
 }
-.repocean-slider-main-v4.dark .next-arrow::after, .repocean-slider-main-v4.dark .next-arrow::before, .repocean-slider-main-v4.dark .prev-arrow::after, .repocean-slider-main-v4.dark .prev-arrow::before {
-    background: #666;
+.repocean-slider-main-v4.dark .slick-arrow {
+    background: #222222;
+    border-color: rgba(255, 255, 255, 0.18);
 }
-.description.max63 {
+.repocean-slider-main-v4.dark .next-arrow::after, .repocean-slider-main-v4.dark .prev-arrow::after {
+    border-color: #ffffff;
+    background: transparent;
+}
+.repocean-slider-main-v4 .description.max4line {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.5em;
-    max-height: 4.5em;
+    max-height: 6em;
 }
-
-.description.max63.expanding,
-.description.max63.expanded {
+.repocean-slider-main-v4 .description.max4line.expanding,
+.repocean-slider-main-v4 .description.max4line.expanded {
+    -webkit-line-clamp: unset;
+    display: block;
+    overflow: hidden;
+}
+.repocean-slider-main-v4 .description.max1line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5em;
+    max-height: 1.5em;
+}
+.repocean-slider-main-v4 .description.max1line.expanding,
+.repocean-slider-main-v4 .description.max1line.expanded {
     -webkit-line-clamp: unset;
     display: block;
     overflow: hidden;
@@ -524,16 +545,36 @@
 .repocean-slider-main-v4 .next-arrow::after {
     margin-right: 3px;
 }
-.repocean-review-photos {
+.repocean-slider-main-v4 .repocean-review-photos {
   display: flex;
   gap: 6px;
   margin-top: 8px;
+  justify-content: center;
 }
-
-.repocean-review-photos img {
-  width: 64px;
+/* width/height forced so v4's generic ".slick-slide img" rule can't stretch the photos */
+.repocean-slider-main-v4 .repocean-review-photos img {
+  width: 64px !important;
   height: 64px !important;
   object-fit: cover;
   border-radius: 6px;
   cursor: pointer;
+}
+
+/* Equal-height cards: every slide stretches to match the tallest card */
+.repocean-slider-main-v4 .slick-initialized .slick-track {
+    display: flex;
+    align-items: stretch;
+}
+.repocean-slider-main-v4 .slick-initialized .slick-track:before,
+.repocean-slider-main-v4 .slick-initialized .slick-track:after {
+    display: none;
+}
+.repocean-slider-main-v4 .slick-initialized .slick-slide {
+    float: none;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.repocean-slider-main-v4 .slick-initialized .slick-slide .slider-box-inner {
+    flex: 1;
 }

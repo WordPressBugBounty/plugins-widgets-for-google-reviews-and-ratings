@@ -10,7 +10,7 @@ class Widgets_For_Google_Reviews_And_Ratings {
         if (defined('WGRR_VERSION')) {
             $this->version = WGRR_VERSION;
         } else {
-            $this->version = '1.0.19';
+            $this->version = '1.0.20';
         }
         $this->plugin_name = 'widgets-for-google-reviews-and-ratings';
         $this->load_dependencies();

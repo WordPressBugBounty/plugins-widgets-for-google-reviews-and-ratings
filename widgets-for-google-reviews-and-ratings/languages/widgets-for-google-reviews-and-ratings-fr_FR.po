@@ -521,3 +521,54 @@ msgstr "Vérifié"
 #: public/class-widgets-for-google-reviews-and-ratings-public.php:1469
 msgid "Verified by RepOcean"
 msgstr "Vérifié par RepOcean"
+
+msgid "Review Filters"
+msgstr "Filtres d'avis"
+
+msgid "Minimum Star Rating"
+msgstr "Note minimale en étoiles"
+
+msgid "5 Stars Only"
+msgstr "5 étoiles uniquement"
+
+msgid "4 Stars and Up"
+msgstr "4 étoiles et plus"
+
+msgid "3 Stars and Up"
+msgstr "3 étoiles et plus"
+
+msgid "2 Stars and Up"
+msgstr "2 étoiles et plus"
+
+msgid "1 Star and Up"
+msgstr "1 étoile et plus"
+
+msgid "Hide Reviews Without Text"
+msgstr "Masquer les avis sans texte"
+
+msgid "Display Options"
+msgstr "Options d'affichage"
+
+msgid "Hide Review Photos"
+msgstr "Masquer les photos des avis"
+
+msgid "Style"
+msgstr "Style"
+
+msgid "Star Color"
+msgstr "Couleur des étoiles"
+
+msgid "Card Background Color"
+msgstr "Couleur de fond de la carte"
+
+msgid "Card Border Color"
+msgstr "Couleur de la bordure de la carte"
+
+msgid "Card Border Radius"
+msgstr "Rayon de la bordure de la carte"
+
+msgid "When enabled, the background and border colors will use dark-mode values."
+msgstr "Lorsqu'elle est activée, les couleurs de fond et de bordure utiliseront les valeurs du mode sombre."
+
+msgid "Get Pro"
+msgstr "Passer à Pro"

@@ -517,3 +517,54 @@ msgstr "Geverifieer"
 #: public/class-widgets-for-google-reviews-and-ratings-public.php:1469
 msgid "Verified by RepOcean"
 msgstr "Geverifieer deur RepOcean"
+
+msgid "Review Filters"
+msgstr "Resensiefilters"
+
+msgid "Minimum Star Rating"
+msgstr "Minimum stergradering"
+
+msgid "5 Stars Only"
+msgstr "Slegs 5 sterre"
+
+msgid "4 Stars and Up"
+msgstr "4 sterre en meer"
+
+msgid "3 Stars and Up"
+msgstr "3 sterre en meer"
+
+msgid "2 Stars and Up"
+msgstr "2 sterre en meer"
+
+msgid "1 Star and Up"
+msgstr "1 ster en meer"
+
+msgid "Hide Reviews Without Text"
+msgstr "Versteek resensies sonder teks"
+
+msgid "Display Options"
+msgstr "Vertoonopsies"
+
+msgid "Hide Review Photos"
+msgstr "Versteek resensiefoto's"
+
+msgid "Style"
+msgstr "Styl"
+
+msgid "Star Color"
+msgstr "Sterkleur"
+
+msgid "Card Background Color"
+msgstr "Kaart agtergrondkleur"
+
+msgid "Card Border Color"
+msgstr "Kaart randkleur"
+
+msgid "Card Border Radius"
+msgstr "Kaart randradius"
+
+msgid "When enabled, the background and border colors will use dark-mode values."
+msgstr "Wanneer geaktiveer, sal die agtergrond- en randkleure die donkermodus-waardes gebruik."
+
+msgid "Get Pro"
+msgstr "Kry Pro"

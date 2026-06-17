@@ -35,7 +35,7 @@
     padding:20px;
     background: var(--repocean-bg, #f6f6f6);
     border: 1px solid var(--repocean-border, #f6f6f6);
-    border-radius: 12px;
+    border-radius: var(--repocean-radius, 12px);
     transition:400ms all;
     transform:translate(0);
 }
@@ -83,21 +83,19 @@
     color:#000000;
     margin-bottom:2px;
 }
-.repocean-slider-main-v2 .description p{
+.repocean-slider-main-v2 .slider-box-parent .slider-box .slider-box-inner .description{
     font-size:14px;
     line-height:1.45;
+    overflow-wrap:break-word;
+    word-wrap:break-word;
 }
-.repocean-slider-main-v2 .description .more-content{
-    font-size:14px;
-    line-height:1.45;
+.repocean-slider-main-v2 .slider-box-parent .slider-box .slider-box-inner .description p{
+    font-size:inherit;
+    line-height:inherit;
 }
-.repocean-slider-main-v2 .description{
-    overflow:hidden;
-    max-height:87px;
-    min-height:87px;
-    transition:max-height 0.5s ease;
-}
-.repocean-slider-main-v2 .description .more-content{
+.repocean-slider-main-v2 .slider-box-parent .slider-box .slider-box-inner .description .more-content{
+    font-size:inherit;
+    line-height:inherit;
     display:inline;
 }
 .repocean-slider-main-v2 .review-box-parent{
@@ -221,20 +219,24 @@
     display:flex;
     padding:0;
 }
-.repocean-slider-main-v2 .slider-box-parent .slider-box .slider-box-inner .description.max87 {
-    overflow: visible;
-    max-height: 87px;
-    min-height: 87px;
+.repocean-slider-main-v2 .slider-box-parent .slider-box .slider-box-inner .description.max4line {
+    overflow: hidden;
+    max-height: 5.8em; /* 4 lines x 1.45 line-height */
+    min-height: 5.8em;
     transition: max-height 0.5s ease;
 }
-.repocean-slider-main-v2 .slider-box-parent .slider-box .slider-box-inner .description.max63 {
+.repocean-slider-main-v2 .slider-box-parent .slider-box .slider-box-inner .description.max1line {
     overflow: hidden;
-    max-height: 63px;
-    min-height: 63px;
+    max-height: 1.45em; /* 1 line x 1.45 line-height */
+    min-height: 1.45em;
     transition: max-height 0.5s ease;
 }
 .repocean-slider-main-v2 .slider-box-parent .button-content.hide {
     display: none;
+}
+/* Read more hidden but space kept, so photos stay aligned across cards */
+.repocean-slider-main-v2 .slider-box-parent .button-content.is-placeholder {
+    visibility: hidden;
 }
 .repocean-slider-main-v2 ul.slick-dots li.slick-active{
     background-color:#cccccc;
@@ -597,21 +599,44 @@
 .repocean-slider-main-v2.dark .SliderContentParent .left .review-text p {
     color: #666;
 }
-.repocean-slider-main-v2.dark .next-arrow::after, .repocean-slider-main-v2.dark .next-arrow::before, .repocean-slider-main-v2.dark .prev-arrow::after, .repocean-slider-main-v2.dark .prev-arrow::before {
-    background: #666;
+.repocean-slider-main-v2.dark .SliderContentParent .left .title,
+.repocean-slider-main-v2.dark .SliderContentParent .left .title strong {
+    color: #666;
 }
-.description.max63 {
+.repocean-slider-main-v2.dark .slick-arrow {
+    background: #222222;
+    border-color: rgba(255, 255, 255, 0.18);
+}
+.repocean-slider-main-v2.dark .next-arrow::after, .repocean-slider-main-v2.dark .prev-arrow::after {
+    border-color: #ffffff;
+    background: transparent;
+}
+.repocean-slider-main-v2 .description.max4line {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.5em;
-    max-height: 4.5em;
+    max-height: 6em;
 }
-
-.description.max63.expanding,
-.description.max63.expanded {
+.repocean-slider-main-v2 .description.max4line.expanding,
+.repocean-slider-main-v2 .description.max4line.expanded {
+    -webkit-line-clamp: unset;
+    display: block;
+    overflow: hidden;
+}
+.repocean-slider-main-v2 .description.max1line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5em;
+    max-height: 1.5em;
+}
+.repocean-slider-main-v2 .description.max1line.expanding,
+.repocean-slider-main-v2 .description.max1line.expanded {
     -webkit-line-clamp: unset;
     display: block;
     overflow: hidden;
@@ -634,4 +659,23 @@
   object-fit: cover;
   border-radius: 6px;
   cursor: pointer;
+}
+
+/* Equal-height cards: every slide stretches to match the tallest card */
+.repocean-slider-main-v2 .slick-initialized .slick-track {
+    display: flex;
+    align-items: stretch;
+}
+.repocean-slider-main-v2 .slick-initialized .slick-track:before,
+.repocean-slider-main-v2 .slick-initialized .slick-track:after {
+    display: none;
+}
+.repocean-slider-main-v2 .slick-initialized .slick-slide {
+    float: none;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.repocean-slider-main-v2 .slick-initialized .slick-slide .slider-box-inner {
+    flex: 1;
 }

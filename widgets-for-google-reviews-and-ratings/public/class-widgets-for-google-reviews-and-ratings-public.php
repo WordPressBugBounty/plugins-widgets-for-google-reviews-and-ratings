@@ -14,6 +14,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
     public $update_review_count;
     public $star_color;
     public $hide_prev_next_buttons;
+    public $hide_review_photos;
     public $show_verified_symbol;
     public $shorten_reviewer_names;
     public $enable_dark_mode;
@@ -21,6 +22,9 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
     public $review_url;
     public $bg_color;
     public $border_color;
+    public $card_border_radius;
+    public $min_star_rating;
+    public $hide_empty_reviews;
 
     public function __construct($plugin_name, $version) {
         $this->plugin_name = $plugin_name;
@@ -36,12 +40,16 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
         $this->repocean_hide_rating_text = 'yes' === get_option('repocean_hide_rating_text', 'no');
         $this->star_color = get_option('repocean_star_color', '#F6BB06');
         $this->hide_prev_next_buttons = 'yes' === get_option('repocean_hide_prev_next_buttons', 'no'); // New Option
+        $this->hide_review_photos = 'yes' === get_option('repocean_hide_review_photos', 'no'); // New Option
         $repocean_show_verified_symbol_default_option = ( $this->repocean_get_user_status_4_july() === 'existing') ? 'no' : 'yes';
         $this->show_verified_symbol = 'yes' === get_option('repocean_show_verified_symbol', $repocean_show_verified_symbol_default_option); // New Option
         $this->shorten_reviewer_names = 'yes' === get_option('repocean_shorten_reviewer_names', 'no');
         $this->enable_dark_mode = 'yes' === get_option('repocean_enable_dark_mode', 'no');
-        $this->bg_color     = get_option('repocean_bg_color', '#f6f6f6');
-        $this->border_color = get_option('repocean_border_color', '#f6f6f6');
+        $this->bg_color         = get_option('repocean_bg_color', '#f6f6f6');
+        $this->border_color     = get_option('repocean_border_color', '#f6f6f6');
+        $this->card_border_radius = (int) get_option('repocean_card_border_radius', 12);
+        $this->min_star_rating   = (int) get_option('repocean_min_star_rating', 5);
+        $this->hide_empty_reviews = 'yes' === get_option('repocean_hide_empty_reviews', 'no');
         if ($this->enable_dark_mode) {
             $this->enable_dark_mode_class = 'dark';
         }
@@ -119,7 +127,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 $postalCode = $address_components[9]['long_name'] ?? '';
                 $addressCountry = $address_components[8]['long_name'] ?? '';
                 $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
-                $html = '<div class="repocean-slider-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
+                $html = '<div class="repocean-slider-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;">';
                 $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
                 $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
                 $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
@@ -139,7 +147,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 $html .= '<meta itemprop="bestRating" content="5">';
                 $html .= '<meta itemprop="reviewCount" content="' . esc_attr($place_data['user_ratings_total'] ?? '') . '">';
                 $html .= '</div>';
-                $reviews = $this->repocean_get_google_reviews();
+                $reviews = $this->repocean_filter_reviews($this->repocean_get_google_reviews());
                 if (empty($reviews)) {
                     return $html . __('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
@@ -147,22 +155,28 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 $reviews = array_slice($reviews, 0, $limit);
                 foreach ($reviews as $review) {
                     // Translators: %s represents the human-readable time difference.
-                    $published_date = !empty($review['published_date']) ? sprintf(__(' %s ago', 'widgets-for-google-reviews-and-ratings'), human_time_diff($review['published_date'] / 1000000)) : '';
+                    $published_date = !empty($review['published_date']) ? sprintf(__('%s ago', 'widgets-for-google-reviews-and-ratings'), human_time_diff($review['published_date'] / 1000000)) : '';
                     $author_name = esc_html($review['author_name'] ?? '');
                     $author_name = $this->shorten_reviewer_name($author_name);
                     $author_name = mb_strimwidth($author_name, 0, 25, '...');
                     $profile_photo_url = esc_url($review['profile_photo_url'] ?? '');
                     $text = esc_html($review['text'] ?? '');
                     $rating = esc_html($review['rating'] ?? '');
-                    $read_more_class = (strlen($text) > 180) ? 'max63' : 'max87';
-                    $read_more_hide_show = (strlen($text) > 180) ? 'show' : 'hide';
+                    $has_photos = !empty($this->repocean_get_review_photos($review));
+                    if ($has_photos) {
+                        $read_more_class = 'max1line';
+                        $read_more_hide_show = !empty($text) ? 'show' : 'hide';
+                    } else {
+                        $read_more_class = 'max4line';
+                        $read_more_hide_show = (strlen($text) > 220) ? 'show' : 'hide';
+                    }
                     $html .= '<div class="slider-box" itemprop="review" itemscope itemtype="https://schema.org/Review">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
                     $html .= '<div class="img-text-content">';
                     $html .= '<div class="profile-img-info">';
                     if ($this->hide_profile_picture === false) {
                         $html .= '<div class="profile-img">';
-                        $html .= '<img src="' . $profile_photo_url . '" alt="Reviewer Image" itemprop="image">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+                        $html .= '<img src="' . $profile_photo_url . '" alt="Reviewer Image" itemprop="image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
                         $html .= '</div>';
                     }
                     $html .= '<div class="profile-info">';
@@ -264,7 +278,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     }
                 }
                 $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
-                $html = '<div class="repocean-slider-main-v1 ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
+                $html = '<div class="repocean-slider-main-v1 ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;">';
                 $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
                 $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
                 $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
@@ -284,7 +298,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 $html .= '<meta itemprop="bestRating" content="5">';
                 $html .= '<meta itemprop="reviewCount" content="' . esc_attr($place_data['user_ratings_total'] ?? '') . '">';
                 $html .= '</div>';
-                $reviews = $this->repocean_get_google_reviews();
+                $reviews = $this->repocean_filter_reviews($this->repocean_get_google_reviews());
                 if (empty($reviews)) {
                     return $html . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
@@ -317,15 +331,21 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $profile_photo_url = esc_url($review['profile_photo_url'] ?? '');
                     $text = esc_html($review['text'] ?? '');
                     $rating = esc_html($review['rating'] ?? '');
-                    $read_more_class = (strlen($text) > 170) ? 'max63' : 'max87';
-                    $read_more_hide_show = (strlen($text) > 170) ? 'show' : 'hide';
+                    $has_photos = !empty($this->repocean_get_review_photos($review));
+                    if ($has_photos) {
+                        $read_more_class = 'max1line';
+                        $read_more_hide_show = !empty($text) ? 'show' : 'hide';
+                    } else {
+                        $read_more_class = 'max4line';
+                        $read_more_hide_show = (strlen($text) > 220) ? 'show' : 'hide';
+                    }
                     $html .= '<div class="slider-box" itemprop="review" itemscope itemtype="https://schema.org/Review">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
                     $html .= '<div class="img-text-content">';
                     $html .= '<div class="profile-img-info">';
                     if ($this->hide_profile_picture === false) {
                         $html .= '<div class="profile-img">';
-                        $html .= '<img src="' . $profile_photo_url . '" alt="Reviewer Image" itemprop="image">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+                        $html .= '<img src="' . $profile_photo_url . '" alt="Reviewer Image" itemprop="image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
                         $html .= '</div>';
                     }
                     $html .= '<div class="profile-info">';
@@ -390,11 +410,11 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     'arrowVisibility' => $this->hide_prev_next_buttons === false ? 'true' : 'false'
                 ));
                 $place_data = $this->place_details;
-                $reviews = $this->repocean_get_google_reviews();
+                $reviews = $this->repocean_filter_reviews($this->repocean_get_google_reviews());
                 if (empty($reviews)) {
                     return '<div class="repocean-slider-main-v2">' . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
-                $html = '<div class="repocean-slider-main-v2 ' . esc_attr($this->enable_dark_mode_class) . '" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
+                $html = '<div class="repocean-slider-main-v2 ' . esc_attr($this->enable_dark_mode_class) . '" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;">';
                 $html .= '<div class="repocean-content-wrapper">';
                 $html .= '<div class="slider-outer">';
                 $html .= '<div class="SliderContentParent">';
@@ -428,8 +448,14 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $rating = esc_attr($review['rating'] ?? 0);
                     // Translators: %s represents the human-readable time difference.
                     $published_date = !empty($review['published_date']) ? sprintf(__('%s ago', 'widgets-for-google-reviews-and-ratings'), human_time_diff($review['published_date'] / 1000000)) : '';
-                    $read_more_class = (strlen($text) > 170) ? 'max63' : 'max87';
-                    $read_more_hide_show = (strlen($text) > 170) ? 'show' : 'hide';
+                    $has_photos = !empty($this->repocean_get_review_photos($review));
+                    if ($has_photos) {
+                        $read_more_class = 'max1line';
+                        $read_more_hide_show = !empty($text) ? 'show' : 'hide';
+                    } else {
+                        $read_more_class = 'max4line';
+                        $read_more_hide_show = (strlen($text) > 220) ? 'show' : 'hide';
+                    }
                     $html .= '<div class="slider-box">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
 
@@ -437,7 +463,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $html .= '<div class="img-text-content">';
                     $html .= '<div class="profile-img-info">';
                     if ($this->hide_profile_picture === false) {
-                        $html .= '<div class="profile-img"><img src="' . $profile_photo_url . '" alt="Reviewer Image"></div>'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+                        $html .= '<div class="profile-img"><img src="' . $profile_photo_url . '" alt="Reviewer Image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'"></div>'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
                     }
                     $html .= '<div class="profile-info">';
                     $html .= '<div class="profile-title"><h6>' . $author_name . '</h6></div>';
@@ -497,11 +523,11 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     'arrowVisibility' => $this->hide_prev_next_buttons === false ? 'true' : 'false'
                 ));
                 $place_data = $this->place_details;
-                $reviews = $this->repocean_get_google_reviews();
+                $reviews = $this->repocean_filter_reviews($this->repocean_get_google_reviews());
                 if (empty($reviews)) {
                     return '<div class="repocean-slider-main-v3">' . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
-                $html = '<div class="repocean-slider-main-v3 ' . esc_attr($this->enable_dark_mode_class) . '" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
+                $html = '<div class="repocean-slider-main-v3 ' . esc_attr($this->enable_dark_mode_class) . '" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;">';
                 $html .= '<div class="repocean-content-wrapper">';
                 $html .= '<div class="slider-outer">';
                 $html .= '<div class="SliderContentParent">';
@@ -535,8 +561,14 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $rating = esc_attr($review['rating'] ?? 0);
                     // Translators: %s represents the human-readable time difference.
                     $published_date = !empty($review['published_date']) ? sprintf(__('%s ago', 'widgets-for-google-reviews-and-ratings'), human_time_diff($review['published_date'] / 1000000)) : '';
-                    $read_more_class = (strlen($text) > 170) ? 'max63' : 'max87';
-                    $read_more_hide_show = (strlen($text) > 170) ? 'show' : 'hide';
+                    $has_photos = !empty($this->repocean_get_review_photos($review));
+                    if ($has_photos) {
+                        $read_more_class = 'max1line';
+                        $read_more_hide_show = !empty($text) ? 'show' : 'hide';
+                    } else {
+                        $read_more_class = 'max4line';
+                        $read_more_hide_show = (strlen($text) > 220) ? 'show' : 'hide';
+                    }
                     $html .= '<div class="slider-box">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
 
@@ -544,7 +576,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $html .= '<div class="img-text-content">';
                     $html .= '<div class="profile-img-info">';
                     if ($this->hide_profile_picture === false) {
-                        $html .= '<div class="profile-img"><img src="' . $profile_photo_url . '" alt="Reviewer Image"></div>'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+                        $html .= '<div class="profile-img"><img src="' . $profile_photo_url . '" alt="Reviewer Image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'"></div>'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
                     }
                     $html .= '<div class="profile-info">';
                     $html .= '<div class="profile-title"><h6>' . $author_name . '</h6></div>';
@@ -604,11 +636,11 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     'arrowVisibility' => $this->hide_prev_next_buttons === false ? 'true' : 'false'
                 ));
                 $place_data = $this->place_details;
-                $reviews = $this->repocean_get_google_reviews();
+                $reviews = $this->repocean_filter_reviews($this->repocean_get_google_reviews());
                 if (empty($reviews)) {
                     return '<div class="slider-main repocean-slider-main-v4">' . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
-                $html = '<div class="slider-main repocean-slider-main-v4 ' . esc_attr($this->enable_dark_mode_class) . '" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
+                $html = '<div class="slider-main repocean-slider-main-v4 ' . esc_attr($this->enable_dark_mode_class) . '" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;">';
                 $html .= '<div class="repocean-content-wrapper">';
                 $html .= '<div class="slider-outer">';
                 $html .= '<div class="SliderContentParent">';
@@ -623,14 +655,20 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $rating = esc_attr($review['rating'] ?? 0);
                     // Translators: %s represents the human-readable time difference.
                     $published_date = !empty($review['published_date']) ? sprintf(__('%s ago', 'widgets-for-google-reviews-and-ratings'), human_time_diff($review['published_date'] / 1000000)) : '';
-                    $read_more_class = (strlen($text) > 170) ? 'max63' : 'max87';
-                    $read_more_hide_show = (strlen($text) > 170) ? 'show' : 'hide';
+                    $has_photos = !empty($this->repocean_get_review_photos($review));
+                    if ($has_photos) {
+                        $read_more_class = 'max1line';
+                        $read_more_hide_show = !empty($text) ? 'show' : 'hide';
+                    } else {
+                        $read_more_class = 'max4line';
+                        $read_more_hide_show = (strlen($text) > 220) ? 'show' : 'hide';
+                    }
                     $html .= '<div class="slider-box">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
                     $html .= '<div class="img-text-content">';
                     $html .= '<div class="profile-img-info">';
                     if ($this->hide_profile_picture === false) {
-                        $html .= '<div class="profile-img"><img src="' . $profile_photo_url . '" alt="Reviewer Image"></div>'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+                        $html .= '<div class="profile-img"><img src="' . $profile_photo_url . '" alt="Reviewer Image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'"></div>'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
                     }
                     $html .= '<div class="profile-info">';
                     $html .= '<div class="profile-title"><h6>' . $author_name . '</h6></div>';
@@ -714,7 +752,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     }
                 }
                 $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
-                $html = '<div class="repocean-grid-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
+                $html = '<div class="repocean-grid-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;">';
                 $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
                 $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
                 $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
@@ -734,7 +772,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 $html .= '<meta itemprop="bestRating" content="5">';
                 $html .= '<meta itemprop="reviewCount" content="' . esc_attr($place_data['user_ratings_total'] ?? '') . '">';
                 $html .= '</div>';
-                $reviews = $this->repocean_get_google_reviews();
+                $reviews = $this->repocean_filter_reviews($this->repocean_get_google_reviews());
                 if (empty($reviews)) {
                     return '<div class="repocean-grid-main">' . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
@@ -768,8 +806,14 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $author_name = mb_strimwidth($author_name, 0, 25, '...');
                     $profile_photo_url = esc_url($review['profile_photo_url'] ?? '');
                     $text = esc_html($review['text'] ?? '');
-                    $read_more_class = (strlen($text) > 170) ? 'max63' : 'max87';
-                    $read_more_hide_show = (strlen($text) > 170) ? 'show' : 'hide';
+                    $has_photos = !empty($this->repocean_get_review_photos($review));
+                    if ($has_photos) {
+                        $read_more_class = 'max1line';
+                        $read_more_hide_show = !empty($text) ? 'show' : 'hide';
+                    } else {
+                        $read_more_class = 'max4line';
+                        $read_more_hide_show = (strlen($text) > 220) ? 'show' : 'hide';
+                    }
                     $rating = isset($review['rating']) ? floatval($review['rating']) : 0;
                     $html .= '<div class="grid-box" itemprop="review" itemscope itemtype="https://schema.org/Review">';
                     $html .= '<div class="grid-box-inner">';
@@ -777,7 +821,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $html .= '<div class="profile-img-info">';
                     if ($this->hide_profile_picture === false) {
                         $html .= '<div class="profile-img">';
-                        $html .= '<img src="' . esc_url($profile_photo_url) . '" alt="Reviewer Image" itemprop="image">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+                        $html .= '<img src="' . esc_url($profile_photo_url) . '" alt="Reviewer Image" itemprop="image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
                         $html .= '</div>';
                     }
                     $html .= '<div class="profile-info">';
@@ -871,7 +915,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     }
                 }
                 $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
-                $html = '<div class="repocean-list-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
+                $html = '<div class="repocean-list-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;">';
                 $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
                 $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
                 $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
@@ -891,7 +935,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 $html .= '<meta itemprop="bestRating" content="5">';
                 $html .= '<meta itemprop="reviewCount" content="' . esc_attr($place_data['user_ratings_total'] ?? '') . '">';
                 $html .= '</div>';
-                $reviews = $this->repocean_get_google_reviews();
+                $reviews = $this->repocean_filter_reviews($this->repocean_get_google_reviews());
                 if (empty($reviews)) {
                     return '<div class="repocean-list-main">' . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
@@ -932,7 +976,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $html .= '<div class="profile-img-info">';
                     if ($this->hide_profile_picture === false) {
                         $html .= '<div class="profile-img">';
-                        $html .= '<img src="' . esc_url($profile_photo_url) . '" alt="Reviewer Image" itemprop="image">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+                        $html .= '<img src="' . esc_url($profile_photo_url) . '" alt="Reviewer Image" itemprop="image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
                         $html .= '</div>';
                     }
                     $html .= '<div class="profile-info">';
@@ -1028,7 +1072,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     }
                 }
                 $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
-                $html = '<div class="repocean-sidebar-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . ';">';
+                $html = '<div class="repocean-sidebar-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;">';
                 $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
                 $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
                 $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
@@ -1048,7 +1092,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 $html .= '<meta itemprop="bestRating" content="5">';
                 $html .= '<meta itemprop="reviewCount" content="' . esc_attr($place_data['user_ratings_total'] ?? '') . '">';
                 $html .= '</div>';
-                $reviews = $this->repocean_get_google_reviews();
+                $reviews = $this->repocean_filter_reviews($this->repocean_get_google_reviews());
                 if (empty($reviews)) {
                     return '<div class="repocean-sidebar-main">' . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
@@ -1107,7 +1151,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $html .= '<div class="profile-img-info">';
                     if ($this->hide_profile_picture === false) {
                         $html .= '<div class="profile-img">';
-                        $html .= '<img src="' . $profile_photo_url . '" alt="Profile image of ' . $author_name . '" itemprop="image">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+                        $html .= '<img src="' . $profile_photo_url . '" alt="Profile image of ' . $author_name . '" itemprop="image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
                         $html .= '</div>';
                     }
                     $html .= '<div class="profile-info">';
@@ -1142,6 +1186,10 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
     }
 
     private function repocean_get_review_photos($review) {
+        if ($this->hide_review_photos) {
+            return array();
+        }
+
         $review_photos = $review['review_photos'] ?? array();
 
         if (is_string($review_photos)) {
@@ -1165,11 +1213,15 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
             return '';
         }
 
+        // Lightbox assets — enqueued only when a review actually has photos.
+        wp_enqueue_style($this->plugin_name . '-lightbox', plugin_dir_url(__FILE__) . 'css/widgets-for-google-reviews-and-ratings-lightbox.css', [], $this->version, 'all');
+        wp_enqueue_script($this->plugin_name . '-lightbox', plugin_dir_url(__FILE__) . 'js/widgets-for-google-reviews-and-ratings-lightbox.js', ['jquery'], $this->version, true);
+
         $html = '<div class="repocean-review-photos">';
 
         foreach ($review_photos as $review_photo) {
            
-            $html .= '<img src="' . $review_photo . '" alt="Review photo">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+            $html .= '<img src="' . $review_photo . '" alt="Review photo" referrerpolicy="no-referrer">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
             
         }
 
@@ -1473,6 +1525,18 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
         return (strlen($short_name) > 22) ? substr($short_name, 0, 20) . '...' : $short_name;
     }
     
+    private function repocean_filter_reviews($reviews) {
+        return array_values(array_filter($reviews, function ($r) {
+            if ($this->min_star_rating > 0 && floatval($r['rating'] ?? 0) < $this->min_star_rating) {
+                return false;
+            }
+            if ($this->hide_empty_reviews && trim($r['text'] ?? '') === '') {
+                return false;
+            }
+            return true;
+        }));
+    }
+
     public function repocean_get_google_reviews() {
         $transient_key = 'repocean_google_review';
         $option_key = 'repocean_google_review_fallback';
@@ -1495,7 +1559,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 }
                 return $reviews;
             }
-            set_transient($transient_key, $reviews, HOUR_IN_SECONDS);
+            set_transient($transient_key, $reviews, 30 * MINUTE_IN_SECONDS);
             update_option($option_key, $reviews);
             do_action('repocean_update_review_count');
         }

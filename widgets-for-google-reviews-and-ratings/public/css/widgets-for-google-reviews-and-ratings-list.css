@@ -73,7 +73,7 @@
     padding: 20px;
     background: var(--repocean-bg, #f6f6f6);
     border: 1px solid var(--repocean-border, #f6f6f6);
-    border-radius: 12px;
+    border-radius: var(--repocean-radius, 12px);
     transition: 400ms all;
     transform: translate(0);
 }
@@ -363,6 +363,10 @@
 .repocean-list-main.dark .button-content .readmore-button a {
     color: #ffffff;
     opacity: 0.5;
+}
+.repocean-list-main.dark .review-sub-title,
+.repocean-list-main.dark .review-sub-title strong {
+    color: #666;
 }
 .repocean-list-main .list-outer {
   padding: 5px 0;

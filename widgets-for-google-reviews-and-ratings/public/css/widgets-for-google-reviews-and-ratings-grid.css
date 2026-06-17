@@ -45,7 +45,7 @@
     padding: 20px;
     background: var(--repocean-bg, #f6f6f6);
     border: 1px solid var(--repocean-border, #f6f6f6);
-    border-radius: 12px;
+    border-radius: var(--repocean-radius, 12px);
     transition: 400ms all;
     transform: translate(0);
     display: block;
@@ -97,39 +97,41 @@
     text-transform: none;
     padding-bottom: 0px;
 }
-.repocean-grid-main .description p {
+.repocean-grid-main .grid-box-parent .grid-box .grid-box-inner .description {
     font-size: 14px;
     line-height: 1.45;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
-.repocean-grid-main .description .more-content {
-    font-size: 14px;
-    line-height: 1.45;
+.repocean-grid-main .grid-box-parent .grid-box .grid-box-inner .description p {
+    font-size: inherit;
+    line-height: inherit;
 }
-.repocean-grid-main .description {
-    overflow: hidden;
-    max-height: 116px;
-    transition: max-height 0.5s ease;
-}
-.repocean-grid-main .description .more-content {
+.repocean-grid-main .grid-box-parent .grid-box .grid-box-inner .description .more-content {
+    font-size: inherit;
+    line-height: inherit;
     display: inline;
 }
-.repocean-grid-main .description.max87 {
-    overflow: visible;
-    max-height: 87px;
-    min-height: 87px;
+/* 4 lines when there are no photos */
+.repocean-grid-main .grid-box-parent .grid-box .grid-box-inner .description.max4line {
+    overflow: hidden;
+    max-height: 5.8em; /* 4 lines x 1.45 line-height */
+    min-height: 5.8em;
     transition: max-height 0.5s ease;
 }
-.repocean-grid-main .description.max63 {
+/* 1 line when the review has photos */
+.repocean-grid-main .grid-box-parent .grid-box .grid-box-inner .description.max1line {
     overflow: hidden;
-    max-height: 63px;
-    min-height: 63px;
+    max-height: 1.45em; /* 1 line x 1.45 line-height */
+    min-height: 1.45em;
     transition: max-height 0.5s ease;
 }
 .repocean-grid-main .button-content.hide {
     display: none;
 }
-.repocean-grid-main .description .more-content {
-    display: inline;
+/* Read more hidden but space kept, so photos stay aligned across cards */
+.repocean-grid-main .button-content.is-placeholder {
+    visibility: hidden;
 }
 .repocean-grid-main .button-content .readmore-button a {
     font-size: 13px;
@@ -410,18 +412,36 @@
     color: #ffffff;
     opacity: 0.5;
 }
-.description.max63 {
+.repocean-grid-main.dark .review-sub-title,
+.repocean-grid-main.dark .review-sub-title strong {
+    color: #666;
+}
+.repocean-grid-main .description.max4line {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.5em;
-    max-height: 4.5em;
+    max-height: 6em;
 }
-
-.description.max63.expanding,
-.description.max63.expanded {
+.repocean-grid-main .description.max4line.expanding,
+.repocean-grid-main .description.max4line.expanded {
+    -webkit-line-clamp: unset;
+    display: block;
+    overflow: hidden;
+}
+.repocean-grid-main .description.max1line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5em;
+    max-height: 1.5em;
+}
+.repocean-grid-main .description.max1line.expanding,
+.repocean-grid-main .description.max1line.expanded {
     -webkit-line-clamp: unset;
     display: block;
     overflow: hidden;

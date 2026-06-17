@@ -515,3 +515,54 @@ msgstr "Patvirtinta"
 #: public/class-widgets-for-google-reviews-and-ratings-public.php:1469
 msgid "Verified by RepOcean"
 msgstr "Patvirtinta RepOcean"
+
+msgid "Review Filters"
+msgstr "Filtri recensioni"
+
+msgid "Minimum Star Rating"
+msgstr "Valutazione minima in stelle"
+
+msgid "5 Stars Only"
+msgstr "Solo 5 stelle"
+
+msgid "4 Stars and Up"
+msgstr "4 stelle e oltre"
+
+msgid "3 Stars and Up"
+msgstr "3 stelle e oltre"
+
+msgid "2 Stars and Up"
+msgstr "2 stelle e oltre"
+
+msgid "1 Star and Up"
+msgstr "1 stella e oltre"
+
+msgid "Hide Reviews Without Text"
+msgstr "Nascondi recensioni senza testo"
+
+msgid "Display Options"
+msgstr "Opzioni di visualizzazione"
+
+msgid "Hide Review Photos"
+msgstr "Nascondi foto delle recensioni"
+
+msgid "Style"
+msgstr "Stile"
+
+msgid "Star Color"
+msgstr "Colore stelle"
+
+msgid "Card Background Color"
+msgstr "Colore sfondo scheda"
+
+msgid "Card Border Color"
+msgstr "Colore bordo scheda"
+
+msgid "Card Border Radius"
+msgstr "Raggio bordo scheda"
+
+msgid "When enabled, the background and border colors will use dark-mode values."
+msgstr "Se abilitata, i colori di sfondo e del bordo useranno i valori della modalità scura."
+
+msgid "Get Pro"
+msgstr "Passa a Pro"

@@ -9,9 +9,23 @@
         } else {
             $('#loadMore').show();
         }
+        // Hide "Read more" where text isn't truncated; keep its space when photos exist
+        const refreshReadMore = ($box) => {
+            const $desc = $box.find('.description');
+            const $btn = $box.find('.button-content');
+            if (!$desc.length || !$btn.length || $desc.hasClass('expanded')) {
+                return;
+            }
+            const el = $desc[0];
+            const fits = el.scrollHeight <= el.clientHeight + 2;
+            const hasPhotos = $box.find('.repocean-review-photos').length > 0;
+            $btn.toggleClass('hide', fits && !hasPhotos);
+            $btn.toggleClass('is-placeholder', fits && hasPhotos);
+        };
         gridBoxes.slice(0, itemsToShow).each(function (index, element) {
             setTimeout(function () {
                 $(element).addClass('show');
+                refreshReadMore($(element));
             }, index * 100);
         });
         visibleItems += itemsToShow;
@@ -20,6 +34,7 @@
             nextItems.each(function (index, element) {
                 setTimeout(function () {
                     $(element).addClass('show');
+                    refreshReadMore($(element));
                 }, index * 100);
             });
             visibleItems += itemsToShow;
@@ -67,6 +82,11 @@
                 expandLoop(collapsedHeight, 0);
                 $(this).text(repocean_grid_js.hide);
             }
+        });
+        $(window).on('resize', function () {
+            $('.repocean-grid-main .grid-box.show').each(function () {
+                refreshReadMore($(this));
+            });
         });
     });
 })(jQuery);

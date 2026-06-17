@@ -18,95 +18,79 @@
                 arrows: repocean_slider_js.arrowVisibility === 'true'
             });
         };
-        console.log(repocean_slider_js.hide);
+        // Hide "Read more" on any card whose text isn't actually truncated
+        const refreshReadMore = () => {
+            $('.repocean-slider-main .slider-box-inner').each(function () {
+                const $desc = $(this).find('.description');
+                const $btn = $(this).find('.button-content');
+                if (!$desc.length || !$btn.length || $desc.hasClass('expanded')) {
+                    return;
+                }
+                const el = $desc[0];
+                const fits = el.scrollHeight <= el.clientHeight + 2;
+                const hasPhotos = $(this).find('.repocean-review-photos').length > 0;
+                // No photos: collapse the row. Has photos: keep its space so photos line up.
+                $btn.toggleClass('hide', fits && !hasPhotos);
+                $btn.toggleClass('is-placeholder', fits && hasPhotos);
+            });
+        };
         initializeSlider();
         $(window).on('resize', () => {
             $('.repocean-slider-main .repocean-slider-box-parent').slick('unslick');
             initializeSlider();
+            refreshReadMore();
         });
         setTimeout(() => {
             $('.slider-box-inner, .repocean-footer').show();
+            refreshReadMore();
         }, 1);
     });
+
     $('.repocean-slider-main').on('click', '.button-content .readmore-button a', function (event) {
-    event.preventDefault();
+        event.preventDefault();
 
-    const $button = $(this);
-    const $description = $button.closest('.slider-box-inner').find('.description');
-    const isExpanded = $description.hasClass('expanded');
-    const fullHeight = $description[0].scrollHeight;
-    const collapsedHeight = 40;
-    const totalDuration = 10;
-    const totalSteps = 15;
-    const delay = totalDuration / totalSteps;
-    const heightStep = (fullHeight - collapsedHeight) / totalSteps;
+        const $button = $(this);
+        const $description = $button.closest('.slider-box-inner').find('.description');
+        const isExpanded = $description.hasClass('expanded');
+        const fullHeight = $description[0].scrollHeight;
+        const collapsedHeight = 40;
+        const totalSteps = 15;
+        const delay = 10 / totalSteps;
+        const heightStep = (fullHeight - collapsedHeight) / totalSteps;
 
-    console.log('%c[CLICK EVENT]', 'color: green; font-weight: bold;');
-    console.log('Description element:', $description[0]);
-    console.log('Expanded state before:', isExpanded);
-    console.log('Full height:', fullHeight, 'px');
-    console.log('Collapsed height:', collapsedHeight, 'px');
-    console.log('Height step:', heightStep.toFixed(2), 'px per frame');
-    console.log('Delay per frame:', delay.toFixed(2), 'ms');
-
-    if ($description.data('animating')) {
-        console.warn('[Animation Skipped] Already animating.');
-        return;
-    }
-
-    $description.data('animating', true);
-    const startTime = Date.now();
-
-    function expandLoop(currentHeight, stepCount) {
-        console.log(`%c[Expand] Step ${stepCount} | Height: ${currentHeight.toFixed(2)}px`, 'color: blue;');
-
-        if (stepCount >= totalSteps) {
-            $description.addClass('expanded').removeData('animating');
-            $description.css('max-height', fullHeight + 'px');
-            console.log('%c[Expand Complete]', 'color: green;');
-            console.log('Final height set to:', fullHeight + 'px');
-            console.log('Total expand time:', Date.now() - startTime, 'ms');
+        if ($description.data('animating')) {
             return;
         }
+        $description.data('animating', true);
 
-        currentHeight += heightStep;
-        $description.css('max-height', currentHeight + 'px');
-
-        setTimeout(() => expandLoop(currentHeight, stepCount + 1), delay);
-    }
-
-    function collapseLoop(currentHeight, stepCount) {
-        console.log(`%c[Collapse] Step ${stepCount} | Height: ${currentHeight.toFixed(2)}px`, 'color: red;');
-
-        if (stepCount >= totalSteps) {
-            $description.removeClass('expanding expanded').removeData('animating').css('max-height', '');
-            console.log('%c[Collapse Complete]', 'color: green;');
-            console.log('Final height reset to auto (collapsed)');
-            console.log('Total collapse time:', Date.now() - startTime, 'ms');
-            return;
+        function expandLoop(currentHeight, stepCount) {
+            if (stepCount >= totalSteps) {
+                $description.addClass('expanded').removeData('animating').css('max-height', fullHeight + 'px');
+                return;
+            }
+            currentHeight += heightStep;
+            $description.css('max-height', currentHeight + 'px');
+            setTimeout(() => expandLoop(currentHeight, stepCount + 1), delay);
         }
 
-        currentHeight -= heightStep;
-        $description.css('max-height', currentHeight + 'px');
+        function collapseLoop(currentHeight, stepCount) {
+            if (stepCount >= totalSteps) {
+                $description.removeClass('expanding expanded').removeData('animating').css('max-height', '');
+                return;
+            }
+            currentHeight -= heightStep;
+            $description.css('max-height', currentHeight + 'px');
+            setTimeout(() => collapseLoop(currentHeight, stepCount + 1), delay);
+        }
 
-        setTimeout(() => collapseLoop(currentHeight, stepCount + 1), delay);
-    }
-
-    if (isExpanded) {
-        console.log('%c[Action] Starting collapse...', 'color: orange; font-weight: bold;');
-        $description.removeClass('expanded');
-        collapseLoop(fullHeight, 0);
-        $button.text(repocean_slider_js.read_more);
-    } else {
-        console.log('%c[Action] Starting expand...', 'color: cyan; font-weight: bold;');
-        $description.addClass('expanding').css('max-height', collapsedHeight + 'px');
-        expandLoop(collapsedHeight, 0);
-        $button.text(repocean_slider_js.hide);
-    }
-});
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const reviewBox = document.querySelector('.review-box');
-        reviewBox.style.setProperty('--rating', reviewBox.getAttribute('data-rating'));
+        if (isExpanded) {
+            $description.removeClass('expanded');
+            collapseLoop(fullHeight, 0);
+            $button.text(repocean_slider_js.read_more);
+        } else {
+            $description.addClass('expanding').css('max-height', collapsedHeight + 'px');
+            expandLoop(collapsedHeight, 0);
+            $button.text(repocean_slider_js.hide);
+        }
     });
 })(jQuery);

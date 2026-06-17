@@ -1,5 +1,14 @@
 (function ($) {
     'use strict';
+    // Auto-hide our success notices (settings saved, place disconnected)
+    $(function () {
+        var $autoNotice = $('.wgrr-auto-notice');
+        if ($autoNotice.length) {
+            setTimeout(function () {
+                $autoNotice.fadeOut(400);
+            }, 2000);
+        }
+    });
     $(document).on('click', '#wgrr-disconnect-btn-red', function (e) {
         e.preventDefault();
         if (!confirm('Are you sure you want to disconnect?')) {
@@ -52,6 +61,13 @@
         setTimeout(function () {
             tooltip.style.opacity = 0;
         }, 2000);
+    });
+    // Show a spinner and block re-clicks while the settings form saves (full page submit)
+    $(document).on('submit', 'form', function () {
+        var $btn = $(this).find('button[name="repocean_submit"]');
+        if ($btn.length) {
+            $btn.addClass('is-loading');
+        }
     });
     window.addEventListener('message', function (event) {
         if (event.data.type === 'placeDetails') {
