@@ -4,7 +4,7 @@ Tags: google business, google business reviews, google places reviews, reviews, 
 Requires at least: 4.6  
 Tested up to: 7.0
 Requires PHP: 7.2  
-Stable tag: 1.0.20
+Stable tag: 1.0.21
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -89,6 +89,10 @@ This plugin relies on the external service **RepOcean** to fetch and display **G
 
 
 == Changelog ==
+
+= 1.0.21 - 18.06.2026 =
+- Fixed the "Read more" button not appearing on some reviews in narrower layouts.
+- Review photos that fail to load are now hidden instead of showing a broken image.
 
 = 1.0.20 - 17.06.2026 =
 - Added a "Hide Review Photos" option.

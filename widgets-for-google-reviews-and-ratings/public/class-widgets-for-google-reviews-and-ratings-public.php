@@ -168,7 +168,9 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                         $read_more_hide_show = !empty($text) ? 'show' : 'hide';
                     } else {
                         $read_more_class = 'max4line';
-                        $read_more_hide_show = (strlen($text) > 220) ? 'show' : 'hide';
+                        // Always render the button; the JS measures real overflow (scrollHeight
+                        // vs clientHeight) and hides it when the text actually fits the card width.
+                        $read_more_hide_show = 'show';
                     }
                     $html .= '<div class="slider-box" itemprop="review" itemscope itemtype="https://schema.org/Review">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
@@ -337,7 +339,9 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                         $read_more_hide_show = !empty($text) ? 'show' : 'hide';
                     } else {
                         $read_more_class = 'max4line';
-                        $read_more_hide_show = (strlen($text) > 220) ? 'show' : 'hide';
+                        // Always render the button; the JS measures real overflow (scrollHeight
+                        // vs clientHeight) and hides it when the text actually fits the card width.
+                        $read_more_hide_show = 'show';
                     }
                     $html .= '<div class="slider-box" itemprop="review" itemscope itemtype="https://schema.org/Review">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
@@ -454,7 +458,9 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                         $read_more_hide_show = !empty($text) ? 'show' : 'hide';
                     } else {
                         $read_more_class = 'max4line';
-                        $read_more_hide_show = (strlen($text) > 220) ? 'show' : 'hide';
+                        // Always render the button; the JS measures real overflow (scrollHeight
+                        // vs clientHeight) and hides it when the text actually fits the card width.
+                        $read_more_hide_show = 'show';
                     }
                     $html .= '<div class="slider-box">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
@@ -567,7 +573,9 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                         $read_more_hide_show = !empty($text) ? 'show' : 'hide';
                     } else {
                         $read_more_class = 'max4line';
-                        $read_more_hide_show = (strlen($text) > 220) ? 'show' : 'hide';
+                        // Always render the button; the JS measures real overflow (scrollHeight
+                        // vs clientHeight) and hides it when the text actually fits the card width.
+                        $read_more_hide_show = 'show';
                     }
                     $html .= '<div class="slider-box">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
@@ -661,7 +669,9 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                         $read_more_hide_show = !empty($text) ? 'show' : 'hide';
                     } else {
                         $read_more_class = 'max4line';
-                        $read_more_hide_show = (strlen($text) > 220) ? 'show' : 'hide';
+                        // Always render the button; the JS measures real overflow (scrollHeight
+                        // vs clientHeight) and hides it when the text actually fits the card width.
+                        $read_more_hide_show = 'show';
                     }
                     $html .= '<div class="slider-box">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
@@ -812,7 +822,9 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                         $read_more_hide_show = !empty($text) ? 'show' : 'hide';
                     } else {
                         $read_more_class = 'max4line';
-                        $read_more_hide_show = (strlen($text) > 220) ? 'show' : 'hide';
+                        // Always render the button; the JS measures real overflow (scrollHeight
+                        // vs clientHeight) and hides it when the text actually fits the card width.
+                        $read_more_hide_show = 'show';
                     }
                     $rating = isset($review['rating']) ? floatval($review['rating']) : 0;
                     $html .= '<div class="grid-box" itemprop="review" itemscope itemtype="https://schema.org/Review">';
@@ -1221,7 +1233,9 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
 
         foreach ($review_photos as $review_photo) {
            
-            $html .= '<img src="' . $review_photo . '" alt="Review photo" referrerpolicy="no-referrer">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+            // If the photo URL fails to load, drop the element entirely so no broken-image
+            // icon shows and it stays out of the lightbox (which reads thumbs at click time).
+            $html .= '<img src="' . $review_photo . '" alt="Review photo" referrerpolicy="no-referrer" onerror="this.remove()">'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
             
         }
 
