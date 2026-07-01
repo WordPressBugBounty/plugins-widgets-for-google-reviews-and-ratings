@@ -4,6 +4,21 @@
         let listBoxes = $('.list-box');
         let itemsToShow = 5;
         let visibleItems = 0;
+        // Show the "Read more" button only when the review text really overflows
+        // the collapsed box, measured at the actual rendered width. Hidden boxes
+        // (display:none) measure as 0, so we only check the ones already revealed.
+        const refreshReadMore = () => {
+            $('.repocean-list-main .list-box.show .list-box-inner').each(function () {
+                const $desc = $(this).find('.description');
+                const $btn = $(this).find('.button-content');
+                if (!$desc.length || !$btn.length || $desc.hasClass('expanded') || $desc.hasClass('expanding')) {
+                    return;
+                }
+                const el = $desc[0];
+                const fits = el.scrollHeight <= el.clientHeight + 2;
+                $btn.toggleClass('hide', fits);
+            });
+        };
         if (listBoxes.length <= itemsToShow) {
             $('#loadMoreList').hide();
         } else {
@@ -12,6 +27,7 @@
         listBoxes.slice(0, itemsToShow).each(function (index, element) {
             setTimeout(function () {
                 $(element).addClass('show');
+                refreshReadMore();
             }, index * 100);
         });
         visibleItems += itemsToShow;
@@ -20,6 +36,7 @@
             nextItems.each(function (index, element) {
                 setTimeout(function () {
                     $(element).addClass('show');
+                    refreshReadMore();
                 }, index * 100);
             });
             visibleItems += itemsToShow;
@@ -27,6 +44,7 @@
                 $(this).hide();
             }
         });
+        $(window).on('resize', refreshReadMore);
         $('.repocean-list-main').on('click', '.button-content .readmore-button a', function (event) {
             event.preventDefault();
             const $button = $(this);

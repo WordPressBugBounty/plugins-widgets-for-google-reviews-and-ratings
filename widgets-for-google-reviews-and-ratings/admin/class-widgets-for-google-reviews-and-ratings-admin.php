@@ -504,6 +504,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                     'repocean_hide_rating_text' => 'no',
                     'repocean_hide_prev_next_buttons' => 'no',
                     'repocean_hide_review_photos' => 'no',
+                    'repocean_hide_review_us_button' => 'no',
                     'repocean_show_verified_symbol' => $repocean_show_verified_symbol_default_option,
                     'repocean_star_color' => '251,183,1',
                     'repocean_shorten_reviewer_names' => 'no',
@@ -521,6 +522,11 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                 update_option('repocean_min_star_rating', $min_star_rating);
                 $card_border_radius = isset($_POST['repocean_card_border_radius']) ? max(0, min(40, (int) $_POST['repocean_card_border_radius'])) : 12;
                 update_option('repocean_card_border_radius', $card_border_radius);
+                $review_text_lines = isset($_POST['repocean_review_text_lines']) ? (int) $_POST['repocean_review_text_lines'] : 5;
+                if ($review_text_lines < 2 || $review_text_lines > 10) {
+                    $review_text_lines = 5;
+                }
+                update_option('repocean_review_text_lines', (string) $review_text_lines);
                 echo '<div class="notice notice-success is-dismissible wgrr-auto-notice"><p>' . esc_html__('Settings saved successfully!', 'widgets-for-google-reviews-and-ratings') . '</p></div>';
             }
             $hide_date = get_option('repocean_hide_date', 'no');
@@ -529,6 +535,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
             $hide_rating_text = get_option('repocean_hide_rating_text', 'no'); // New Option
             $hide_prev_next_buttons = get_option('repocean_hide_prev_next_buttons', 'no'); // New Option
             $hide_review_photos = get_option('repocean_hide_review_photos', 'no'); // New Option
+            $hide_review_us_button = get_option('repocean_hide_review_us_button', 'no');
             $show_verified_symbol = get_option('repocean_show_verified_symbol', $repocean_show_verified_symbol_default_option); // New Option
             $repocean_show_verified_by = get_option('repocean_show_verified_by', $repocean_show_verified_by_default_option);
             $star_color = get_option('repocean_star_color', '#FBB701'); // New Option
@@ -539,6 +546,10 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
             $card_border_radius = (int) get_option('repocean_card_border_radius', 12);
             $min_star_rating = (int) get_option('repocean_min_star_rating', 5);
             $hide_empty_reviews = get_option('repocean_hide_empty_reviews', 'no');
+            $review_text_lines = (int) get_option('repocean_review_text_lines', 5);
+            if ($review_text_lines < 2 || $review_text_lines > 10) {
+                $review_text_lines = 5;
+            }
             ?>
             <div class="repocean-settings-wrapper">
                 <form method="post" action="">
@@ -581,6 +592,16 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                             <div class="repocean-panel-body">
                                 <table class="repocean-form-table">
                                     <tr>
+                                        <td style="display:flex; align-items:center; gap:10px;">
+                                            <label for="repocean_review_text_lines"><?php esc_html_e('Review Text Lines', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                            <select id="repocean_review_text_lines" name="repocean_review_text_lines" style="min-width:60px; border:1px solid #ccc; border-radius:4px;">
+                                                <?php for ($i = 2; $i <= 10; $i++) : ?>
+                                                    <option value="<?php echo esc_attr($i); ?>" <?php selected($review_text_lines, $i); ?>><?php echo esc_html($i); ?></option>
+                                                <?php endfor; ?>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td>
                                             <input type="checkbox" id="repocean_hide_date" name="repocean_hide_date" value="yes" <?php checked($hide_date, 'yes'); ?>>
                                             <label for="repocean_hide_date"><?php esc_html_e('Hide Review Date', 'widgets-for-google-reviews-and-ratings'); ?></label>
@@ -601,7 +622,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                     <tr>
                                         <td>
                                             <input type="checkbox" id="repocean_hide_rating_text" name="repocean_hide_rating_text" value="yes" <?php checked($hide_rating_text, 'yes'); ?>>
-                                            <label for="repocean_hide_rating_text"><?php esc_html_e('Hide Widget Rating Text (e.g. EXCELLENT XXX reviews)', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                            <label for="repocean_hide_rating_text"><?php esc_html_e('Hide Widget Rating Summary (e.g. EXCELLENT XXX reviews)', 'widgets-for-google-reviews-and-ratings'); ?></label>
                                         </td>
                                     </tr>
                                     <tr>
@@ -614,6 +635,12 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
                                         <td>
                                             <input type="checkbox" id="repocean_hide_review_photos" name="repocean_hide_review_photos" value="yes" <?php checked($hide_review_photos, 'yes'); ?>>
                                             <label for="repocean_hide_review_photos"><?php esc_html_e('Hide Review Photos', 'widgets-for-google-reviews-and-ratings'); ?></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="repocean_hide_review_us_button" name="repocean_hide_review_us_button" value="yes" <?php checked($hide_review_us_button, 'yes'); ?>>
+                                            <label for="repocean_hide_review_us_button"><?php esc_html_e('Hide "Review Us on Google" Button', 'widgets-for-google-reviews-and-ratings'); ?></label>
                                         </td>
                                     </tr>
                                     <tr>

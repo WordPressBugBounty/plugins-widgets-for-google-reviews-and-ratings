@@ -9,8 +9,8 @@
                 autoplay: true,
                 infinite: true,
                 autoplaySpeed: 6100,
-                prevArrow: '<button class="slide-arrow prev-arrow"></button>',
-                nextArrow: '<button class="slide-arrow next-arrow"></button>',
+                prevArrow: '<button class="slide-arrow prev-arrow" aria-label="Previous"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9,18 15,12 9,6"></polyline></svg></button>',
+                nextArrow: '<button class="slide-arrow next-arrow" aria-label="Next"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9,18 15,12 9,6"></polyline></svg></button>',
                 speed: 700,
                 slidesToShow: slidesToShow_V2,
                 slidesToScroll: 1,
@@ -35,6 +35,7 @@
         initializeSlider_V2();
         setTimeout(() => {
             $('.slider-box-inner, .left-inner').show();
+            $('.repocean-slider-main-v2 .repocean-content-wrapper').css('visibility', 'visible');
             refreshReadMore();
         }, 1);
         $(window).on('resize', () => {

@@ -115,8 +115,8 @@
 /* 4 lines when there are no photos */
 .repocean-grid-main .grid-box-parent .grid-box .grid-box-inner .description.max4line {
     overflow: hidden;
-    max-height: 5.8em; /* 4 lines x 1.45 line-height */
-    min-height: 5.8em;
+    max-height: calc(var(--repocean-lines, 5) * 1.45em); /* lines x 1.45 line-height */
+    min-height: calc(var(--repocean-lines, 5) * 1.45em);
     transition: max-height 0.5s ease;
 }
 /* 1 line when the review has photos */
@@ -296,14 +296,37 @@
     display: block;
 }
 .repocean-grid-main .review-link .gi-small-logo {
-    width: 80px;
-    padding-left: 4px;
+    width: 66px;
+    padding-left: 7px;
 }
 .repocean-grid-main div.review-link .gi-small-logo img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
+}
+.repocean-grid-main .bottom-review-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.repocean-grid-main .bottom-review-us .bottom-review-us-btn {
+    display: inline-block;
+    background-color: #4285f4;
+    padding: 9.5px 13.5px;
+    border-radius: 4px;
+    border: 1px solid #4285f4;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none !important;
+    line-height: 1;
+    font-size: 13px;
+}
+.repocean-grid-main .bottom-review-us .bottom-review-us-btn:hover {
+    background-color: #1266f1;
+    border-color: #1266f1;
 }
 .repocean-grid-main .load-more-btn {
     border-style: solid;
@@ -419,11 +442,11 @@
 .repocean-grid-main .description.max4line {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: var(--repocean-lines, 5);
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.5em;
-    max-height: 6em;
+    max-height: calc(var(--repocean-lines, 5) * 1.5em);
 }
 .repocean-grid-main .description.max4line.expanding,
 .repocean-grid-main .description.max4line.expanded {

@@ -2,6 +2,29 @@
     height: auto;
     max-width: 100%;
 }
+.repocean-list-main .bottom-review-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.repocean-list-main .bottom-review-us .bottom-review-us-btn {
+    display: inline-block;
+    background-color: #4285f4;
+    padding: 9.5px 13.5px;
+    border-radius: 4px;
+    border: 1px solid #4285f4;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none !important;
+    line-height: 1;
+    font-size: 13px;
+}
+.repocean-list-main .bottom-review-us .bottom-review-us-btn:hover {
+    background-color: #1266f1;
+    border-color: #1266f1;
+}
 .repocean-list-main .content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -45,8 +68,8 @@
     display: block;
 }
 .repocean-list-main .review-link .gi-small-logo {
-    width: 80px;
-    padding-left: 4px;
+    width: 66px;
+    padding-left: 7px;
 }
 .repocean-list-main div.review-link .gi-small-logo img {
     width: 100%;
@@ -138,6 +161,21 @@
     /* Initial height */
     transition: max-height 0.5s ease;
     /* Smooth transition for height */
+}
+/* Review Text Lines option: clamp to a fixed number of lines when set */
+.repocean-list-main[style*="--repocean-lines"] .description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--repocean-lines);
+    max-height: calc(var(--repocean-lines) * 1.6em);
+    min-height: 0;
+    overflow: hidden;
+}
+.repocean-list-main[style*="--repocean-lines"] .description.expanding,
+.repocean-list-main[style*="--repocean-lines"] .description.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+    max-height: none;
 }
 .repocean-list-main .description.max87 {
     overflow: visible;

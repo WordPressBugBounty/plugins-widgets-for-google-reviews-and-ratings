@@ -9,8 +9,8 @@
                 autoplay: true,
                 infinite: true,
                 autoplaySpeed: 6100,
-                prevArrow: '<button class="slide-arrow prev-arrow"></button>',
-                nextArrow: '<button class="slide-arrow next-arrow"></button>',
+                prevArrow: '<button class="slide-arrow prev-arrow" aria-label="Previous"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9,18 15,12 9,6"></polyline></svg></button>',
+                nextArrow: '<button class="slide-arrow next-arrow" aria-label="Next"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9,18 15,12 9,6"></polyline></svg></button>',
                 speed: 700,
                 slidesToShow: slidesToShow_v1,
                 slidesToScroll: 1,
@@ -34,7 +34,8 @@
         };
         initializeSlider_v1();
         setTimeout(() => {
-            $('.repocean-slider-main-v1 .slider-box-inner, .review-sub-title, .repocean-footer').show();
+            $('.repocean-slider-main-v1 .slider-box-inner, .repocean-slider-main-v1 .review-sub-title').show();
+            $('.repocean-slider-main-v1 .repocean-content-wrapper').css('visibility', 'visible');
             refreshReadMore();
         }, 1);
         $(window).on('resize', () => {

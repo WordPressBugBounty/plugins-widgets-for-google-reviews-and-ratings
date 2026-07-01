@@ -21,6 +21,25 @@
             $(".next-btn").toggleClass("slick-disabled", currentSlide === slick.slideCount - 1);
         });
         $(".prev-btn").addClass("slick-disabled");
+        // Show the "Read more" button only when the review text really overflows
+        // the collapsed box, measured at the actual rendered width. Slick clones
+        // slides, so every .bottom-part-inner (originals + clones) is measured.
+        const refreshReadMore = () => {
+            $('.repocean-sidebar-main .bottom-part-inner').each(function () {
+                const $desc = $(this).find('.description');
+                const $btn = $(this).find('.button-content');
+                if (!$desc.length || !$btn.length || $desc.hasClass('expanded') || $desc.hasClass('expanding')) {
+                    return;
+                }
+                const el = $desc[0];
+                const fits = el.scrollHeight <= el.clientHeight + 2;
+                $btn.toggleClass('hide', fits);
+            });
+        };
+        setTimeout(refreshReadMore, 100);
+        setTimeout(refreshReadMore, 400);
+        $slider.on('setPosition', refreshReadMore);
+        $(window).on('resize', refreshReadMore);
         $('.repocean-sidebar-main').on('click', '.button-content .readmore-button a', function (event) {
             event.preventDefault();
             const $button = $(this);

@@ -1,37 +1,35 @@
-=== Widgets for Google Business Reviews and Ratings ===
+=== Widgets for Google Reviews and Ratings ===
 Contributors: repocean  
-Tags: google business, google business reviews, google places reviews, reviews, google testimonials  
+Tags: google business, google reviews, google places reviews, reviews, google testimonials  
 Requires at least: 4.6  
 Tested up to: 7.0
 Requires PHP: 7.2  
-Stable tag: 1.0.21
+Stable tag: 1.0.22
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
-🛠️ **Display Google Business Reviews** on your WordPress website to build credibility, boost customer trust, and improve SEO with Google Rich Snippets
+Display Google Business Reviews on your WordPress website to build credibility, boost customer trust, and improve SEO with Google Rich Snippets
 
 == Description ==
 
-Widgets for Google Business Reviews and Ratings helps you display Google Business Reviews directly on your WordPress website. Showing real customer reviews can help build trust with visitors and improve your website’s SEO.
-
-You can display authentic reviews from Google My Business and show potential customers the experiences shared by your clients.
+Widgets for Google Reviews and Ratings helps you display Google Business Reviews directly on your WordPress website. Showing real customer reviews can help build trust with visitors and improve your website’s SEO.
 
 This plugin allows you to display up to 10 Google Business reviews. The setup process is simple and takes less than 2 minutes.
 
 == Video Tutorial ==
 
-For a step-by-step guide on how to set up and use Widgets for Google Business Reviews and Ratings, watch this video:
+For a step-by-step guide on how to set up and use Widgets for Google Reviews and Ratings, watch this video:
 
 https://www.youtube.com/watch?v=9wdY5igDxgg
 
 == Key Features ==
 
-✅ **Easy Setup**: No coding is required to display **Google Business Reviews** on your WordPress site. Use shortcodes and customizable widgets to display reviews anywhere you like.  
-✅ **No API Key Required**: Start showcasing your **Google Business Reviews** without complicated setup.  
+✅ **Easy Setup**: No coding is required to display Google Reviews on your WordPress site. Use shortcodes and customizable widgets to display reviews anywhere you like.  
+✅ **No API Key Required**: Start showcasing your Google Reviews without complicated setup.  
 ✅ **Customizable Design**: Modify the appearance of your Testimonials widget using CSS to match your site’s branding and design.  
 📱 **Mobile-Friendly and Fast**: Optimized for fast load times on mobile devices, ensuring a seamless experience for users on all devices.  
 🌍 **Translation Ready**: Compatible with **WPML**, **Polylang**, and other translation plugins, ensuring your reviews reach a global audience.  
-👥 **Social Proof**: Trusted by thousands of businesses, build credibility by displaying verified reviews from **Google My Business**.
+👥 **Social Proof**: Trusted by thousands of businesses, build credibility by displaying verified reviews from Google Business Profile.
 
 == Benefits ==
 
@@ -44,16 +42,16 @@ https://www.youtube.com/watch?v=9wdY5igDxgg
 1. Install the plugin from the WordPress dashboard.
 2. Add the shortcode `[repocean_reviews]` to the post, page, or widget where you'd like to display your reviews.
 3. Customize the appearance using CSS to ensure the reviews match your website’s design.
-4. Your **Google Business Reviews** will automatically appear on your site, boosting your credibility and SEO.
+4. Your Google  Reviews will automatically appear on your site, boosting your credibility and SEO.
 
 == Frequently Asked Questions ==
 
-= How do I display my Google Business Reviews? =  
-To display your **Google Business Reviews** on your WordPress site, follow these steps:
+= How do I display my Google Reviews? =  
+To display your Google Reviews on your WordPress site, follow these steps:
 1. Install and activate the plugin.
 2. Add the shortcode `[repocean_reviews]` to any post or page.
 3. Customize the appearance with CSS, if necessary.
-4. Your **Google Business Reviews** will automatically appear in a styled format.
+4. Your Google Reviews will automatically appear in a styled format.
 
 = Do I need an API key to use this plugin? =  
 No API key is required to start using the plugin. Simply install, activate, and add the shortcode.
@@ -67,16 +65,16 @@ The plugin automatically fetches new reviews at regular intervals.
 = Does the plugin support multiple languages? =  
 Yes, the plugin supports multiple languages and is fully compatible with popular translation plugins like **WPML** and **Polylang**.
 
-= Can I display Google Business Reviews from multiple locations? =  
+= Can I display Google Reviews from multiple locations? =  
 Currently, the plugin only supports displaying reviews for a single Google Business location. For managing reviews from multiple locations, you'll need to set up separate instances.
 
 = How does this plugin improve SEO? =  
-By displaying **Google Business Reviews** and integrating **Rich Snippets**, the plugin helps boost your site's search engine visibility. Fresh reviews also provide search engines with new content to index.
+By displaying Google Reviews and integrating **Rich Snippets**, the plugin helps boost your site's search engine visibility. Fresh reviews also provide search engines with new content to index.
 
 
 == External Service Notice ==
 
-This plugin relies on the external service **RepOcean** to fetch and display **Google Business Reviews**.
+This plugin relies on the external service **RepOcean** to fetch and display Google Reviews.
 
 * **Service URL:** [RepOcean](https://repocean.com/index.html)  
 * **Service Terms of Use:** [RepOcean Terms of Use](https://repocean.com/terms.html)  
@@ -85,10 +83,17 @@ This plugin relies on the external service **RepOcean** to fetch and display **G
 == Screenshots ==
 
 1. **Admin Settings Page**: Easily configure your settings from the WordPress admin dashboard.
-2. **Frontend Display**: View how your **Google Business Reviews** will appear on your website, seamlessly blending with your content.
+2. **Frontend Display**: View how your Google Reviews will appear on your website, seamlessly blending with your content.
 
 
 == Changelog ==
+
+= 1.0.22 - 01.07.2026 =
+- Added a "Review us on Google" button to the Slider V1, V3, V4, Grid, and List layouts.
+- Added a "Hide Review Us on Google Button" option.
+- Added a "Review Text Lines" option to control how much review text shows before "Read more".
+- Added the rating summary header to the Slider V4 layout.
+- Improved the "Read more" button detection in the List and Sidebar layouts.
 
 = 1.0.21 - 18.06.2026 =
 - Fixed the "Read more" button not appearing on some reviews in narrower layouts.

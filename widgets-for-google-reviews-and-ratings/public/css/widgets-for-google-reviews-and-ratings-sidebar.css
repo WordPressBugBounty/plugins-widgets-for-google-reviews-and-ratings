@@ -153,6 +153,21 @@
     margin-top: 12px;
     transition: max-height 0.5s ease;
 }
+/* Review Text Lines option: clamp to a fixed number of lines when set */
+.repocean-sidebar-main[style*="--repocean-lines"] .description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--repocean-lines);
+    max-height: calc(var(--repocean-lines) * 1.7em);
+    min-height: 0;
+    overflow: hidden;
+}
+.repocean-sidebar-main[style*="--repocean-lines"] .description.expanding,
+.repocean-sidebar-main[style*="--repocean-lines"] .description.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+    max-height: none;
+}
 .repocean-sidebar-main .description .more-content {
     display: inline;
 }

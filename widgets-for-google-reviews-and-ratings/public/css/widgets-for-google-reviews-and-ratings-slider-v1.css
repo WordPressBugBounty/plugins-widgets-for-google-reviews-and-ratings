@@ -106,8 +106,8 @@
 /* 4 lines when there are no photos */
 .repocean-slider-main-v1 .repocean-slider-box-parent .slider-box .slider-box-inner .description.max4line {
     overflow: hidden;
-    max-height: 5.8em; /* 4 lines x 1.45 line-height */
-    min-height: 5.8em;
+    max-height: calc(var(--repocean-lines, 5) * 1.45em); /* lines x 1.45 line-height */
+    min-height: calc(var(--repocean-lines, 5) * 1.45em);
     transition: max-height 0.5s ease;
 }
 /* 1 line when the review has photos */
@@ -268,7 +268,8 @@ font-size: 13px;
   height: 30px;
   border-radius: 50%;
   background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #5f6368;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -279,37 +280,28 @@ font-size: 13px;
 
 /* positions */
 .repocean-slider-main-v1 .repocean-slider-box-parent .prev-arrow {
-  left: -12px;
+  left: 0px;
 }
 .repocean-slider-main-v1 .repocean-slider-box-parent .next-arrow {
-  right: -12px;
+  right: 0px;
 }
 
-/* chevrons */
-.repocean-slider-main-v1 .repocean-slider-box-parent .slick-arrow::after {
-  content: "";
-  width: 9px;
-  height: 9px;
-  border-top: 2px solid #7b7b7b;
-  border-right: 2px solid #7b7b7b;
-  border-radius: 1px;
-  transition: border-color 0.25s ease;
+/* chevrons (inline SVG) */
+.repocean-slider-main-v1 .repocean-slider-box-parent .slick-arrow svg {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
-.repocean-slider-main-v1 .repocean-slider-box-parent .prev-arrow::after {
-  transform: rotate(-135deg);
-}
-.repocean-slider-main-v1 .repocean-slider-box-parent .next-arrow::after {
-  transform: rotate(45deg);
+.repocean-slider-main-v1 .repocean-slider-box-parent .prev-arrow svg {
+  transform: rotate(180deg);
 }
 
 /* hover/focus state (non-sticky) */
 .repocean-slider-main-v1 .repocean-slider-box-parent .slick-arrow:hover {
   background-color: #4d4d4d !important;
   outline-color: #424242 !important;
+  color: #fff;
   box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.05);
-}
-.repocean-slider-main-v1 .repocean-slider-box-parent .slick-arrow:hover::after {
-  border-color: #fff;
 }
 
 /* disabled state */
@@ -491,11 +483,8 @@ font-size: 13px;
 }
 .repocean-slider-main-v1.dark .repocean-slider-box-parent .slick-arrow {
     background: #222222;
+    color: #ffffff;
     border-color: rgba(255, 255, 255, 0.18);
-}
-.repocean-slider-main-v1.dark .repocean-slider-box-parent .next-arrow::after, .repocean-slider-main-v1.dark .repocean-slider-box-parent .prev-arrow::after {
-    border-color: #ffffff;
-    background: transparent;
 }
 
 .repocean-slider-main-v1 div.review-link {
@@ -565,14 +554,37 @@ font-size: 13px;
     z-index: 2; /* Ensure it is above empty stars */
 }
 .repocean-slider-main-v1 .review-link .gi-small-logo {
-  width: 80px;
-  padding-left: 4px;
+  width: 66px;
+  padding-left: 7px;
 }
 .repocean-slider-main-v1 div.review-link .gi-small-logo img {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
+}
+.repocean-slider-main-v1 .bottom-review-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.repocean-slider-main-v1 .bottom-review-us .bottom-review-us-btn {
+    display: inline-block;
+    background-color: #4285f4;
+    padding: 9.5px 13.5px;
+    border-radius: 4px;
+    border: 1px solid #4285f4;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none !important;
+    line-height: 1;
+    font-size: 13px;
+}
+.repocean-slider-main-v1 .bottom-review-us .bottom-review-us-btn:hover {
+    background-color: #1266f1;
+    border-color: #1266f1;
 }
 .repocean-slider-main-v1 .repocean-slider-box-parent .prev-arrow::after {
     margin-left: 3px;
@@ -583,11 +595,11 @@ font-size: 13px;
 .repocean-slider-main-v1 .description.max4line {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: var(--repocean-lines, 5);
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.5em;
-    max-height: 6em;
+    max-height: calc(var(--repocean-lines, 5) * 1.5em);
 }
 .repocean-slider-main-v1 .description.max4line.expanding,
 .repocean-slider-main-v1 .description.max4line.expanded {
