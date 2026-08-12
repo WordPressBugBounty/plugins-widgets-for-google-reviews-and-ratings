@@ -250,9 +250,14 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
      * Returns the inline CSS custom-property fragment that controls how many
      * lines of review text are shown before "Read more". Applied to every
      * layout (default 5 lines, configurable 2-10 in the settings).
+     *
+     * Reviews with photos give up 3 lines to make room for the photo strip, so
+     * they follow the same setting minus 3 (never below 1 line).
      */
     private function repocean_review_lines_style() {
-        return ' --repocean-lines:' . (int) $this->review_text_lines . ';';
+        $lines = (int) $this->review_text_lines;
+        $photo_lines = max(1, $lines - 3);
+        return ' --repocean-lines:' . $lines . '; --repocean-lines-photo:' . $photo_lines . ';';
     }
 
     public function repocean_reviews_slider_v1_shortcode($atts) {
@@ -1029,6 +1034,8 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     // vs clientHeight) and hides it when the text actually fits the collapsed box.
                     $read_more_hide_show = 'show';
                     $rating = isset($review['rating']) ? floatval($review['rating']) : 0;
+                    // Reviews with photos show 3 fewer lines of text (see repocean_review_lines_style).
+                    $photo_class = !empty($this->repocean_get_review_photos($review)) ? ' has-photos' : '';
                     $html .= '<div class="list-box" itemprop="review" itemscope itemtype="https://schema.org/Review">';
                     $html .= '<div class="list-box-inner">';
                     $html .= '<div class="img-text-content">';
@@ -1063,7 +1070,7 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     }
                     $html .= '</div>';
                     $html .= '</div>';
-                    $html .= '<div class="description" itemprop="reviewBody">';
+                    $html .= '<div class="description' . $photo_class . '" itemprop="reviewBody">';
                     $html .= '<p>' . $text . '</p>';
                     $html .= '</div>';
                     $html .= '<div class="button-content ' . $read_more_hide_show . '">';
@@ -1197,6 +1204,10 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     $text = esc_html($review['text'] ?? '');
                     $rating = isset($review['rating']) ? floatval($review['rating']) : 0;
                     $read_more_class = (strlen($text) > 170) ? 'max63' : '';
+                    // Reviews with photos show 3 fewer lines of text (see repocean_review_lines_style).
+                    if (!empty($this->repocean_get_review_photos($review))) {
+                        $read_more_class = trim($read_more_class . ' has-photos');
+                    }
                     // Always render the button; the JS measures real overflow (scrollHeight
                     // vs clientHeight) and hides it when the text actually fits the collapsed box.
                     $read_more_hide_show = 'show';

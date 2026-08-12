@@ -833,6 +833,8 @@ class Widgets_For_Google_Reviews_And_Ratings_Admin {
     }
 
     public function wgrr_widget_customizer_get_pro_setting() {
-        ?> <iframe src="https://repocean.com/widget/pro.html" title="Embedded Content from repocean.com" width="100%" height="900px" scrolling="yes" frameborder="0" allowfullscreen></iframe><?php
+        $place_id = is_array($this->place_details) && !empty($this->place_details['place_id']) ? $this->place_details['place_id'] : '';
+        $pricing_url = add_query_arg('place_id', rawurlencode($place_id), REPOCEAN_URL . 'widget/pro.php');
+        ?> <iframe src="<?php echo esc_url($pricing_url); ?>" title="Embedded Content from repocean.com" width="100%" height="900px" scrolling="yes" frameborder="0" allowfullscreen></iframe><?php
     }
 }

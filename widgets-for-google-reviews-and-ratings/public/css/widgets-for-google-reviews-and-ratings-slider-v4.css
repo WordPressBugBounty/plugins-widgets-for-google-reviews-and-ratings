@@ -536,8 +536,8 @@
 }
 .repocean-slider-main-v4 .slider-box-parent .slider-box .slider-box-inner .description.max1line {
     overflow: hidden;
-    max-height: 1.45em; /* 1 line x 1.45 line-height */
-    min-height: 1.45em;
+    max-height: calc(var(--repocean-lines-photo, 2) * 1.45em); /* (lines - 3) x 1.45 line-height */
+    min-height: calc(var(--repocean-lines-photo, 2) * 1.45em);
     transition: max-height 0.5s ease;
 }
 
@@ -611,11 +611,11 @@
 .repocean-slider-main-v4 .description.max1line {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: var(--repocean-lines-photo, 2);
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.5em;
-    max-height: 1.5em;
+    max-height: calc(var(--repocean-lines-photo, 2) * 1.5em);
 }
 .repocean-slider-main-v4 .description.max1line.expanding,
 .repocean-slider-main-v4 .description.max1line.expanded {

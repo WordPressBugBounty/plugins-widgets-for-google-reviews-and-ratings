@@ -4,7 +4,7 @@ Tags: google business, google reviews, google places reviews, reviews, google te
 Requires at least: 4.6  
 Tested up to: 7.0
 Requires PHP: 7.2  
-Stable tag: 1.0.22
+Stable tag: 1.0.23
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -87,6 +87,9 @@ This plugin relies on the external service **RepOcean** to fetch and display Goo
 
 
 == Changelog ==
+
+= 1.0.23 - 11.08.2026 =
+- Fixed the "Review Text Lines" option being ignored on reviews that have photos.
 
 = 1.0.22 - 01.07.2026 =
 - Added a "Review us on Google" button to the Slider V1, V3, V4, Grid, and List layouts.
