@@ -4,7 +4,7 @@ Tags: google business, google reviews, google places reviews, reviews, google te
 Requires at least: 4.6  
 Tested up to: 7.0
 Requires PHP: 7.2  
-Stable tag: 1.0.23
+Stable tag: 1.0.24
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -87,6 +87,10 @@ This plugin relies on the external service **RepOcean** to fetch and display Goo
 
 
 == Changelog ==
+
+= 1.0.24 - 09.10.2026 =
+- Fixed the postcode and country being swapped in the address rich snippet markup for the Slider layout.
+- Added business address, geo, and rating rich snippet markup to the Slider V2, V3, and V4 layouts.
 
 = 1.0.23 - 11.08.2026 =
 - Fixed the "Review Text Lines" option being ignored on reviews that have photos.

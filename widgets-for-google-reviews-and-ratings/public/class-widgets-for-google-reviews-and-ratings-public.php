@@ -121,18 +121,32 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                 ));
                 $place_data = $this->place_details;
                 $address_components = $place_data['address_components'] ?? [];
-                $address_parts = [
-                    $address_components[0]['long_name'] ?? '',
-                    $address_components[1]['long_name'] ?? '',
-                    $address_components[2]['long_name'] ?? '',
-                    $address_components[3]['long_name'] ?? ''
-                ];
-                $streetAddress = implode(', ', array_filter($address_parts));
-                $addressLocality = $address_components[4]['long_name'] ?? '';
-                $addressRegion = $address_components[5]['long_name'] ?? '';
-                $addressRegion .= isset($address_components[7]['long_name']) ? ', ' . $address_components[7]['long_name'] : '';
-                $postalCode = $address_components[9]['long_name'] ?? '';
-                $addressCountry = $address_components[8]['long_name'] ?? '';
+                $streetAddress = '';
+                $addressLocality = '';
+                $addressRegion = '';
+                $postalCode = '';
+                $addressCountry = '';
+                foreach ($address_components as $component) {
+                    if (in_array('street_number', $component['types'])) {
+                        $streetAddress = $component['long_name'];
+                    }
+                    if (in_array('route', $component['types'])) {
+                        $streetAddress .= ' ' . $component['long_name'];
+                    }
+                    if (in_array('locality', $component['types'])) {
+                        $addressLocality = $component['long_name'];
+                    }
+                    if (in_array('administrative_area_level_1', $component['types'])) {
+                        $addressRegion = $component['short_name'];
+                    }
+                    if (in_array('postal_code', $component['types'])) {
+                        $postalCode = $component['long_name'];
+                    }
+                    if (in_array('country', $component['types'])) {
+                        $addressCountryFull = $component['long_name'];
+                        $addressCountry = $this->get_country_code($addressCountryFull);
+                    }
+                }
                 $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
                 $html = '<div class="repocean-slider-main ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;' . $this->repocean_review_lines_style() . '">';
                 $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
@@ -438,11 +452,58 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     'arrowVisibility' => $this->hide_prev_next_buttons === false ? 'true' : 'false'
                 ));
                 $place_data = $this->place_details;
+                $address_components = $place_data['address_components'] ?? [];
+                $streetAddress = '';
+                $addressLocality = '';
+                $addressRegion = '';
+                $postalCode = '';
+                $addressCountry = '';
+                foreach ($address_components as $component) {
+                    if (in_array('street_number', $component['types'])) {
+                        $streetAddress = $component['long_name'];
+                    }
+                    if (in_array('route', $component['types'])) {
+                        $streetAddress .= ' ' . $component['long_name'];
+                    }
+                    if (in_array('locality', $component['types'])) {
+                        $addressLocality = $component['long_name'];
+                    }
+                    if (in_array('administrative_area_level_1', $component['types'])) {
+                        $addressRegion = $component['short_name'];
+                    }
+                    if (in_array('postal_code', $component['types'])) {
+                        $postalCode = $component['long_name'];
+                    }
+                    if (in_array('country', $component['types'])) {
+                        $addressCountryFull = $component['long_name'];
+                        $addressCountry = $this->get_country_code($addressCountryFull);
+                    }
+                }
+                $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
                 $reviews = $this->repocean_filter_reviews($this->repocean_get_google_reviews());
                 if (empty($reviews)) {
                     return '<div class="repocean-slider-main-v2">' . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
-                $html = '<div class="repocean-slider-main-v2 ' . esc_attr($this->enable_dark_mode_class) . '" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;' . $this->repocean_review_lines_style() . '">';
+                $html = '<div class="repocean-slider-main-v2 ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;' . $this->repocean_review_lines_style() . '">';
+                $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
+                $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
+                $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
+                $html .= '<div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">';
+                $html .= '<meta itemprop="streetAddress" content="' . esc_attr($streetAddress) . '">';
+                $html .= '<meta itemprop="addressLocality" content="' . esc_attr($addressLocality) . '">';
+                $html .= '<meta itemprop="addressRegion" content="' . esc_attr($addressRegion) . '">';
+                $html .= '<meta itemprop="postalCode" content="' . esc_attr($postalCode) . '">';
+                $html .= '<meta itemprop="addressCountry" content="' . esc_attr($addressCountry) . '">';
+                $html .= '</div>';
+                $html .= '<div itemprop="geo" itemscope itemtype="https://schema.org/GeoCoordinates">';
+                $html .= '<meta itemprop="latitude" content="' . esc_attr($place_data['geometry']['location']['lat'] ?? '') . '">';
+                $html .= '<meta itemprop="longitude" content="' . esc_attr($place_data['geometry']['location']['lng'] ?? '') . '">';
+                $html .= '</div>';
+                $html .= '<div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">';
+                $html .= '<meta itemprop="ratingValue" content="' . esc_attr($place_data['rating'] ?? '') . '">';
+                $html .= '<meta itemprop="bestRating" content="5">';
+                $html .= '<meta itemprop="reviewCount" content="' . esc_attr($place_data['user_ratings_total'] ?? '') . '">';
+                $html .= '</div>';
                 $html .= '<div class="repocean-content-wrapper" style="visibility:hidden;">';
                 $html .= '<div class="slider-outer">';
                 $html .= '<div class="SliderContentParent">';
@@ -488,17 +549,17 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                         // vs clientHeight) and hides it when the text actually fits the card width.
                         $read_more_hide_show = 'show';
                     }
-                    $html .= '<div class="slider-box">';
+                    $html .= '<div class="slider-box" itemprop="review" itemscope itemtype="https://schema.org/Review">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
 
                     // Reviewer info
                     $html .= '<div class="img-text-content">';
                     $html .= '<div class="profile-img-info">';
                     if ($this->hide_profile_picture === false) {
-                        $html .= '<div class="profile-img"><img src="' . $profile_photo_url . '" alt="Reviewer Image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'"></div>'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+                        $html .= '<div class="profile-img"><img src="' . $profile_photo_url . '" alt="Reviewer Image" itemprop="image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'"></div>'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
                     }
                     $html .= '<div class="profile-info">';
-                    $html .= '<div class="profile-title"><h6>' . $author_name . '</h6></div>';
+                    $html .= '<div class="profile-title"><h6 itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">' . $author_name . '</span></h6></div>';
                     if ($this->hide_date === false) {
                         $html .= '<div class="profile-date"><p>' . $published_date . '</p></div>';
                     }
@@ -510,7 +571,10 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     // Review content
                     $html .= '<div class="review-content">';
                     $html .= '<div class="review-box-parent">';
-                    $html .= '<div class="review-box" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating" style="--rating: ' . $rating . '; --star-color: ' . $this->star_color . '"></div>';
+                    $html .= '<div class="review-box" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating" style="--rating: ' . $rating . '; --star-color: ' . $this->star_color . '">';
+                    $html .= '<meta itemprop="ratingValue" content="' . $rating . '">';
+                    $html .= '<meta itemprop="bestRating" content="5">';
+                    $html .= '</div>';
                     if ($this->show_verified_symbol) {
                         $html .= '<span class="verified-icon-box"><span class="repocean-verified-tooltip" style="width: 101px;">' . __('RepOcean verifies that the original source of the review is Google.', 'widgets-for-google-reviews-and-ratings') . '</span></span>';
                     }
@@ -555,11 +619,58 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     'arrowVisibility' => $this->hide_prev_next_buttons === false ? 'true' : 'false'
                 ));
                 $place_data = $this->place_details;
+                $address_components = $place_data['address_components'] ?? [];
+                $streetAddress = '';
+                $addressLocality = '';
+                $addressRegion = '';
+                $postalCode = '';
+                $addressCountry = '';
+                foreach ($address_components as $component) {
+                    if (in_array('street_number', $component['types'])) {
+                        $streetAddress = $component['long_name'];
+                    }
+                    if (in_array('route', $component['types'])) {
+                        $streetAddress .= ' ' . $component['long_name'];
+                    }
+                    if (in_array('locality', $component['types'])) {
+                        $addressLocality = $component['long_name'];
+                    }
+                    if (in_array('administrative_area_level_1', $component['types'])) {
+                        $addressRegion = $component['short_name'];
+                    }
+                    if (in_array('postal_code', $component['types'])) {
+                        $postalCode = $component['long_name'];
+                    }
+                    if (in_array('country', $component['types'])) {
+                        $addressCountryFull = $component['long_name'];
+                        $addressCountry = $this->get_country_code($addressCountryFull);
+                    }
+                }
+                $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
                 $reviews = $this->repocean_filter_reviews($this->repocean_get_google_reviews());
                 if (empty($reviews)) {
                     return '<div class="repocean-slider-main-v3">' . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
-                $html = '<div class="repocean-slider-main-v3 ' . esc_attr($this->enable_dark_mode_class) . '" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;' . $this->repocean_review_lines_style() . '">';
+                $html = '<div class="repocean-slider-main-v3 ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;' . $this->repocean_review_lines_style() . '">';
+                $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
+                $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
+                $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
+                $html .= '<div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">';
+                $html .= '<meta itemprop="streetAddress" content="' . esc_attr($streetAddress) . '">';
+                $html .= '<meta itemprop="addressLocality" content="' . esc_attr($addressLocality) . '">';
+                $html .= '<meta itemprop="addressRegion" content="' . esc_attr($addressRegion) . '">';
+                $html .= '<meta itemprop="postalCode" content="' . esc_attr($postalCode) . '">';
+                $html .= '<meta itemprop="addressCountry" content="' . esc_attr($addressCountry) . '">';
+                $html .= '</div>';
+                $html .= '<div itemprop="geo" itemscope itemtype="https://schema.org/GeoCoordinates">';
+                $html .= '<meta itemprop="latitude" content="' . esc_attr($place_data['geometry']['location']['lat'] ?? '') . '">';
+                $html .= '<meta itemprop="longitude" content="' . esc_attr($place_data['geometry']['location']['lng'] ?? '') . '">';
+                $html .= '</div>';
+                $html .= '<div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">';
+                $html .= '<meta itemprop="ratingValue" content="' . esc_attr($place_data['rating'] ?? '') . '">';
+                $html .= '<meta itemprop="bestRating" content="5">';
+                $html .= '<meta itemprop="reviewCount" content="' . esc_attr($place_data['user_ratings_total'] ?? '') . '">';
+                $html .= '</div>';
                 $html .= '<div class="repocean-content-wrapper" style="visibility:hidden;">';
                 $html .= '<div class="slider-outer">';
                 $html .= '<div class="SliderContentParent">';
@@ -603,17 +714,17 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                         // vs clientHeight) and hides it when the text actually fits the card width.
                         $read_more_hide_show = 'show';
                     }
-                    $html .= '<div class="slider-box">';
+                    $html .= '<div class="slider-box" itemprop="review" itemscope itemtype="https://schema.org/Review">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
 
                     // Reviewer info
                     $html .= '<div class="img-text-content">';
                     $html .= '<div class="profile-img-info">';
                     if ($this->hide_profile_picture === false) {
-                        $html .= '<div class="profile-img"><img src="' . $profile_photo_url . '" alt="Reviewer Image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'"></div>'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+                        $html .= '<div class="profile-img"><img src="' . $profile_photo_url . '" alt="Reviewer Image" itemprop="image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'"></div>'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
                     }
                     $html .= '<div class="profile-info">';
-                    $html .= '<div class="profile-title"><h6>' . $author_name . '</h6></div>';
+                    $html .= '<div class="profile-title"><h6 itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">' . $author_name . '</span></h6></div>';
                     if ($this->hide_date === false) {
                         $html .= '<div class="profile-date"><p>' . esc_html($published_date) . '</p></div>';
                     }
@@ -625,7 +736,10 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     // Review content
                     $html .= '<div class="review-content">';
                     $html .= '<div class="review-box-parent">';
-                    $html .= '<div class="review-box" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating" style="--rating: ' . $rating . '; --star-color: ' . $this->star_color . '"></div>';
+                    $html .= '<div class="review-box" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating" style="--rating: ' . $rating . '; --star-color: ' . $this->star_color . '">';
+                    $html .= '<meta itemprop="ratingValue" content="' . $rating . '">';
+                    $html .= '<meta itemprop="bestRating" content="5">';
+                    $html .= '</div>';
                     if ($this->show_verified_symbol) {
                         $html .= '<span class="verified-icon-box"><span class="repocean-verified-tooltip" style="width: 101px;">' . __('RepOcean verifies that the original source of the review is Google.', 'widgets-for-google-reviews-and-ratings') . '</span></span>';
                     }
@@ -673,11 +787,58 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                     'arrowVisibility' => $this->hide_prev_next_buttons === false ? 'true' : 'false'
                 ));
                 $place_data = $this->place_details;
+                $address_components = $place_data['address_components'] ?? [];
+                $streetAddress = '';
+                $addressLocality = '';
+                $addressRegion = '';
+                $postalCode = '';
+                $addressCountry = '';
+                foreach ($address_components as $component) {
+                    if (in_array('street_number', $component['types'])) {
+                        $streetAddress = $component['long_name'];
+                    }
+                    if (in_array('route', $component['types'])) {
+                        $streetAddress .= ' ' . $component['long_name'];
+                    }
+                    if (in_array('locality', $component['types'])) {
+                        $addressLocality = $component['long_name'];
+                    }
+                    if (in_array('administrative_area_level_1', $component['types'])) {
+                        $addressRegion = $component['short_name'];
+                    }
+                    if (in_array('postal_code', $component['types'])) {
+                        $postalCode = $component['long_name'];
+                    }
+                    if (in_array('country', $component['types'])) {
+                        $addressCountryFull = $component['long_name'];
+                        $addressCountry = $this->get_country_code($addressCountryFull);
+                    }
+                }
+                $formatted_phone_number = $place_data['formatted_phone_number'] ?? '';
                 $reviews = $this->repocean_filter_reviews($this->repocean_get_google_reviews());
                 if (empty($reviews)) {
                     return '<div class="slider-main repocean-slider-main-v4">' . esc_html__('No reviews found.', 'widgets-for-google-reviews-and-ratings') . '</div>';
                 }
-                $html = '<div class="slider-main repocean-slider-main-v4 ' . esc_attr($this->enable_dark_mode_class) . '" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;' . $this->repocean_review_lines_style() . '">';
+                $html = '<div class="slider-main repocean-slider-main-v4 ' . esc_attr($this->enable_dark_mode_class) . '" itemscope itemtype="https://schema.org/LocalBusiness" style="--repocean-bg:' . esc_attr($this->bg_color) . '; --repocean-border:' . esc_attr($this->border_color) . '; --repocean-radius:' . (int) $this->card_border_radius . 'px;' . $this->repocean_review_lines_style() . '">';
+                $html .= '<meta itemprop="name" content="' . esc_attr($place_data['name'] ?? '') . '">';
+                $html .= '<meta itemprop="telephone" content="' . esc_attr($formatted_phone_number) . '">';
+                $html .= '<meta itemprop="image" content="' . esc_attr($place_data['icon'] ?? '') . '">';
+                $html .= '<div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">';
+                $html .= '<meta itemprop="streetAddress" content="' . esc_attr($streetAddress) . '">';
+                $html .= '<meta itemprop="addressLocality" content="' . esc_attr($addressLocality) . '">';
+                $html .= '<meta itemprop="addressRegion" content="' . esc_attr($addressRegion) . '">';
+                $html .= '<meta itemprop="postalCode" content="' . esc_attr($postalCode) . '">';
+                $html .= '<meta itemprop="addressCountry" content="' . esc_attr($addressCountry) . '">';
+                $html .= '</div>';
+                $html .= '<div itemprop="geo" itemscope itemtype="https://schema.org/GeoCoordinates">';
+                $html .= '<meta itemprop="latitude" content="' . esc_attr($place_data['geometry']['location']['lat'] ?? '') . '">';
+                $html .= '<meta itemprop="longitude" content="' . esc_attr($place_data['geometry']['location']['lng'] ?? '') . '">';
+                $html .= '</div>';
+                $html .= '<div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">';
+                $html .= '<meta itemprop="ratingValue" content="' . esc_attr($place_data['rating'] ?? '') . '">';
+                $html .= '<meta itemprop="bestRating" content="5">';
+                $html .= '<meta itemprop="reviewCount" content="' . esc_attr($place_data['user_ratings_total'] ?? '') . '">';
+                $html .= '</div>';
                 $html .= '<div class="repocean-content-wrapper" style="visibility:hidden;">';
                 if ($this->repocean_hide_rating_text === false) {
                     $place_rating = isset($place_data['rating']) ? floatval($place_data['rating']) : 0;
@@ -717,22 +878,25 @@ class Widgets_For_Google_Reviews_And_Ratings_Public {
                         // vs clientHeight) and hides it when the text actually fits the card width.
                         $read_more_hide_show = 'show';
                     }
-                    $html .= '<div class="slider-box">';
+                    $html .= '<div class="slider-box" itemprop="review" itemscope itemtype="https://schema.org/Review">';
                     $html .= '<div class="slider-box-inner" style="display:none;">';
                     $html .= '<div class="img-text-content">';
                     $html .= '<div class="profile-img-info">';
                     if ($this->hide_profile_picture === false) {
-                        $html .= '<div class="profile-img"><img src="' . $profile_photo_url . '" alt="Reviewer Image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'"></div>'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
+                        $html .= '<div class="profile-img"><img src="' . $profile_photo_url . '" alt="Reviewer Image" itemprop="image" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'' . esc_url( WGRR_ASSET_URL . 'admin/image/bussiness-logo.png' ) . '\'"></div>'; /* phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  */
                     }
                     $html .= '<div class="profile-info">';
-                    $html .= '<div class="profile-title"><h6>' . $author_name . '</h6></div>';
+                    $html .= '<div class="profile-title"><h6 itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">' . $author_name . '</span></h6></div>';
                     if ($this->hide_date === false) {
                         $html .= '<div class="profile-date"><p>' . esc_html($published_date) . '</p></div>';
                     }
                     $html .= '</div></div></div>'; // img-text-content
                     $html .= '<div class="review-content">';
                     $html .= '<div class="review-box-parent">';
-                    $html .= '<div class="review-box" style="--rating: ' . $rating . '; --star-color: ' . $this->star_color . '"></div>';
+                    $html .= '<div class="review-box" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating" style="--rating: ' . $rating . '; --star-color: ' . $this->star_color . '">';
+                    $html .= '<meta itemprop="ratingValue" content="' . $rating . '">';
+                    $html .= '<meta itemprop="bestRating" content="5">';
+                    $html .= '</div>';
                     if ($this->show_verified_symbol) {
                         $html .= '<span class="verified-icon-box"><span class="repocean-verified-tooltip" style="width: 101px;">' . __('RepOcean verifies that the original source of the review is Google.', 'widgets-for-google-reviews-and-ratings') . '</span></span>';
                     }
